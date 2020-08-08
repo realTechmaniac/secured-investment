@@ -13,4 +13,15 @@ class PagesController extends Controller
 
     	return view('test.index');
     }
+
+    public function login(){
+
+    	return view('test.login');
+    }
+
+
+   	public function register(){
+
+    	return view('test.register');
+    }
 }
