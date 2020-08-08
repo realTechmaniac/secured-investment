@@ -73,7 +73,7 @@
 						<div class="col-lg-5">
 							<div class="banner_content">
 								<h2>Mass People <br />Oriented Software</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. sed do eiusmod tempor incididunt.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incibore et dolore magna aliqua. Ut enim ad minim. sed do eiusmod tempor incididunt.</p>
 								<a class="banner_btn" href="#">LOG IN</a>
 								<a class="banner_btn2" href="#">REGISTER</a>
 							</div>
