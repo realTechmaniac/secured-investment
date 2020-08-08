@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -17,6 +16,7 @@
         <link rel="stylesheet" href="{{asset('asset/vendors/flaticon/flaticon.css')}}">
         <!-- main css -->
         <link rel="stylesheet" href="{{asset('asset/css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('asset/css/normal.css')}}">
         <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
     </head>
     <body>
@@ -36,28 +36,27 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav justify-content-center">
+
 								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
-								<li class="nav-item"><a class="nav-link" href="services.html">Services</a>
-								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="price.html">Pricing</a> 
-										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-									</ul>
-								</li> 
-								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-										<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-									</ul>
-								</li> 
+
+								<li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+
 								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li class="nav-item"><a href="#" class="tickets_btn">Free Trial</a></li>
-							</ul>
+                               <div class="row">
+                                    <div class="col-sm-2">
+                                        <!--  <ul class="nav navbar-nav navbar-right" id="navad">
+                             
+                                            <li class="nav-item" ><a href="#" class="tickets_btn">Log in</a></li>
+                                        </ul>  -->
+                                    </div>
+                                  
+                                    <div>
+                                        
+                                    </div>
+                                 
+                               </div>
+                           
 						</div> 
 					</div>
             	</nav>
@@ -71,11 +70,11 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-5">
-							<div class="banner_content">
-								<h2>Mass People <br />Oriented Software</h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. sed do eiusmod tempor incididunt.</p>
-								<a class="banner_btn" href="#">LOG IN</a>
-								<a class="banner_btn2" href="#">REGISTER</a>
+							<div class="banner_content pt-5">
+								<h2>Invest and get Financial Freedom</h2>
+								<p>SECURED INVESTMENT provides financial freedom to the human race giving 50% profit in 2 days and subsequently in 4 days</p>
+								<a class="banner_btn" href="{{route('login')}}">LOG IN</a>
+								<a class="banner_btn2" href="{{route('register')}}">REGISTER</a>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -93,28 +92,28 @@
         <section class="work_area p_120">
         	<div class="container">
         		<div class="main_title">
-        			<h2>How It work for you</h2>
-        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+        			<h2>How It works</h2>
+        			<p>Experts have thoroughly investigated and properly analyzed the causes and failure of other investment platforms and hence proffer lasting solutions to end premature investment platforms.</p>
         		</div>
         		<div class="work_inner row">
         			<div class="col-lg-4">
         				<div class="work_item">
-        					<i class="lnr lnr-screen"></i>
-        					<a href="#"><h4>Stunning Visuals</h4></a>
+        					<i class="lnr lnr-chart-bars"></i>
+        					<a href="#"><h4>Invest</h4></a>
         					<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
         				</div>
         			</div>
         			<div class="col-lg-4">
         				<div class="work_item">
-        					<i class="lnr lnr-code"></i>
-        					<a href="#"><h4>Stunning Visuals</h4></a>
+        					<i class="lnr lnr-arrow-down"></i>
+        					<a href="#"><h4>Recommitment</h4></a>
         					<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
         				</div>
         			</div>
         			<div class="col-lg-4">
         				<div class="work_item">
         					<i class="lnr lnr-clock"></i>
-        					<a href="#"><h4>Stunning Visuals</h4></a>
+        					<a href="#"><h4>Withdrawal</h4></a>
         					<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
         				</div>
         			</div>
@@ -125,20 +124,24 @@
         
         <!--================Made Life Area =================-->
         <section class="made_life_area p_120">
+                <div class="text-center pb-5">
+                    <h2>UNIQUE FEATURES</h2>
+                </div>
         	<div class="container">
+                
         		<div class="made_life_inner">
 					<ul class="nav nav-tabs" id="myTab" role="tablist">
 						<li class="nav-item">
-						<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Easy to use</a>
+						<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Easy payment and withdrawal</a>
 						</li>
 						<li class="nav-item">
-						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Unlimited Colors</a>
+						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Security</a>
 						</li>
 						<li class="nav-item">
-						<a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Unique Features</a>
+						<a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Quick Merging</a>
 						</li>
 						<li class="nav-item">
-						<a class="nav-link" id="edge-tab" data-toggle="tab" href="#edge" role="tab" aria-controls="edge" aria-selected="false">Unique Features</a>
+						<a class="nav-link" id="edge-tab" data-toggle="tab" href="#edge" role="tab" aria-controls="edge" aria-selected="false">Referral Bonuses</a>
 						</li>
 					</ul>
 					<div class="tab-content" id="myTabContent">
@@ -146,10 +149,10 @@
 							<div class="row made_life_text">
 								<div class="col-lg-6">
 									<div class="left_side_text">
-										<h3>We’ve made a life <br />that will change you</h3>
-										<h6>We are here to listen from you deliver exellence</h6>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-										<a class="main_btn" href="#">Get Started Now</a>
+										<h3>Fast<br />and reliable payment</h3>
+										<h6>Investment you get 50% of your investeted capital</h6>
+										<p>The system provides quick payment and easy withdrawal for all participants with a 6hrs Payment Window between 6am to 6pm & 12hrs between 6pm and 6am</p>
+										<a class="main_btn" href="#">Register Now</a>
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -163,10 +166,9 @@
 							<div class="row made_life_text">
 								<div class="col-lg-6">
 									<div class="left_side_text">
-										<h3>We’ve made a life <br />that will change you</h3>
-										<h6>We are here to listen from you deliver exellence</h6>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-										<a class="main_btn" href="#">Get Started Now</a>
+										<h3>Strong Security</h3>
+										<h6>We understand the confidentiality of user  detail and the importance of securement of user investment in to the system.</p>
+										<a class="main_btn" href="#">Register now</a>
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -182,8 +184,8 @@
 									<div class="left_side_text">
 										<h3>We’ve made a life <br />that will change you</h3>
 										<h6>We are here to listen from you deliver exellence</h6>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-										<a class="main_btn" href="#">Get Started Now</a>
+										<p>We provided the fatest merging process possible ensure participant gets a timely merge for all their transactions. </p>
+										<a class="main_btn" href="#">Register now</a>
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -200,7 +202,7 @@
 										<h3>We’ve made a life <br />that will change you</h3>
 										<h6>We are here to listen from you deliver exellence</h6>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-										<a class="main_btn" href="#">Get Started Now</a>
+										<a class="main_btn" href="#">Register now</a>
 									</div>
 								</div>
 								<div class="col-lg-6">
@@ -213,6 +215,7 @@
 					</div>
         		</div>
         	</div>
+
         </section>
         <!--================End Made Life Area =================-->
         
@@ -238,7 +241,7 @@
 								<h3>We’ve made a life <br />that will change you</h3>
 								<h6>We are here to listen from you deliver exellence</h6>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-								<a class="main_btn" href="#">Get Started Now</a>
+								<a class="main_btn" href="#">register now</a>
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -470,7 +473,7 @@
 								<h3>We’ve made a life <br />that will change you</h3>
 								<h6>We are here to listen from you deliver exellence</h6>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-								<a class="main_btn" href="#">Get Started Now</a>
+								<a class="main_btn" href="#">register now</a>
 							</div>
 						</div>
 					</div>
