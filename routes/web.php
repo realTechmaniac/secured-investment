@@ -15,14 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 //Index page route handler
 
-Route::get('/','PagesController@index');
+Route::get('/test','PagesController@dashboard');
 
 
-//Login page route handler
-
-Route::get('/login', 'PagesController@login')->name('login');
-
-
-//Registration  page route handler
-
-Route::get('/register', 'PagesController@register')->name('register');

@@ -24,4 +24,15 @@ class PagesController extends Controller
 
     	return view('test.register');
     }
+
+    public function register2(){
+
+        return view('test.register2');
+    }
+
+
+    public function dashboard(){
+
+        return view('test.dashboard.index');
+    }
 }
