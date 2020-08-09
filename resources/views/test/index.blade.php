@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
     </head>
     <body>
-        
+
         <!--================Header Menu Area =================-->
         <header class="header_area">
             <div class="main_menu">
@@ -36,35 +36,35 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav justify-content-center">
-								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
-								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
+								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
 								<li class="nav-item"><a class="nav-link" href="services.html">Services</a>
 								<li class="nav-item submenu dropdown">
 									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
 									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="price.html">Pricing</a> 
+										<li class="nav-item"><a class="nav-link" href="price.html">Pricing</a>
 										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
 									</ul>
-								</li> 
+								</li>
 								<li class="nav-item submenu dropdown">
 									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
 									<ul class="dropdown-menu">
 										<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
 										<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
 									</ul>
-								</li> 
+								</li>
 								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								<li class="nav-item"><a href="#" class="tickets_btn">Free Trial</a></li>
 							</ul>
-						</div> 
+						</div>
 					</div>
             	</nav>
             </div>
         </header>
         <!--================Header Menu Area =================-->
-        
+
         <!--================Home Banner Area =================-->
         <section class="home_banner_area">
             <div class="banner_inner">
@@ -74,8 +74,8 @@
 							<div class="banner_content">
 								<h2>Mass People <br />Oriented Software</h2>
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incibore et dolore magna aliqua. Ut enim ad minim. sed do eiusmod tempor incididunt.</p>
-								<a class="banner_btn" href="{{route('login')}}">LOG IN</a>
-								<a class="banner_btn2" href="{{route('register')}}">REGISTER</a>
+								<a class="banner_btn" href="">LOG IN</a>
+								<a class="banner_btn2" href="">REGISTER</a>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -88,7 +88,7 @@
             </div>
         </section>
         <!--================End Home Banner Area =================-->
-        
+
         <!--================Work Area =================-->
         <section class="work_area p_120">
         	<div class="container">
@@ -122,7 +122,7 @@
         	</div>
         </section>
         <!--================End Work Area =================-->
-        
+
         <!--================Made Life Area =================-->
         <section class="made_life_area p_120">
         	<div class="container">
@@ -215,7 +215,7 @@
         	</div>
         </section>
         <!--================End Made Life Area =================-->
-        
+
         <!--================Screen Area =================-->
         <section class="screen_area text-center p_120">
         	<div class="container">
@@ -227,7 +227,7 @@
         	</div>
         </section>
         <!--================End Screen Area =================-->
-        
+
         <!--================Made Life Area =================-->
         <section class="made_life_area p_120">
         	<div class="container">
@@ -251,7 +251,7 @@
         	</div>
         </section>
         <!--================End Made Life Area =================-->
-        
+
         <!--================Price Area =================-->
         <section class="price_area p_120">
         	<div class="container">
@@ -321,7 +321,7 @@
         	</div>
         </section>
         <!--================End Price Area =================-->
-        
+
         <!--================Testimonials Area =================-->
         <section class="testimonials_area p_120">
         	<div class="container">
@@ -454,7 +454,7 @@
         	</div>
         </section>
         <!--================End Testimonials Area =================-->
-        
+
         <!--================Made Life Area =================-->
         <section class="made_life_area made_white p_120">
         	<div class="container">
@@ -478,7 +478,7 @@
         	</div>
         </section>
         <!--================End Made Life Area =================-->
-        
+
         <!--================Impress Area =================-->
         <section class="impress_area p_120">
         	<div class="container">
@@ -490,7 +490,7 @@
         	</div>
         </section>
         <!--================End Impress Area =================-->
-        
+
         <!--================Footer Area =================-->
         <footer class="footer_area p_120">
         	<div class="container">
@@ -516,8 +516,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
                                 	<div class="input-group d-flex flex-row">
                                         <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>		
-                                    </div>				
+                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>
+                                    </div>
                                     <div class="mt-10 info"></div>
                                 </form>
                             </div>
@@ -541,11 +541,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         	</div>
         </footer>
         <!--================End Footer Area =================-->
-        
-        
-        
-        
-        
+
+
+
+
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="{{asset('asset/js/jquery-3.2.1.min.js')}}"></script>
