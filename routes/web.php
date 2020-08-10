@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,13 @@ use Illuminate\Support\Facades\Route;
 //Index page route handler
 
 Route::get('/test','PagesController@register');
+Route::get('/',function (){
+    return view('welcome');
+});
+
+Auth::routes();
+/*Override register form route... For Referral purpose*/
+Route::get('/register/{ref?}', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
 
+Route::get('/home', 'HomeController@index')->name('home');

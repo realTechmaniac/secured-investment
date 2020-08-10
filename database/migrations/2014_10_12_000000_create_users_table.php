@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('phone');
+            $table->string('phone')->unique();
             $table->string('username')->unique();
             $table->boolean('is_deactivated')->default(false);
             $table->boolean('is_blocked')->default(false);
             $table->string('gender');
-            $table->string('token');
+            $table->string('token')->unique();
             $table->string('misc_token')->nullable();
             $table->bigInteger('referred_from_id')->nullable();
             $table->enum('activation', ['first','subsequent'])->default('first');

@@ -76,4 +76,56 @@ class User extends Authenticatable
     {
         return $this->hasOne(ReferralHistory::class, 'referred_user_id', 'id');
     }
+
+    /**
+     * Accessors
+     *
+     *
+     * */
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+    public function getLastNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+    public function getUsernameAttribute($value)
+    {
+        return strtolower($value);
+    }
+    public function getGenderAttribute($value)
+    {
+        return strtolower($value);
+    }
+    public function getEmailAttribute($value)
+    {
+        return strtolower($value);
+    }
+
+    /**
+     * Mutators
+     *
+     *
+     * */
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['first_name'] = strtolower($value);
+    }
+    public function setLastNameAttribute($value)
+    {
+        $this->attributes['last_name'] = strtolower($value);
+    }
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = strtolower($value);
+    }
+    public function setGenderAttribute($value)
+    {
+        $this->attributes['gender'] = strtolower($value);
+    }
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
 }
