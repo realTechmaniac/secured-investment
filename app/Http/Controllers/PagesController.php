@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    
+
     //Landing page display
 
     public function index(){
@@ -23,5 +23,16 @@ class PagesController extends Controller
    	public function register(){
 
     	return view('test.register');
+    }
+
+    public function register2(){
+
+        return view('test.register2');
+    }
+
+
+    public function dashboard(){
+
+        return view('test.dashboard.index');
     }
 }

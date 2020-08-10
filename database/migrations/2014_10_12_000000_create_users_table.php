@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->string('token');
             $table->string('misc_token')->nullable();
-            $table->unsignedBigInteger('referred_from_username')->nullable();
+            $table->bigInteger('referred_from_id')->nullable();
             $table->enum('activation', ['first','subsequent'])->default('first');
             $table->enum('role', ['ceo','manager','admin','regular'])->default('regular');
             $table->string('email')->unique();
