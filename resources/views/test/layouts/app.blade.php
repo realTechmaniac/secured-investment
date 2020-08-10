@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="{{asset('asset3/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
-    <link rel="stylesheet" href="{{asset('asset3/vendor/jquery-ui/jquery-ui.min.css')}}">
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="{{asset('asset3/css/style.css')}}">
+    <!-- Icons font CSS-->
+    <link href="{{asset('asset4/assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('asset4/assets/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{{asset('asset4/assets/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('asset4/assets/vendor/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{{asset('asset4/assets/css/main.css')}}" rel="stylesheet" media="all">
 </head>
+
 <body>
 
-    <div class="main">
-        
-        <section class="signup">
-            
-            <!-- <img src="images/signup-bg.jpg" alt=""> -->
-            <div class="container">
-                <div class="signup-content">
-                   
-                    <form method="POST" id="signup-form" class="signup-form">
-                         <div class="text-center">
-                            <h2>REGISTRATION FORM</h2>
-                         </div>
-                        
-                        
-                         @yield('content')
-                        
-                    </form>
-                </div>
-            </div>
-        </section>
+    @yield('heading')
+    
 
-    </div>
+    @yield('content')
 
-   
-    <script src="{{asset('asset3/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('asset3/vendor/jquery-ui/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('asset3/vendor/jquery-validation/dist/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('asset3/vendor/jquery-validation/dist/additional-methods.min.js')}}"></script>
-    <script src="{{asset('asset3/js/main.js')}}"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com)
+    <!-- Jquery JS-->
+    <script src="{{asset('asset4/assets/vendor/jquery/jquery.min.js')}}"></script>
+    <!-- Vendor JS-->
+    <script src="{{asset('asset4/assets/vendor/select2/select2.min.js')}}"></script>
+    <script src="{{asset('asset4/assets/vendor/datepicker/moment.min.js')}}"></script>
+    <script src="{{asset('asset4/assets/vendor/datepicker/daterangepicker.js')}}"></script>
+
+    <!-- Main JS-->
+    <script src="{{asset('asset4/assets/js/global.js')}}"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
 </html>
+<!-- end document-->
