@@ -21,6 +21,7 @@ Route::get('/',function (){
     return view('welcome');
 });
 
+
 Auth::routes();
 /*Override register form route... For Referral purpose*/
 Route::get('/register/{ref?}', 'Auth\RegisterController@showRegistrationForm')->name('register');

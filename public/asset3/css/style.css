@@ -1,3 +1,5 @@
+
+
 /* @extend display-flex; */
 display-flex, .form-flex, .form-row, .add-info-link {
   display: flex;
@@ -387,6 +389,7 @@ li.init {
 .form-submit {
   width: auto;
   background: #1da0f2;
+  align-self: center;
   color: #fff;
   text-transform: uppercase;
   font-weight: 900;

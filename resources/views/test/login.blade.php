@@ -34,7 +34,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-26">
+					<span class="login100-form-title p-b-20">
 						Welcome
 					</span>
 					<span class="login100-form-title p-b-48">
@@ -63,7 +63,7 @@
 						</div>
 					</div>
 
-					<div class="text-center p-t-115">
+					<div class="text-center p-t-30">
 						<span class="txt1">
 							Don’t have an account?
 						</span>
