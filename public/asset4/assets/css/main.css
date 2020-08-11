@@ -135,6 +135,7 @@ button {
    ========================================================================== */
 .page-wrapper {
   min-height: 100vh;
+
 }
 
 body {
@@ -183,19 +184,14 @@ h6 {
 }
 
 .bg-gra-01 {
-  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
-  background: -webkit-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: -moz-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: -o-linear-gradient(bottom, #fbc2eb 0%, #a18cd1 100%);
-  background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%);
+
+
+  
 }
 
 .bg-gra-02 {
-  background: -webkit-gradient(linear, left bottom, right top, from(#fc2c77), to(#6c4079));
-  background: -webkit-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: -moz-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: -o-linear-gradient(bottom left, #fc2c77 0%, #6c4079 100%);
-  background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);
+ 
+ background-color: #f2f2f2;
 }
 
 /* ==========================================================================
@@ -300,7 +296,7 @@ h6 {
 }
 
 .btn--blue {
-  background: #4272d7;
+  background:#007bff;;
 }
 
 .btn--blue:hover {
@@ -640,6 +636,8 @@ input {
   -moz-border-radius: 3px;
   border-radius: 3px;
   background: #fff;
+  margin-left: 25px;
+  margin-right:25px;
 }
 
 .card-4 {
