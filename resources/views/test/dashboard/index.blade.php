@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    
+   
 <!-- Mirrored from themesbrand.com/skote/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 May 2020 01:53:35 GMT -->
-<head>
-        
+    <head> 
         <meta charset="utf-8" />
-        <title>Dashboard | Skote - Responsive Bootstrap 4 Admin Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -14,16 +11,15 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- Bootstrap Css -->
-        <link href="{{asset('asset4/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('asset5/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="{{asset('asset4/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('asset5/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="{{asset('asset4/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
-
+        <link href="{{asset('asset5/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <title>Dashboard | Skote - Responsive Bootstrap 4 Admin Dashboard</title>
     </head>
 
     <body data-sidebar="dark">
-
         <!-- Begin page -->
         <div id="layout-wrapper">
 
@@ -34,19 +30,19 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo.svg" alt="" height="22">
+                                    <img src="{{asset('asset5/images/logo.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                                    <img src="{{asset('asset5/images/logo-dark.png')}}" alt="" height="17">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-light.svg" alt="" height="22">
+                                    <img src="{{asset('asset5/images/logo-light.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="19">
+                                    <img src="{{asset('asset5/images/logo-light.png')}}" alt="" height="19">
                                 </span>
                             </a>
                         </div>
@@ -1462,19 +1458,19 @@
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="{{asset('asset4/assets/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('asset4/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('asset4/assets/libs/metismenu/metisMenu.min.js')}}"></script>
-        <script src="{{asset('asset4/assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{asset('asset4/assets/libs/node-waves/waves.min.js')}}"></script>
+        <script src="{{asset('asset5/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('asset5/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('asset5/libs/metismenu/metisMenu.min.js')}}"></script>
+        <script src="{{asset('asset5/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{asset('asset5/libs/node-waves/waves.min.js')}}"></script>
 
         <!-- apexcharts -->
-        <script src="{{asset('asset4/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+        <script src="{{asset('asset5/libs/apexcharts/apexcharts.min.js')}}"></script>
 
-        <script src="{{asset('asset4/assets/js/pages/dashboard.init.js')}}"></script>
+        <script src="{{asset('asset5/js/pages/dashboard.init.js')}}"></script>
 
         <!-- App js -->
-        <script src="{{asset('asset4/assets/js/app.js')}}"></script>
+        <script src="{{asset('asset5/js/app.js')}}"></script>
     </body>
 
 

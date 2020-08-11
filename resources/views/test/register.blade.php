@@ -1,7 +1,7 @@
 @extends('test.layouts.app')
 
 @section('content')
-     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+     <div class="page-wrapper bg-gra-02 p-t-100 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
