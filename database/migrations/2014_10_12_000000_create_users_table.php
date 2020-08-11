@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->string('token')->unique();
             $table->string('misc_token')->nullable();
+            $table->integer('phone_verification_code')->nullable();
             $table->bigInteger('referred_from_id')->nullable();
             $table->enum('activation', ['first','subsequent'])->default('first');
             $table->enum('role', ['ceo','manager','admin','regular'])->default('regular');

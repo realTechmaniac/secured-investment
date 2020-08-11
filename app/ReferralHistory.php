@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReferralHistory extends Model
 {
+
+    protected $fillable = [
+        'referred_user_id', 'referrer_details_id',
+    ];
+
+
     public function referrerDetail()
     {
         return $this->belongsTo(ReferrerDetail::class, 'referrer_details_id', 'id');

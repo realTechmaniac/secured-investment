@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class GetHelp extends Model
 {
+
+    protected $fillable = [
+        'user_id', 'amount', 'is_merged', 'status', 'token',
+    ];
+
+
     public function provideHelps()
     {
         return $this->belongsToMany(

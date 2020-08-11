@@ -17,6 +17,7 @@ class CreateInformationTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
+            $table->string('token');
             $table->timestamps();
         });
     }
