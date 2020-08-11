@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 //Index page route handler
 
-Route::get('/test','PagesController@login');
+Route::get('/test','PagesController@register2');
 
 
