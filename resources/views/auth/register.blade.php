@@ -1,77 +1,157 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <!-- Title Page-->
+    <title>Secured Investment -Registration Form</title>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <!-- Icons font CSS-->
+    <link href="{{asset('asset4/assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('asset4/assets/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <!-- Vendor CSS-->
+    <link href="{{asset('asset4/assets/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('asset4/assets/vendor/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+    <!-- Main CSS-->
+    <link href="{{asset('asset4/assets/css/main.css')}}" rel="stylesheet" media="all">
+
+    {{--Toastr--}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+
+</head>
+
+<body>
+
+<div class="page-wrapper bg-gra-02 p-t-100 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Registration</h2>
+                <form method="POST" action="{{route('register')}}">
+                    @csrf
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">first name</label>
+                                <input class="input--style-4" type="text" name="first_name" required value="{{ old('first_name') }}">
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">last name</label>
+                                <input class="input--style-4" type="text" name="last_name" required value="{{ old('last_name') }}">
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Username</label>
+                                <input class="input--style-4" type="text" name="username" required value="{{ old('username') }}">
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Gender</label>
+                                <div class="p-t-10">
+                                    <label class="radio-container m-r-45">Male
+                                        <input type="radio" value="male" {{ old('gender')=="male" ? 'checked='.'"'.'checked'.'"' : '' }} checked="checked" name="gender">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="radio-container">Female
+                                        <input type="radio" {{ old('gender')=="female" ? 'checked='.'"'.'checked'.'"' : '' }} value="female" name="gender">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Email</label>
+                                <input class="input--style-4" type="email" name="email" required value="{{ old('email') }}">
                             </div>
                         </div>
-                    </form>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Phone Number</label>
+                                <input class="input--style-4" type="text" name="phone" placeholder="format +234XXXXXXXXXX" required value="{{ old('phone') }}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Password</label>
+                                <input class="input--style-4" type="password" name="password" required value="{{ old('password') }}">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Confirm Password</label>
+                                <input class="input--style-4" type="password" name="password_confirmation" required>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="ref" value="{{$ref}}" required>
+                    <div class="d-flex justify-content-center p-t-15">
+                        <button class="btn btn--radius-2 btn--blue justify-content-center" type="submit">Register</button>
+                    </div>
+                </form>
+                <div class="text-center p-t-30">
+						<span class="txt1">
+							Already have an account?
+						</span>
+
+                    <a class="txt2" href="{{route('login')}}">
+                        Login
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
+
+<!-- Jquery JS-->
+<script src="{{asset('asset4/assets/vendor/jquery/jquery.min.js')}}"></script>
+<!-- Vendor JS-->
+<script src="{{asset('asset4/assets/vendor/select2/select2.min.js')}}"></script>
+<script src="{{asset('asset4/assets/vendor/datepicker/moment.min.js')}}"></script>
+<script src="{{asset('asset4/assets/vendor/datepicker/daterangepicker.js')}}"></script>
+
+<!-- Main JS-->
+<script src="{{asset('asset4/assets/js/global.js')}}"></script>
+
+{{--Toastr--}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+    @if(session('danger'))
+    toastr.error('{{session("danger")}}');
+    @endif
+    @if(count($errors)>0)
+    @foreach($errors->all() as $error)
+    toastr.error('{{$error}}');
+    @endforeach
+    @endif
+    @if(session('success'))
+    toastr.success('{{session("success")}}');
+    @endif
+</script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->

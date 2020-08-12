@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\BankDetail;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\ReferrerDetail;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -32,6 +36,11 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    public function redirectPath()
+    {
+        return '/register-bank-details';
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -53,7 +62,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'max:70'],
             'last_name' => ['required', 'string', 'max:70'],
-            'phone' => ['required', 'string', 'max:20', 'unique:users'],
+            'phone' => ['required', 'string', 'max:20', 'unique:users', 'regex:/^(\+234)\d{10}$/'],
             'username' => ['required', 'string', 'max:70', 'unique:users'],
             'gender' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -69,6 +78,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $referred_from_id = null;
+        if ($data['ref'] != null){
+            $idOfUserWhoReferredNewUser =
+                ReferrerDetail::where('referrer_link', $data['ref'])->pluck('user_id')->first();
+            if ($idOfUserWhoReferredNewUser){
+                $referred_from_id = $idOfUserWhoReferredNewUser;
+            }
+        }
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -77,7 +94,7 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'token' => Str::random(40),
             'email' => $data['email'],
-            'referred_from_id' => $data['ref'],
+            'referred_from_id' => $referred_from_id,
             'password' => Hash::make($data['password']),
         ]);
     }

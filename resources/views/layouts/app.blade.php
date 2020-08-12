@@ -18,6 +18,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{--Toastr--}}
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <body>
     <div id="app">
@@ -51,7 +55,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,5 +80,22 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Jquery JS-->
+    <script src="{{asset('asset4/assets/vendor/jquery/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script type="text/javascript">
+        @if(session('danger'))
+        toastr.error('{{session("danger")}}');
+        @endif
+        @if(count($errors)>0)
+        @foreach($errors->all() as $error)
+        toastr.error('{{$error}}');
+        @endforeach
+        @endif
+        @if(session('success'))
+        toastr.success('{{session("success")}}');
+        @endif
+    </script>
 </body>
 </html>

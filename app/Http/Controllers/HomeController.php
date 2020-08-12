@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+       /* $activity = Telegram::getUpdates();
+        dd($activity);*/
+
+        /*$text = "Message From The Developer\n"
+            . "<b>Ignore Please: </b>\n"
+            . "<b>Message: </b>\n"
+            . "Telegram Bot test successful";
+
+        Telegram::sendMessage([
+            'chat_id' => env('TELEGRAM_CHANNEL_ID', ''),
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);*/
         return view('home');
     }
 }

@@ -33,6 +33,6 @@ class PagesController extends Controller
 
     public function dashboard(){
 
-        return view('test.dashboard.index');
+        return view('dashboard.index');
     }
 }

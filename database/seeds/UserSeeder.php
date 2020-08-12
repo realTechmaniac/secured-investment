@@ -1,5 +1,6 @@
 <?php
 
+use App\ReferrerDetail;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -24,6 +25,13 @@ class UserSeeder extends Seeder
             'role' => 'ceo',
             'email' => 'stunner@gmail.com',
             'password' => Hash::make('12345678'),
+        ]);
+
+        ReferrerDetail::create([
+            'user_id' => 1,
+            'referrer_link' => 'ref='.Str::random(40),
+            'referrer_balance' => 20000,
+            'token' => Str::random(40),
         ]);
     }
 }

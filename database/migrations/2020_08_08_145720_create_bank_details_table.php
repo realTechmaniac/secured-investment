@@ -18,7 +18,7 @@ class CreateBankDetailsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('full_name');
             $table->string('bank_name');
-            $table->integer('account_number');
+            $table->bigInteger('account_number');
             $table->string('account_type');
             $table->string('token');
             $table->timestamps();
