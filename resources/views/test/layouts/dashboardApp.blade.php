@@ -6,20 +6,23 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>Dashboard | Skote - Responsive Bootstrap 4 Admin Dashboard</title>
+        <title>Secured Investment Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
+        <!-- Sweet Alert-->
+        <link href="{{asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+
         <!-- Bootstrap Css -->
-        <link href="{{asset('asset5/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="{{asset('asset5/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="{{asset('asset5/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
-        <link href="{{asset('asset5/css/main.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="{{asset('assets/css/main.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -35,19 +38,19 @@
                         <div class="navbar-brand-box">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{asset('asset5/images/logo.svg')}}" alt="" height="22">
+                                    <img src="{{asset('assets/images/logo.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{asset('asset5/images/logo-dark.png')}}" alt="" height="17">
+                                    <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{asset('asset5/images/logo-light.svg')}}" alt="" height="22">
+                                    <img src="{{asset('assets/images/logo-light.svg')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{asset('asset5/images/logo-light.png')}}" alt="" height="19">
+                                    <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="19">
                                 </span>
                             </a>
                         </div>
@@ -91,65 +94,6 @@
                         </div>
 
                         
-
-                        <div class="dropdown d-none d-lg-inline-block ml-1">
-                            <button type="button" class="btn header-item noti-icon waves-effect"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bx bx-customize"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                <div class="px-lg-2">
-                                    <div class="row no-gutters">
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/github.png" alt="Github">
-                                                <span>GitHub</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
-                                                <span>Bitbucket</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/dribbble.png" alt="dribbble">
-                                                <span>Dribbble</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="row no-gutters">
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/dropbox.png" alt="dropbox">
-                                                <span>Dropbox</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp">
-                                                <span>Mail Chimp</span>
-                                            </a>
-                                        </div>
-                                        <div class="col">
-                                            <a class="dropdown-icon-item" href="#">
-                                                <img src="assets/images/brands/slack.png" alt="slack">
-                                                <span>Slack</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="dropdown d-none d-lg-inline-block ml-1">
-                            <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
-                                <i class="bx bx-fullscreen"></i>
-                            </button>
-                        </div>
-
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -240,10 +184,11 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
-                                    alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ml-1">Henry</span>
-                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                                
+                                <span class="d-none d-xl-inline-block ml-1">
+                                    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i></a>
+                                </span>
+                                
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- item-->
@@ -254,11 +199,6 @@
                             </div>
                         </div>
 
-                        <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                                <i class="bx bx-cog bx-spin"></i>
-                            </button>
-                        </div>
             
                     </div>
                 </div>
@@ -331,26 +271,31 @@
 
 
 
-<!-- Right bar overlay-->
-        <div class="rightbar-overlay"></div>
 
-        <!-- JAVASCRIPT -->
-
-        <script src="{{asset('asset5/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('asset5/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('asset5/libs/metismenu/metisMenu.min.js')}}"></script>
-        <script src="{{asset('asset5/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{asset('asset5/libs/node-waves/waves.min.js')}}"></script>
+        
+         <!-- JAVASCRIPT -->
+        <script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <script src="{{asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
+        <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
 
         <!-- apexcharts -->
-        <script src="{{asset('asset5/libs/apexcharts/apexcharts.min.js')}}"></script>
+        <script src="{{asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
 
-        <script src="{{asset('asset5/js/pages/dashboard.init.js')}}"></script>
+        <script src="{{asset('assets/js/pages/dashboard.init.js')}}"></script>
+
+
+         <!-- Sweet Alerts js -->
+        <script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+
+        <!-- Sweet alert init js-->
+        <script src="{{asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
+
 
         <!-- App js -->
-        <!-- <script src="{{asset('asset5/js/app.js')}}"></script>
- -->
-        
+        <script src="{{asset('assets/js/app.js')}}"></script>
+               
     </body>
 
 

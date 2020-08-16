@@ -1,7 +1,5 @@
 @extends('test.layouts.dashboardApp')
 
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -14,16 +12,8 @@
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
-                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                             <div class="page-title-box d-flex align-items-center justify-content-between">
                                     <h4 class="mb-0 font-size-18">Dashboard</h4>
-
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                                            <li class="breadcrumb-item active">Dashboard</li>
-                                        </ol>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -42,45 +32,103 @@
                                             </div>
                                             <div class="col-5 align-self-end">
                                                 <img src="assets/images/profile-img.png" alt="" class="img-fluid">
-                                            </div>
+                                            </div>  
                                         </div>
                                     </div>
                                     <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="avatar-md profile-user-wid mb-4">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle">
-                                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="pt-1">
+
+                                            <div class="row">
                                                 
+                                                <div class="col">
+                                        <div class="my-4 text-center">
+                                            <!-- Small modal -->
+                                            <button type="button" class="btn btn-primary btn-block waves-effect waves-light font-weight-bold btn-block">Provide Help</button>
+                                        </div>
+
+                                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title mt-0">Provide Help</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="text-center">
+                                                            <div class="swal2-icon swal2-warning swal2-animate-warning-icon" style="display: flex;"></div>
+                                                            <div class="swal2-header">
+                                                                <h5><strong>Are you sure you want to Provide Help? </strong></h5>
+                                                            </div>
+                                                            <div class = "swal2-content" style="display: block;">You won't be able to revert this!</div>
+                                                            <div class="swal2-actions">
+                                                                <button type="button" class="swal2-confirm btn btn-success m-3" aria-label="" style="display: inline-block;">Yes, Proceed!</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                    </div>
+
+                                </div>
+                                    
+                                </div>
+                            </div>
+
+                                <div class="col-sm-6">
+                                        <div class="pt-1">
+
+                                            <div class="row">
+                                                
+                                                <div class="col">
+                                                    <!-- <button type="button" class="btn btn-success btn-block waves-effect waves-light font-weight-bold btn-block">Get Help</button> -->
+                                                    <div class="my-4 text-center">
+                                    <!-- Small modal -->
+                                    <button type="button" class="btn btn-success btn-block waves-effect waves-light font-weight-bold btn-block">Get Help</button>
+                                </div>
+
+                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title mt-0">Center modal</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
-
-                                            <div class="col-sm-8">
-                                                <div class="pt-4">
-
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <button type="button" class="btn btn-primary waves-effect waves-light font-weight-bold">Provide Help (PH)</button>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <button type="button" class="btn btn-success waves-effect waves-light font-weight-bold">Get Help (GH)</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mt-4">
-                                                        
-                                                    </div>
+                                            <div class="modal-body">
+                                                <p>Cras mattis consectetur purus sit amet fermentum.
+                                                    Cras justo odio, dapibus ac facilisis in,
+                                                    egestas eget quam. Morbi leo risus, porta ac
+                                                    consectetur ac, vestibulum at eros.</p>
+                                                <p>Praesent commodo cursus magna, vel scelerisque
+                                                    nisl consectetur et. Vivamus sagittis lacus vel
+                                                    augue laoreet rutrum faucibus dolor auctor.</p>
+                                                <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur.
+                                                    Praesent commodo cursus magna, vel scelerisque
+                                                    nisl consectetur et. Donec sed odio dui. Donec
+                                                    ullamcorper nulla non metus auctor
+                                                    fringilla.</p>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
                                                 </div>
+                                            </div>
+                                            <div class="mt-4">
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-
-                                    <div class="col-m">
-                                        
-                                    </div>
-                                    
-                                </div>
                             </div>
+                        </div>
+                        
+                    </div>
                             <div class="col-xl-8">
                                 <div class="row">
                                     <div class="col-md-4">
@@ -202,19 +250,14 @@
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-
-
-
                        
-                        <!-- end row -->
-
-                        
+                        <!-- end row -->  
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="card bg-primary text-white-50">
                                     <div class="card-body">
                                         <h5 class="mt-0 mb-4 text-white"><i class="mdi mdi-bullseye-arrow mr-3"></i>NOTICE!!</h5>
-                                        <p class="card-text pb-c">Your Account will be suspended if you do not make payment before PH duration expires and reactivation of suspended account cost 3000 Naira</p>
+                                        <p class="card-text pb-3">Your Account will be suspended if you do not make payment before PH duration expires and reactivation of suspended account cost 3000 Naira</p>
                                     </div>
                                 </div>
                             </div>
@@ -239,189 +282,82 @@
                         <!-- end row -->
 
 
-                        <div class="row">    
-                         <div class="col-lg-12">
-                        <div class="card">            
-                         <div class="card-body">
-                        <h4 class="card-title mb-4">Latest Transaction</h4>
-                        <div class="table-responsive">
-                        <table class="table table-centered table-nowrap mb-0">
-                        <thead class="thead-light">     <tr>         <th
-                        style="width: 20px;">             <div class="custom-
-                        control custom-checkbox">                 <input
-                        type="checkbox" class="custom-control-input"
-                        id="customCheck1">                 <label class
-                        ="custom-control-label"
-                        for="customCheck1">&nbsp;</label>             
-
-                        </div>
-                            </th>         
-                            <th>Date</th>         
-                            <th>Time</th>
-                            <th>Transaction Status</th>         
-                            <th>Transaction Type</th>         
-                            <th>From/To</th>         
-                            <th>Receipt</th>
-                            <th>Action</th>     
-                            </tr> </thead> 
-                            <tbody>     
-                            <tr>
-                        <td>     
-
-                            <div class="custom-control custom-
-                        checkbox">                 
-
-                        <input type="checkbox"
-                        class="custom-control-input" id="customCheck2">
-                        <label class="custom-control-label"
-                        for="customCheck2">&nbsp;</label>                    
-                        </div>
-                        </td>
-                                                        
-                                                        <td>
-                                                            07 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            8:00 a.m
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-success font-size-12">Pending</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class=""></i> PH
-                                                        </td>
-                                                        <td>
-                                                            <p>Sola Poju</p>
-                                                        </td>
-                                                        <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
-                                                        </td>
-                                                        <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".exampleModal">
-                                                                Confirm
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".exampleModal">
-                                                                Report
-                                                            </button>
-
-                                                        </td>
-                                                    </tr>
-
+ <!-- end row -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Latest Transactions</h4>
+                                        <p class="card-title-desc">Below are your last five transactions you can check the transactions page to see more.
+                                        </p>
+        
+                                        <div class="table-rep-plugin">
+                                            <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                                <table id="tech-companies-1" class="table table-striped">
+                                                    <thead>
                                                     <tr>
-                                                        <td>
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                                                <label class="custom-control-label" for="customCheck3">&nbsp;</label>
-                                                            </div>
-                                                        </td>
+                                                        <th>Date</th>
+                                                        <th data-priority="1">Time</th>
+                                                        <th data-priority="3">Transaction Status</th>
+                                                        <th data-priority="1">Transaction Type</th>
+                                                        <th data-priority="3">From/To</th>
+                                                        <th data-priority="3">Receipt</th>
+                                                        <th data-priority="3">Action</th>
                                                         
-                                                        <td>
-                                                            07 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            10:00a.m
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-danger font-size-12">completed</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class=""></i> GH
-                                                        </td>
-                                                        <td>
-                                                            <p>Sola Ayodele</p>
-                                                        </td>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <th> 07 Oct, 2019</th>
+                                                        <td>8:00 a.m</td>
+                                                        <td><span class="badge badge-primary">Completed</span></td>
+                                                        <td>GH</td>
+                                                        <td>Ayomide Adebayo</td>
                                                         <td>
                                                         <a href=""><i class="bx bx-file"></i></a>
                                                         </td>
                                                         <td>
                                                              <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".exampleModal">
+                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
                                                                 Confirm
                                                             </button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".exampleModal">
+                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
                                                                 Report
-                                                        </td>
+                                                        </td>      
                                                     </tr>
-
                                                     <tr>
-                                                        <td>
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                                                <label class="custom-control-label" for="customCheck4">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                    
-                                                        <td>
-                                                            06 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            12:00PM
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-success font-size-12">Pending</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class=""></i> PH
-                                                        </td>
-                                                        <td>
-                                                            <p>Ayomide Adebayo</p>
-                                                        </td>
-                                                        <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
-                                                         </td>
-                                                        <td>
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".exampleModal">
-                                                                Confirm
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".exampleModal">
-                                                                Report
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                        <td>
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                                                <label class="custom-control-label" for="customCheck6">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            04 Oct, 2019
-                                                        </td>
-                                                        <td>
-                                                            $404
-                                                        </td>
-                                                        <td>
-                                                            <span class="badge badge-pill badge-soft-warning font-size-12">Pending</span>
-                                                        </td>
-                                                        <td>
-                                                            <i class=""></i>GH
-                                                        </td>
-                                                        <td>
-                                                            <p>Fola Ayodele</p>
-                                                        </td>
+                                                         <th> 07 May, 2019</th>
+                                                        <td>9:00 a.m</td>
+                                                        <td><span class="badge badge-danger">Pending</span></td>
+                                                        <td>PH</td>
+                                                        <td>Sola Adebayo</td>
                                                         <td>
                                                         <a href=""><i class="bx bx-file"></i></a>
                                                         </td>
                                                         <td>
                                                              <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".exampleModal">
+                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
                                                                 Confirm
                                                             </button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light" data-toggle="modal" data-target=".exampleModal">
+                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
                                                                 Report
-                                                        </td>
+                                                        </td>  
                                                     </tr>
-                                                   
-                                        </tbody>
-                                    </table>
+                                                 </tbody>
+                                                </table>
+                                            </div>
+        
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -431,11 +367,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © Skote.
+                                <script>document.write(new Date().getFullYear())</script> © SecuredInvestment.
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-right d-none d-sm-block">
-                                    Design & Develop by Themesbrand
+                                    
                                 </div>
                             </div>
                         </div>
@@ -491,6 +427,10 @@
 
             </div> <!-- end slimscroll-menu-->
         </div>
+
+        <!-- Right bar overlay-->
+
+        <div class="rightbar-overlay"></div>
     @endsection
         <!-- /Right-bar -->
 
