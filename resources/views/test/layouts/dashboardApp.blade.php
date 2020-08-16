@@ -36,21 +36,13 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="{{asset('assets/images/logo.svg')}}" alt="" height="22">
-                                </span>
-                                <span class="logo-lg">
-                                    <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
-                                </span>
-                            </a>
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{asset('assets/images/logo-light.svg')}}" alt="" height="22">
+                                    <img src="{{asset('assets/images/secur.png')}}" alt="" height="30">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="19">
+                                    <img src="{{asset('assets/images/secur.png')}}" alt="" height="45">
                                 </span>
                             </a>
                         </div>
@@ -186,7 +178,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 
                                 <span class="d-none d-xl-inline-block ml-1">
-                                    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i></a>
+                                    <a class="dropdown-item  font-size-25" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i></a>
                                 </span>
                                 
                             </button>

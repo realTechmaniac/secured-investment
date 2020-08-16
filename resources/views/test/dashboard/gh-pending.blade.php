@@ -35,14 +35,14 @@
                                        </div>     
                                        
                                     </div>
-                                    <div class="pt-3">
-                                        <h5 class="text-justify">Your request to Provide Help is Pending. You will be merged very soon. However, if you like to change your mind, you can cancel your request to provide help. <a href="" class="btn btn-danger mt-2" data-toggle="modal" data-target=".bs-example-modal-center">Cancel PH</a></h5>
+                                    <div class="pt-4 pl-2">
+                                        <p class="">Your request to Get Help is Pending. You will be merged very soon. However, if you like to change your mind, you can cancel your request to provide help. <a href="" class="btn btn-danger mt-2" data-toggle="modal" data-target=".bs-example-modal-center">Cancel GH</a></p>
 
                                                 <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title mt-0">Center modal</h5>
+                                                                <h5 class="modal-title mt-0">Get Help Info</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
@@ -51,12 +51,13 @@
                                                                 <div class="text-center">
                                                                 <div class="swal2-icon swal2-warning swal2-animate-warning-icon" style="display: flex;"></div>
                                                                 <div class="swal2-header">
-                                                                    <h5><strong>Are you sure you want to cancel your Provide Help Request ? </strong></h5>
+                                                                    <h5><strong>Are you sure you want to cancel your Get Help Request ? </strong></h5>
                                                                 </div>
                                                                 <div class = "swal2-content" style="display: block;">You won't be able to revert this!</div>
                                                                 <div class="swal2-actions">
-                                                                    <button type="button" class="swal2-confirm btn btn-success m-3" aria-label="" style="display:inline-block;">Yes, Proceed!</button>
-                                                            </div>
+                                                                    <button type="button " class="swal2-confirm swal2-styled btn-success" style="display: inline-block;" aria-label="">Proceed</button>
+                                                                    <button type="button" class="swal2-cancel swal2-styled btn-danger" style="display: inline-block;" aria-label="">Cancel</button>
+                                                                </div>
                                                         </div>
                                                             </div>
                                                         </div><!-- /.modal-content -->

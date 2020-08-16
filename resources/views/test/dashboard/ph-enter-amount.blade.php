@@ -63,9 +63,10 @@
                                                                 <h5><strong>Are you sure you want to Provide Help of 60,000 </strong></h5>
                                                             </div>
                                                             <div class = "swal2-content" style="display: block;">You won't be able to revert this!</div>
-                                                            <div class="swal2-actions">
-                                                                <button type="button" class="swal2-confirm btn btn-success m-3" aria-label="" style="display: inline-block;">Yes, Proceed!</button>
-                                                            </div>
+                                                                <div class="swal2-actions">
+                                                                    <button type="button " class="swal2-confirm swal2-styled btn-success" style="display: inline-block;" aria-label="">Proceed</button>
+                                                                    <button type="button" class="swal2-cancel swal2-styled btn-danger" style="display: inline-block;" aria-label="">Cancel</button>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div><!-- /.modal-content -->

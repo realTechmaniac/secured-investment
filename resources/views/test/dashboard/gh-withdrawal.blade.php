@@ -21,40 +21,40 @@
                         </div>
                         <!-- end page title -->
 
-                        
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
         
                                         <h4 class="card-title">Available Investments for withdrawal</h4>
-                                        <p class="card-title-desc"> 
+                                        <p class="card-title-desc">
                                         </p>
         
-                                        <div class="table-rep-plugin">
-                                            <div class="table-responsive mb-0" data-pattern="priority-columns">
-                                                <table id="tech-companies-1" class="table table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th data-priority="1">Date</th>
-                                                        <th data-priority="2">Time</th>
-                                                        <th data-priority="3">Amount GH</th>
-                                                        <th data-priority="4">Status</th>
-                                                        <th data-priority="5">Action</th>
-                                                        
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                
-                                                    <tr>
-                                                        <th>Sola Aluko</th>
-                                                        <td>26/08/2020</td>
-                                                        <td>10:00a.m</td>
-                                                        <td>50,000</td>
-                                                        <td>Unavailable</td>
-                                                        <td>
-                                                        <div class="">
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Amount GH</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            </thead>
+        
+        
+                                            <tbody>
+                                            <tr>
+                                                <td>Tiger Nixon</td>
+                                                <td>27/09/2020</td>
+                                                <td>10:00 am</td>
+                                                <td>100,000</td>
+                                                <td>
+                                                    <span class="badge badge-primary">Available</span>
+                                                </td>
+                                                <td>
+                                                    <div class="">
                                                             <div class="">  
                                                                 <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center" id="sa-param">Withdraw</button>
                                                             </div>
@@ -75,22 +75,23 @@
                                                                 </div>
                                                                 <div class = "swal2-content" style="display: block;">You won't be able to revert this!</div>
                                                                 <div class="swal2-actions">
-                                                                    <button type="button" class="swal2-confirm btn btn-success m-3" aria-label="" style="display:inline-block;">Yes, Proceed!</button>
-                                                            </div>
+                                                                    <button type="button " class="swal2-confirm swal2-styled btn-success" style="display: inline-block;" aria-label="">Proceed</button>
+                                                                    <button type="button" class="swal2-cancel swal2-styled btn-danger" style="display: inline-block;" aria-label="">Cancel</button>
+                                                                </div>
                                                         </div><!-- /.modal-content -->
                                                     </div><!-- /.modal-dialog -->
                                                 </div><!-- /.modal -->
-
-                                                    <tr>
-                                                        <th>Femi Solomon</th>
-                                                        <td>26/08/2020</td>
-                                                        <td>10:00a.m</td>
-                                                        <td>50,000</td>
-                                                        <td>Available</td>
-                                                        <td>
-                                                        <div class="">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Garrett Winters</td>
+                                                <td>10/09/2020</td>
+                                                <td>5:00pm</td>
+                                                <td>50,000</td>
+                                                <td><span class="badge badge-danger">Unvailable</span></td>
+                                                <td><div class="">
                                                             <div class="">  
-                                                                <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center" id="sa-para">Withdraw</button>
+                                                                <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center" id="sa-param">Withdraw</button>
                                                             </div>
                                                              <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
@@ -109,27 +110,58 @@
                                                                 </div>
                                                                 <div class = "swal2-content" style="display: block;">You won't be able to revert this!</div>
                                                                 <div class="swal2-actions">
-                                                                    <button type="button" class="swal2-confirm btn btn-success m-3" aria-label="" style="display:inline-block;">Yes, Proceed!</button>
+                                                                    <button type="button " class="swal2-confirm swal2-styled btn-success" style="display: inline-block;" aria-label="">Proceed</button>
+                                                                    <button type="button" class="swal2-cancel swal2-styled btn-danger" style="display: inline-block;" aria-label="">Cancel</button>
+                                                                </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal --></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Folake Nixon</td>
+                                                <td>17/09/2020</td>
+                                                <td>8:00 am</td>
+                                                <td>30,000</td>
+                                                <td>
+                                                    <span class="badge badge-warning">Pending</span>
+                                                </td>
+                                                <td>
+                                                    <div class="">
+                                                            <div class="">  
+                                                                <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-center" id="sa-param">Withdraw</button>
                                                             </div>
+                                                             <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title mt-0">Center modal</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="text-center">
+                                                                <div class="swal2-icon swal2-warning swal2-animate-warning-icon" style="display: flex;"></div>
+                                                                <div class="swal2-header">
+                                                                    <h5><strong>Are you sure you want to withdraw this ? </strong></h5>
+                                                                </div>
+                                                                <div class = "swal2-content" style="display: block;">You won't be able to revert this!</div>
+                                                                <div class="swal2-actions">
+                                                                    <button type="button " class="swal2-confirm swal2-styled btn-success" style="display: inline-block;" aria-label="">Proceed</button>
+                                                                    <button type="button" class="swal2-cancel swal2-styled btn-danger" style="display: inline-block;" aria-label="">Cancel</button>
+                                                                </div>
                                                         </div><!-- /.modal-content -->
                                                     </div><!-- /.modal-dialog -->
                                                 </div><!-- /.modal -->
-                                            </div>
-
-                                                        </div>
-                                                        </td>    
-                                                    </tr>
-                                                 </tbody>
-                                                </table>
-                                            </div>
-        
-                                        </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
         
                                     </div>
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-
                        
 
                                 </div>
