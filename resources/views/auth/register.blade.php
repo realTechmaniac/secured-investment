@@ -87,7 +87,7 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">Phone Number</label>
-                                <input class="input--style-4" type="text" name="phone" placeholder="format +234XXXXXXXXXX" required value="{{ old('phone') }}">
+                                <input class="input--style-4" type="text" name="phone_number" placeholder="format +234XXXXXXXXXX" required value="{{ old('phone_number') }}">
                             </div>
                         </div>
                     </div>

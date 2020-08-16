@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'StuNNer',
             'last_name' => 'TheGreat',
-            'phone' => '08186818135',
+            'phone_number' => '+2348186818135',
             'username' => 'stunner',
             'gender' => 'male',
             'token' => Str::random(40),

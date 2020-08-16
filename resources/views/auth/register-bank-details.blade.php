@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Secured Investment -Bank Details Form</title>
 
     <!-- Icons font CSS-->
     <link href="{{asset('asset4/assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
@@ -76,7 +76,7 @@
                                         <input type="radio" {{ old('account_type')=="current" ? 'checked='.'"'.'checked'.'"' : '' }} value="current" name="account_type">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <label class="radio-container m-t-5">Fixed
+                                    <label class="radio-container m-t-5">Others
                                         <input type="radio" {{ old('account_type')=="others" ? 'checked='.'"'.'checked'.'"' : '' }} value="others" name="account_type">
                                         <span class="checkmark"></span>
                                     </label>

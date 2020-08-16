@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
-        'first_name', 'last_name', 'phone',
+        'first_name', 'last_name', 'phone_number',
         'username', 'is_deactivated', 'is_blocked',
         'gender', 'token', 'misc_token', 'referred_from_id',
         'activation', 'role', 'email', 'sub_expires_at', 'password',
@@ -89,23 +89,33 @@ class User extends Authenticatable
      * */
     public function getFirstNameAttribute($value)
     {
-        return ucfirst($value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        return ucfirst($remove_whitespaces);
     }
     public function getLastNameAttribute($value)
     {
-        return ucfirst($value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        return ucfirst($remove_whitespaces);
     }
     public function getUsernameAttribute($value)
     {
-        return strtolower($value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        return strtolower($remove_whitespaces);
     }
     public function getGenderAttribute($value)
     {
-        return strtolower($value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        return strtolower($remove_whitespaces);
     }
     public function getEmailAttribute($value)
     {
         return strtolower($value);
+    }
+
+    public function getPhoneAttribute($value)
+    {
+        $phone = substr($value, 4);  //remove "+234"
+        return "0".$phone;
     }
 
     /**
@@ -115,22 +125,28 @@ class User extends Authenticatable
      * */
     public function setFirstNameAttribute($value)
     {
-        $this->attributes['first_name'] = strtolower($value);
+        //alternative ====>>  str_replace(' ', '', $value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        $this->attributes['first_name'] = strtolower($remove_whitespaces);
     }
     public function setLastNameAttribute($value)
     {
-        $this->attributes['last_name'] = strtolower($value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        $this->attributes['last_name'] = strtolower($remove_whitespaces);
     }
     public function setUsernameAttribute($value)
     {
-        $this->attributes['username'] = strtolower($value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        $this->attributes['username'] = strtolower($remove_whitespaces);
     }
     public function setGenderAttribute($value)
     {
-        $this->attributes['gender'] = strtolower($value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        $this->attributes['gender'] = strtolower($remove_whitespaces);
     }
     public function setEmailAttribute($value)
     {
-        $this->attributes['email'] = strtolower($value);
+        $remove_whitespaces = preg_replace('!\s+!', '', $value);
+        $this->attributes['email'] = strtolower($remove_whitespaces);
     }
 }

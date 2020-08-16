@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\ReferrerDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class HomeController extends Controller
 {
+    use AppMainTrait;
     /**
      * Create a new controller instance.
      *
@@ -24,10 +27,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-       /* $activity = Telegram::getUpdates();
+       /*//Get Telegram group ID.. Admin last message must be sent to the group
+        $activity = Telegram::getUpdates();
         dd($activity);*/
 
-        /*$text = "Message From The Developer\n"
+        /*//Telegram Bot notification
+          $text = "Message From The Developer\n"
             . "<b>Ignore Please: </b>\n"
             . "<b>Message: </b>\n"
             . "Telegram Bot test successful";
@@ -37,6 +42,20 @@ class HomeController extends Controller
             'parse_mode' => 'HTML',
             'text' => $text
         ]);*/
-        return view('home');
+
+        /*//SMS Functionality
+        $phone = $this->serializePhoneNumberForSms(Auth::user()->phone);
+        $message = 'Congratulations! '
+            .Auth::user()->username.
+            ', you have successfully registered with Secured Investment.';
+        $this->sendSms($message, $phone);
+        session()->flash('success', 'SMS test sent successfully');*/
+
+        $from = ReferrerDetail::where('user_id', auth()->user()->referred_from_id)->first();
+        $ref = null;
+        if ($from){
+            $ref = $from->user->username;
+        }
+        return view('home', compact('ref'));
     }
 }

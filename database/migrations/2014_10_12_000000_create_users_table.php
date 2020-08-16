@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('phone')->unique();
+            $table->string('phone_number')->unique();
             $table->string('username')->unique();
             $table->boolean('is_deactivated')->default(false);
             $table->boolean('is_blocked')->default(false);
