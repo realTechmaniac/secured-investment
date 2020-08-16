@@ -32,5 +32,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/register-bank-details', 'BankDetailsController@bankDetails')->name('bank.details')->middleware('bank.rules');
 Route::post('/store-bank-details', 'BankDetailsController@storeBankDetails')->name('bank.store')->middleware('bank.rules');
 Route::middleware(['auth'])->group(function (){
-
+    Route::get('/dashboard', 'UserController@userDashboard')->name('dashboard');
 });
