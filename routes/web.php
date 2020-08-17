@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 //Index page route handler
 
-Route::get('/test','PagesController@phEnterAmount');
+Route::get('/test','PagesController@ghWithdrawal');
 
 

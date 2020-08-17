@@ -170,8 +170,9 @@
                                         </p>
         
                                         <div class="table-rep-plugin">
-                                            <div class="table-responsive mb-0" data-pattern="priority-columns">
-                                                <table id="tech-companies-1" class="table table-striped">
+                                            <div class="mb-0" data-pattern="priority-columns">
+                                               
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                     <thead>
                                                     <tr>
                                                         <th>Name</th>
@@ -257,8 +258,9 @@
                                         </p>
         
                                         <div class="table-rep-plugin">
-                                            <div class="table-responsive mb-0" data-pattern="priority-columns">
-                                                <table id="tech-companies-1" class="table table-striped">
+                                            <div class=" mb-0" data-pattern="priority-columns">
+                                                
+                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                     <thead>
                                                     <tr>
                                                         <th>Date</th>
@@ -398,4 +400,3 @@
     @endsection
         <!-- /Right-bar -->
 
-        
