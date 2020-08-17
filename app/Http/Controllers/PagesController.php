@@ -78,4 +78,41 @@ class PagesController extends Controller
 
         return view('test.dashboard.ph-enter-amount');
     }
+
+//This leads to the user sanctioned page 
+
+    public function userSanction(){
+
+        return view('test.dashboard.account-sanction');
+    }
+
+    public function ghMerged(){
+
+        return view('test.dashboard.gh-merged') ;
+    }
+
+//return merge pemding gh
+
+    public function ghPendingMerge(){
+
+        return view('test.dashboard.merge-pending-gh');
+    }
+
+
+//return merge pemding ph
+
+    public function phPendingMerge(){
+
+        return view('test.dashboard.merge-pending-ph');
+    }
+
+
+//return account reactivation page
+
+    public function accountReactivate(){
+
+        return view('test.dashboard.reactivate');
+    }
 }
+
+
