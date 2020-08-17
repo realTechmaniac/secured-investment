@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 //Index page route handler
 
-Route::get('/test','PagesController@ghPendingMerge');
+Route::get('/test','PagesController@ghWithdrawal');
 
 
