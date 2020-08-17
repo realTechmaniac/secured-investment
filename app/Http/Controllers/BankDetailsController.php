@@ -42,6 +42,6 @@ class BankDetailsController extends Controller
 
         session()->flash('success', 'Registration successful');
 
-        return redirect(route('home'));
+        return redirect(route('dashboard'));
     }
 }

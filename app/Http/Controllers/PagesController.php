@@ -33,19 +33,19 @@ class PagesController extends Controller
 
     public function dashboard(){
 
-        return view('dashboard.ph-merged');
+        return view('test.dashboard.ph-merged');
     }
 
 
     public function dashboardActivate(){
 
-        return view('dashboard.account-activate');
+        return view('test.dashboard.account-activate');
     }
 
 //This shows the merg
     public function showPH(){
 
-        return view('dashboard.ph-approve');
+        return view('test.dashboard.ph-approve');
     }
 
 
@@ -53,14 +53,14 @@ class PagesController extends Controller
 
     public function ghPending(){
 
-         return view('dashboard.gh-pending');        
+         return view('test.dashboard.gh-pending');        
     }
 
 //This return the ph pending page view
 
      public function phPending(){
 
-         return view('dashboard.ph-pending');        
+         return view('test.dashboard.ph-pending');        
     }
 
 //GH  make withdrawal where users can enter the amount they
@@ -68,7 +68,7 @@ class PagesController extends Controller
 
      public function ghWithdrawal(){
 
-         return view('dashboard.gh-withdrawal');        
+         return view('test.dashboard.gh-withdrawal');        
     }
 
 //PH Enter Amount Page where users can enter the amount they
@@ -76,6 +76,6 @@ class PagesController extends Controller
 
     public function phEnterAmount(){
 
-        return view('dashboard.ph-enter-amount');
+        return view('test.dashboard.ph-enter-amount');
     }
 }

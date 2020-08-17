@@ -19,3 +19,19 @@
 
 <!-- App js -->
 <script src="{{asset('assets/js/app.js')}}"></script>
+
+{{--Toastr--}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+    @if(session('danger'))
+    toastr.error('{{session("danger")}}');
+    @endif
+    @if(count($errors)>0)
+    @foreach($errors->all() as $error)
+    toastr.error('{{$error}}');
+    @endforeach
+    @endif
+    @if(session('success'))
+    toastr.success('{{session("success")}}');
+    @endif
+</script>

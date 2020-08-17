@@ -45,10 +45,12 @@
                 </li>
 
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
-                        <i class="bx bx-caret-left"></i>
-                        <span>Log Out</span>
-                    </a>
+                    <a class="waves-effect text-danger" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i
+                            class="bx bx-power-off"></i><span>{{ __('Logout') }}</span> </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </div>

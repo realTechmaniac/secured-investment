@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/test','PagesController@index');
 
 
-Route::get('/test','PagesController@dashboard');
+Route::get('/test','PagesController@ghWithdrawal');
 
 
 Auth::routes();
@@ -32,5 +32,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/register-bank-details', 'BankDetailsController@bankDetails')->name('bank.details')->middleware('bank.rules');
 Route::post('/store-bank-details', 'BankDetailsController@storeBankDetails')->name('bank.store')->middleware('bank.rules');
 Route::middleware(['auth'])->group(function (){
+    /*Dashboard*/
     Route::get('/dashboard', 'UserController@userDashboard')->name('dashboard');
+    Route::post('/pay-activation-fee', 'UserController@payActivationFee')->name('pay.activation.fee');
+    Route::delete('/cancel-activation-fee/{token}', 'UserController@cancelActivationFee')->name('cancel.activation.fee');
+
+    /*Provide Help*/
+   // Route::get('/ph', 'ProvideHelpController@userDashboard')->name('dashboard');
 });
