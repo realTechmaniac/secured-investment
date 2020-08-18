@@ -71,7 +71,7 @@
                         
                     </div>
 
-                    <div class="d-flex">
+                       <div class="d-flex">
 
                         <div class="dropdown d-inline-block d-lg-none ml-2">
                             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
@@ -94,7 +94,8 @@
                             </div>
                         </div>
 
-                        
+                       
+
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -187,23 +188,33 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 
                                 <span class="d-none d-xl-inline-block ml-1">
-                                    <a class="dropdown-item  font-size-25" href="#"><i class="bx bx-user bx-sm   align-middle mr-1"></i></a>
+                                    <i class=""></i>
                                 </span>
-                                
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-menu dropdown-menu" hidden="">
                                 <!-- item-->
-                                <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i>Change Password</a>
-                                <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right"></span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                                shboard</span>
+                    </a>
+                   
+                </li>
+
+                <li>
+                    <a href="calendar.html" class=" waves-effect">
+                                <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
                                 <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
                             </div>
                         </div>
 
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item noti-icon  waves-effect">
+                                <i class="bx bx-user bx-sm "></i>
+                            </button>
+                        </div>
             
                     </div>
                 </div>
-            </header> <!-- ========== Left Sidebar Start ========== -->
+            </header> <!-- ========== Left Sidebar Start ========== --
+<!-- ========== Left Sidebar Start ========== -->
 <div class="vertical-menu">
 
     <div data-simplebar class="h-100">
@@ -217,14 +228,7 @@
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bx-home-circle"></i><span class="badge badge-pill badge-info float-right">03</span>
-                        <span>Dashboard</span>
-                    </a>
-                   
-                </li>
-
-                <li>
-                    <a href="calendar.html" class=" waves-effect">
-                        <i class="bx bx-money"></i>
+                        <span>Da
                         <span>Transactions</span>
                     </a>
                 </li>
