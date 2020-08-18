@@ -344,7 +344,7 @@
                                     <div class="card">
                                         <div class="card-body">
 
-                                            <h4 class="card-title pt-4">Your Subscription expires {{\Carbon\Carbon::parse(auth()->user()->sub_expires_at)->format('g:ia \o\n l jS F Y')}} </h4>
+                                            <h4 class="card-title pt-4">Your Subscription expires {{auth()->user()->sub_expires_at->format('g:ia \o\n l jS F Y')}} </h4>
 
                                             <div class="row pt-2">
 
@@ -442,7 +442,7 @@
                                     <div class="card">
                                         <div class="card-body">
 
-                                            <h4 class="card-title pt-4">Your Subscription expires {{\Carbon\Carbon::parse(auth()->user()->sub_expires_at)->format('g:ia \o\n l jS F Y')}}</h4>
+                                            <h4 class="card-title pt-4">Your Subscription expires {{auth()->user()->sub_expires_at->format('g:ia \o\n l jS F Y')}}</h4>
 
                                             <div class="row pt-2">
 

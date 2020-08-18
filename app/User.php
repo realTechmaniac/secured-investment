@@ -24,6 +24,10 @@ class User extends Authenticatable
         'email_verified_at', 'phone_verification_code'
     ];
 
+    protected $dates = [
+        'sub_expires_at'
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *

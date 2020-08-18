@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //Index page route handler
 //Route::get('/test','PagesController@index');
 
-Route::get('/test','PagesController@ghMerged');
+Route::get('/test','PagesController@showPH');
 
 
 
