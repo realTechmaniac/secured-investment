@@ -47,13 +47,13 @@
                                                         <td>Femo001</td>
                                                         <td>30,0000</td>
                                                         <td>
-                                                            <i class="bx bx-user" data-toggle="tooltip" data-placement="top" title="View Profile" ></i>
+                                                            <i class="bx bx-user bx-sm mr-1" data-toggle="tooltip" data-placement="top" title="View Profile" ></i>
 
                                                              <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
+                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 mb-3" data-toggle="modal" data-target=".exampleModal">
                                                                 Merge
                                                             </button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
+                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 mb-3" data-toggle="modal" data-target=".exampleModal">
                                                                 Accept Merge
                                                         </td>
                                                     </tr>
@@ -63,13 +63,13 @@
                                                         <td>Sen001</td>
                                                         <td>50,0000</td>
                                                         <td>
-                                                            <i class="bx bx-user" data-toggle="tooltip" data-placement="top" title="View Profile" ></i>
+                                                            <i class="bx bx-user bx-sm mr-1" data-toggle="tooltip" data-placement="top" title="View Profile" ></i>
 
                                                              <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
+                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 mb-3" data-toggle="modal" data-target=".exampleModal">
                                                                 Merge
                                                             </button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
+                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 mb-3" data-toggle="modal" data-target=".exampleModal">
                                                                 Accept Merge
                                                         </td>
    

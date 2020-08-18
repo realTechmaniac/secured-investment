@@ -187,7 +187,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 
                                 <span class="d-none d-xl-inline-block ml-1">
-                                    <a class="dropdown-item  font-size-25" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i></a>
+                                    <a class="dropdown-item  font-size-25" href="#"><i class="bx bx-user bx-sm   align-middle mr-1"></i></a>
                                 </span>
                                 
                             </button>
