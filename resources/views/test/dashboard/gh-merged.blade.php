@@ -187,7 +187,7 @@
                                                         <th>Ayomide Adebayo</th>
                                                         <td>08066558833</td>
                                                         <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
+                                                        <a href=""><i class="bx bx-file bx-sm"></i></a>
                                                         </td> 
                                                         <td>
                                                              <!-- Button trigger modal -->
@@ -202,7 +202,7 @@
                                                         <th>Femi Adebayo</th>
                                                         <td>08066558833</td>
                                                         <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
+                                                        <a href=""><i class="bx bx-file bx-sm"></i></a>
                                                         </td> 
                                                         <td>
                                                              <!-- Button trigger modal -->

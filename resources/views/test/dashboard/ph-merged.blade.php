@@ -192,7 +192,7 @@
                                                         <td>Savings</td>
                                                         <td>09045656787</td>
                                                         <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
+                                                        <a href=""><i class="bx bx-file bx-sm"></i></a>
                                                         </td>    
                                                     </tr>
                                                     <tr>
@@ -202,7 +202,7 @@
                                                         <td>Fixed</td>
                                                         <td>09045656787</td>
                                                         <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
+                                                        <a href=""><i class="bx bx-file bx-sm"></i></a>
                                                         </td>    
                                                     </tr>
                                                  </tbody>
@@ -281,7 +281,7 @@
                                                         <td>GH</td>
                                                         <td>Ayomide Adebayo</td>
                                                         <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
+                                                        <a href=""><i class="bx bx-file bx-sm"></i></a>
                                                         </td>
                                                         <td>
                                                              <!-- Button trigger modal -->
@@ -299,7 +299,7 @@
                                                         <td>PH</td>
                                                         <td>Sola Adebayo</td>
                                                         <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
+                                                        <a href=""><i class="bx bx-file bx-sm"></i></a>
                                                         </td>
                                                         <td>
                                                              <!-- Button trigger modal -->
