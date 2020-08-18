@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 //Index page route handler
 //Route::get('/test','PagesController@index');
 
+Route::get('/test','PagesController@accountReactivate');
 
-Route::get('/test','PagesController@ghWithdrawal');
+//Route::get('/test','PagesController@ghWithdrawal');
 
 
 Auth::routes();

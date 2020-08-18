@@ -166,7 +166,7 @@
                                     <div class="card-body">
         
                                         <h4 class="card-title">Congratulations!!!</h4>
-                                        <p class="card-title-desc">You have been merged to pay the following users on 14, August 2020 at 4:30pm
+                                        <p class="card-title-desc">The following users have been merged to pay you
                                         </p>
         
                                         <div class="table-rep-plugin">
@@ -176,34 +176,42 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Name</th>
-                                                        <th data-priority="1">Bank Name</th>
-                                                        <th data-priority="3">Account No</th>
-                                                        <th data-priority="1">Account Type</th>
-                                                        <th data-priority="3">Phone Number</th>
-                                                        <th data-priority="3">Proof of Payment</th>
+                                                        <th data-priority="3">Phone number</th>
+                                                        <th data-priority="1">Receipt</th>
+                                                        <th data-priority="3">Actions</th>
                                                         
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     <tr>
                                                         <th>Ayomide Adebayo</th>
-                                                        <td>UBA</td>
-                                                        <td>2090556730</td>
-                                                        <td>Savings</td>
-                                                        <td>09045656787</td>
+                                                        <td>08066558833</td>
                                                         <td>
                                                         <a href=""><i class="bx bx-file"></i></a>
-                                                        </td>    
+                                                        </td> 
+                                                        <td>
+                                                             <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
+                                                                Confirm
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
+                                                                Report
+                                                        </td>   
                                                     </tr>
                                                     <tr>
                                                         <th>Femi Adebayo</th>
-                                                        <td>First Bank</td>
-                                                        <td>2090556730</td>
-                                                        <td>Fixed</td>
-                                                        <td>09045656787</td>
+                                                        <td>08066558833</td>
                                                         <td>
                                                         <a href=""><i class="bx bx-file"></i></a>
-                                                        </td>    
+                                                        </td> 
+                                                        <td>
+                                                             <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
+                                                                Confirm
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
+                                                                Report
+                                                        </td>   
                                                     </tr>
                                                  </tbody>
                                                 </table>
@@ -221,8 +229,14 @@
                             <div class="col-lg-8">
                                 <div class="card bg-primary text-white-50">
                                     <div class="card-body">
-                                        <h5 class="mt-0 mb-4 text-white"><i class="mdi mdi-bullseye-arrow mr-3"></i>NOTICE!!</h5>
-                                        <p class="card-text pb-3">Your Account will be suspended if you do not make payment before PH duration expires and reactivation of suspended account cost 3000 Naira</p>
+                                        <h5 class="mt-0 mb-4 text-white"><i class="mdi mdi-bullseye-arrow mr-3"></i>TIPS !!!</h5>
+                                        <ul>
+                                            <li><p class="card-text pb-1">You can contact the  person you are merged with to alert him/her/them.</p></li>
+
+                                            <li><p class="card-text">You can save your payer the stress of uploading  receipt once you get the credit alert from the merged payer.</p></li>
+
+                                        </ul>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -233,11 +247,11 @@
                                         <h5 class="mt-0 mb-4 text-white"><i class="mdi mdi-alert-circle-outline mr-3"></i>IMPORTANT INFO <i class="dripicons-alarm"></i></h5>
                                         <div class="row">
                                             <div class="col">
-                                                <p>Provide Help request expires:</p>
+                                                <p>Get Help request expires:</p>
                                             </div>
 
                                             <div class="col">
-                                                <h4 class="text-white">5 hours 30 minutes</h4>
+                                                <h4 class="text-white">8 hours, 30 minutes and 33 seconds</h4>
                                             </div>
                                         </div>     
                                     </div>
@@ -253,68 +267,9 @@
                                 <div class="card">
                                     <div class="card-body">
         
-                                        <h4 class="card-title">Latest Transactions</h4>
-                                        <p class="card-title-desc">Below are your last five transactions you can check the transactions page to see more.
+                                        <h4 class="card-title">NOTICE FOR USER</h4>
+                                        <p class="card-title-desc">If GH duration expires you will be remerged and deafulters would be sanctioned
                                         </p>
-        
-                                        <div class="table-rep-plugin">
-                                            <div class=" mb-0" data-pattern="priority-columns">
-                                                
-                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th data-priority="1">Time</th>
-                                                        <th data-priority="3">Transaction Status</th>
-                                                        <th data-priority="1">Transaction Type</th>
-                                                        <th data-priority="3">From/To</th>
-                                                        <th data-priority="3">Receipt</th>
-                                                        <th data-priority="3">Action</th>
-                                                        
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th> 07 Oct, 2019</th>
-                                                        <td>8:00 a.m</td>
-                                                        <td><span class="badge badge-primary">Completed</span></td>
-                                                        <td>GH</td>
-                                                        <td>Ayomide Adebayo</td>
-                                                        <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
-                                                        </td>
-                                                        <td>
-                                                             <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
-                                                                Confirm
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
-                                                                Report
-                                                        </td>      
-                                                    </tr>
-                                                    <tr>
-                                                         <th> 07 May, 2019</th>
-                                                        <td>9:00 a.m</td>
-                                                        <td><span class="badge badge-danger">Pending</span></td>
-                                                        <td>PH</td>
-                                                        <td>Sola Adebayo</td>
-                                                        <td>
-                                                        <a href=""><i class="bx bx-file"></i></a>
-                                                        </td>
-                                                        <td>
-                                                             <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
-                                                                Confirm
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-sm btn-rounded waves-effect waves-light p-1 m-1" data-toggle="modal" data-target=".exampleModal">
-                                                                Report
-                                                        </td>  
-                                                    </tr>
-                                                 </tbody>
-                                                </table>
-                                            </div>
-        
-                                        </div>
         
                                     </div>
                                 </div>
