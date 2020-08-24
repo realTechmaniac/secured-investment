@@ -66,7 +66,7 @@
                                                                                         <button type="button"
                                                                                                 class="btn btn-primary btn-sm waves-effect waves-light"
                                                                                                 data-toggle="modal"
-                                                                                                data-target=".{{$receipt->token}}">
+                                                                                                data-target=".ph-activation-not-complete-modal-{{$receipt->token}}">
                                                                                             View Receipt
                                                                                         </button>
                                                                                     @else
@@ -196,14 +196,14 @@
                                                         <h4 class="card-title pt-4">Pending Activation Fee Request</h4>
                                                         <p>
                                                             Your request to Provide Help of
-                                                            <b>&#8358;{{number_format($ph_activation->amount)}}
+                                                            <b class="text-primary">&#8358;{{number_format($ph_activation->amount)}}
                                                                 (Activation Fee)</b> is
                                                             Pending. You will be merged very soon.
                                                             However, if you like to change your mind, you can cancel
                                                             your
                                                             request to provide
-                                                            help. Please note that <b>Activation Fee</b> attracts no
-                                                            profit.
+                                                            help. Please note that <b class="text-primary">Activation Fee</b> attracts
+                                                            <b class="text-primary">no profit</b>.
                                                             <a style="color: #fff" class="btn btn-danger mt-2"
                                                                data-toggle="modal"
                                                                data-target=".first-activation-cancel-confirmation">Cancel
@@ -265,7 +265,7 @@
                                                                                     <button type="button"
                                                                                             class="btn btn-primary btn-sm waves-effect waves-light"
                                                                                             data-toggle="modal"
-                                                                                            data-target=".{{$receipt->token}}">
+                                                                                            data-target=".ph-activation-merged-modal-{{$receipt->token}}">
                                                                                         View Receipt
                                                                                     </button>
                                                                                 @else
@@ -392,7 +392,7 @@
                                         <h1 class="card-title mt-0 text-center">Welcome to Secured Investment</h1>
                                         <p class="card-text text-center">Get Started Now by Activating your account to
                                             get full
-                                            access to our investment services. Activation costs <strong>&#8358;1,000
+                                            access to our investment services. Activation costs <strong class="text-primary">&#8358;1,000
                                                 only</strong>.
                                         </p>
 
@@ -460,7 +460,7 @@
                                                                                         <button type="button"
                                                                                                 class="btn btn-primary btn-sm waves-effect waves-light"
                                                                                                 data-toggle="modal"
-                                                                                                data-target=".{{$receipt->token}}">
+                                                                                                data-target=".ph-reactivation-not-complete-modal-{{$receipt->token}}">
                                                                                             View Receipt
                                                                                         </button>
                                                                                     @else
@@ -659,7 +659,7 @@
                                                                                     <button type="button"
                                                                                             class="btn btn-primary btn-sm waves-effect waves-light"
                                                                                             data-toggle="modal"
-                                                                                            data-target=".{{$receipt->token}}">
+                                                                                            data-target=".ph-reactivation-merged-modal-{{$receipt->token}}">
                                                                                         View Receipt
                                                                                     </button>
                                                                                 @else
@@ -880,7 +880,7 @@
                                                                                     <button type="button"
                                                                                             class="btn btn-primary btn-sm waves-effect waves-light"
                                                                                             data-toggle="modal"
-                                                                                            data-target=".{{$receipt->token}}">
+                                                                                            data-target=".ph-regular-not-complete-modal-{{$receipt->token}}">
                                                                                         View Receipt
                                                                                     </button>
                                                                                 @else
@@ -1076,7 +1076,7 @@
                                                                                 <button type="button"
                                                                                         class="btn btn-primary btn-sm waves-effect waves-light"
                                                                                         data-toggle="modal"
-                                                                                        data-target=".{{$receipt->token}}">
+                                                                                        data-target=".ph-regular-merged-modal-{{$receipt->token}}">
                                                                                     View Receipt
                                                                                 </button>
                                                                             @else
@@ -1199,37 +1199,149 @@
                     @elseif($gh_pending)
                         @if(!$gh_pending->is_merged)
                             @if($gh_pending->provideHelps->count() > 0)
-                                @foreach($gh_pending->unConfirmedPh as $unconfirmed_ph)
-                                    {{$unconfirmed_ph->merge->merge_amount}}
-                                    <b>
-                                        <div id="gh-merge-countdown" class="text-danger"
-                                             data-countdown="{{\Carbon\Carbon::parse($unconfirmed_ph->merge->expires_at)->format('Y/m/d H:i:s')}}"></div>
-                                    </b>
-                                    {{$unconfirmed_ph->user->username}}
-                                @endforeach
-                                {{$gh_pending_amount_left_to_balance}}
-                                {{$gh_pending_amount}}
-                                {{$gh_pending_amount_on_processing}}
-                                {{$gh_pending_amount_paid}}
-                                gh amount left to be paid = x   amount on processing = y amount paid = z
-                                Then remaining pending ph to balance up
-                                balance = amount - getHelps
-                                kkkkkkkkkkkkk
-                                {{$gh_earliest_merge_expiration}}
-                                <b>
-                                    <div id="gh-merge-countdown" class="text-danger"
-                                         data-countdown="2030/08/20 19:02:59"></div>
-                                </b>
-                                <b>
-                                    <div id="ph-merge-countdown" class="text-danger"
-                                         data-countdown="2090/08/20 19:02:49"></div>
-                                </b>
-                                <b>
-                                    <div id="activation-merge-countdown" class="text-danger"
-                                         data-countdown="2028/08/20 19:02:39"></div>
-                                </b>
+                                {{--Get Help Not Completely Merged--}}
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
 
+                                                <h4 class="card-title">Congratulations!!!</h4>
+                                                <p class="card-title-desc">The following users have been merged to pay you
+                                                </p>
+
+                                                <div class="table-rep-plugin">
+                                                    <div class="mb-0" data-pattern="priority-columns">
+                                                        <table id="gh-merge-datatable" class="table table-bordered dt-responsive nowrap"
+                                                               style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Expires In</th>
+                                                                <th>Name</th>
+                                                                <th>Amount</th>
+                                                                <th>Phone number</th>
+                                                                <th>Receipt</th>
+                                                                <th>Actions</th>
+
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($gh_pending->unConfirmedPh as $unconfirmed_ph)
+                                                                <tr>
+                                                                    <td>
+                                                                        <b>
+                                                                            <div id="gh-merge-countdown"
+                                                                                 class="text-danger"
+                                                                                 data-countdown="{{\Carbon\Carbon::parse($unconfirmed_ph->merge->expires_at)->format('Y/m/d H:i:s')}}">
+                                                                            </div>
+                                                                        </b>
+                                                                    </td>
+                                                                    <td>{{$unconfirmed_ph->user->bankDetail->full_name}}</td>
+                                                                    <td>&#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}</td>
+                                                                    <td>{{$unconfirmed_ph->user->phone_number}}</td>
+                                                                    <td>
+                                                                        @if($unconfirmed_ph->receiptUploads->count() > 0)
+                                                                            @foreach($unconfirmed_ph->receiptUploads as $receipt)
+                                                                                @if($receipt->provide_help_id == $unconfirmed_ph->merge->provide_help_id)
+                                                                                    <button type="button"
+                                                                                            class="btn btn-primary
+                                                                                             btn-sm waves-effect waves-light"
+                                                                                            data-toggle="modal"
+                                                                                            data-target=".gh-show-receipt-not-complete-modal-{{$receipt->token}}">
+                                                                                        Show Receipt
+                                                                                    </button>
+                                                                                    <button type="button"
+                                                                                            class="btn btn-danger btn-sm waves-effect waves-light"
+                                                                                            data-toggle="modal"
+                                                                                            data-target=".gh-report-receipt-not-complete-modal-{{$receipt->token}}">
+                                                                                        Report Receipt
+                                                                                    </button>
+                                                                                @else
+                                                                                    <button type="button"
+                                                                                            class="btn btn-danger btn-sm waves-effect waves-light" disabled>
+                                                                                        No Receipt Yet
+                                                                                    </button>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        @else
+                                                                            <button type="button"
+                                                                                    class="btn btn-danger btn-sm waves-effect waves-light" disabled>
+                                                                                No Receipt Yet
+                                                                            </button>
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
+                                                                        <!-- Button trigger modal -->
+                                                                        <button type="button"
+                                                                                class="btn btn-primary btn-sm waves-effect waves-light"
+                                                                                data-toggle="modal"
+                                                                                data-target=".gh-confirm-ph-confirmation-not-complete-modal-{{$unconfirmed_ph->token}}">
+                                                                            Confirm
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        {{--GH Merge Info--}}
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Get Help Summary</h4>
+                                                        <hr>
+                                                        <p class="card-title-desc">
+                                                            Amount you requested to GH (Total amount) =
+                                                            &#8358;{{number_format($gh_pending_amount)}}
+                                                        </p>
+                                                        <hr>
+                                                        <p class="card-title-desc">
+                                                            Amount paid (Completed Transaction) =
+                                                            &#8358;{{number_format($gh_pending_amount_paid)}}
+                                                        </p>
+                                                        <hr>
+                                                        <p class="card-title-desc">
+                                                            Amount on processing (Merged but not completed) =
+                                                            &#8358;{{number_format($gh_pending_amount_on_processing)}}
+                                                        </p>
+                                                        <hr>
+                                                        <p class="card-title-desc">
+                                                            Amount left to be paid (Not merged yet) =
+                                                            &#8358;{{number_format($gh_pending_amount_left_to_balance)}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Get Help Important Notice</h4>
+                                                        <hr>
+                                                        <div class="card-title-desc">
+                                                            <ol>
+                                                                <li><b class="text-danger">Do not</b> <b class="text-primary">confirm</b> a user if he/she has not paid you.</li>
+                                                                <li>You may <b class="text-primary">confirm</b> a user, without the user uploading receipt, <b class="text-danger">only if</b> you have seen his/her credit alert</li>
+                                                                <li>If a user <b class="text-danger">uploads a fake receipt</b> and he/she has not paid you. You may <b class="text-danger">flag the receipt as fake</b> by clicking <b class="text-danger">report button</b>. <b class="text-primary">Admin will response</b> to the matter and <b class="text-danger">defaulter will be punished</b>. Note that report button is only available when receipt has been uploaded.</li>
+                                                                <li>If a user <b class="text-danger">does not pay</b> you before merge expires, you be <b class="text-danger">automatically unmerged</b> from such user and you will be <b class="text-primary">re-merged</b> with another user</li>
+                                                                <li>If multiple users were merged to pay you and one of them is <b class="text-danger">facing disciplinary actions</b>. You will be <b class="text-danger">unmerged</b> from such user and you will be <b class="text-primary">re-merged</b> with another user</li>
+                                                            </ol>
+                                                        </div>
+                                                        <hr>
+                                                        <b>Tip: You could call who you were merged with to notify
+                                                            him/her that they have been merged to pay you.</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col -->
+                                </div>
                             @else
+                                {{--Pending Get Help Request--}}
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="card">
@@ -1323,7 +1435,7 @@
                                     @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
                                         {{--PH First Activation NOT Merged completely Table--}}
                                         <!--PH RECEIPT MODAL -->
-                                        <div class="modal fade {{$receipt->token}}" tabindex="-1" role="dialog"
+                                        <div class="modal fade ph-activation-not-complete-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -1365,8 +1477,8 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title mt-0">Cancel <b>Activation
-                                                Fee</b> PH Confirmation</h5>
+                                        <h5 class="modal-title mt-0">Cancel <b class="text-primary">Activation
+                                                Fee</b> Confirmation</h5>
                                         <button type="button" class="close"
                                                 data-dismiss="modal"
                                                 aria-label="Close">
@@ -1382,7 +1494,7 @@
                                                 <h5><strong>Are you sure you want to
                                                         cancel
                                                         your Provide Help
-                                                        Request (<b>Activation Fee
+                                                        Request (<b class="text-primary">Activation Fee
                                                             of
                                                             &#8358;{{number_format($ph_activation->amount)}}</b>)
                                                         ? </strong>
@@ -1425,7 +1537,7 @@
                                 @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
                                     {{--PH First Activation Merged Table--}}
                                     <!--PH RECEIPT MODAL -->
-                                    <div class="modal fade {{$receipt->token}}" tabindex="-1" role="dialog"
+                                    <div class="modal fade ph-activation-merged-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -1475,7 +1587,8 @@
                                     <div class="swal2-icon swal2-warning swal2-animate-warning-icon"
                                          style="display: flex;"></div>
                                     <div class="swal2-header">
-                                        <h5><strong>Are you sure you want to pay activation fee of &#8358;1,000
+                                        <h5><strong>Are you sure you want to pay activation fee of
+                                                <b class="text-primary">&#8358;1,000</b>
                                                 to activate your
                                                 account ?</strong></h5>
                                     </div>
@@ -1512,7 +1625,7 @@
                                     @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
                                         {{--PH Reactivation NOT Merged completely Table--}}
                                         <!--PH RECEIPT MODAL -->
-                                        <div class="modal fade {{$receipt->token}}" tabindex="-1" role="dialog"
+                                        <div class="modal fade ph-reactivation-not-complete-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -1611,7 +1724,7 @@
                                 @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
                                     {{--PH Reactivation Merged Table--}}
                                     <!--PH RECEIPT MODAL -->
-                                    <div class="modal fade {{$receipt->token}}" tabindex="-1" role="dialog"
+                                    <div class="modal fade ph-reactivation-merged-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -1747,7 +1860,7 @@
                                 @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
                                     {{--Regular PH NOT Merged completely Table--}}
                                     <!--PH RECEIPT MODAL -->
-                                    <div class="modal fade {{$receipt->token}}" tabindex="-1" role="dialog"
+                                    <div class="modal fade ph-regular-not-complete-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -1848,7 +1961,7 @@
                             @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
                                 {{--Regular PH Merged Table--}}
                                 <!--PH RECEIPT MODAL -->
-                                <div class="modal fade {{$receipt->token}}" tabindex="-1" role="dialog"
+                                <div class="modal fade ph-regular-merged-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -1885,36 +1998,157 @@
         @elseif($gh_pending)
             @if(!$gh_pending->is_merged)
                 @if($gh_pending->provideHelps->count() > 0)
+                    {{--GH Not completely merged--}}
                     @foreach($gh_pending->unConfirmedPh as $unconfirmed_ph)
-                        {{$unconfirmed_ph->merge->merge_amount}}
-                        <b>
-                            <div id="gh-merge-countdown" class="text-danger"
-                                 data-countdown="{{\Carbon\Carbon::parse($unconfirmed_ph->merge->expires_at)->format('Y/m/d H:i:s')}}"></div>
-                        </b>
-                        {{$unconfirmed_ph->user->username}}
+                        @if($unconfirmed_ph->receiptUploads->count() > 0)
+                            @foreach($unconfirmed_ph->receiptUploads as $receipt)
+                                {{--GH REPORT RECEIPT MODAL--}}
+                                <div class="modal fade gh-report-receipt-not-complete-modal-{{$receipt->token}}" tabindex="-1"
+                                     role="dialog"
+                                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title mt-0">
+                                                    <b class="text-danger">Report</b> Payment Confirmation
+                                                </h5>
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="text-center">
+                                                    <div
+                                                        class="swal2-icon swal2-warning swal2-animate-warning-icon"
+                                                        style="display: flex;"></div>
+                                                    <div class="swal2-header">
+                                                        <h5>
+                                                            <strong>Are you sure you want to <b
+                                                                    class="text-danger">report</b> the payment
+                                                                receipt of
+                                                                <b class="text-primary">
+                                                                    &#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}
+                                                                </b> from <b class="text-primary">
+                                                                    {{$receipt->provideHelp->user->bankDetail->full_name}}
+                                                                </b> to <b
+                                                                    class="text-danger">flag</b> your
+                                                                transaction with {{$receipt->provideHelp->user->gender == 'male' ? 'him' : 'her'}}
+                                                                ?
+                                                            </strong></h5>
+                                                    </div>
+                                                    <div class="swal2-content"
+                                                         style="display: block;">
+                                                        You won't be able
+                                                        to revert this!
+                                                    </div>
+                                                    <div class="swal2-actions">
+                                                        <button type="button"
+                                                                class="swal2-cancel swal2-styled btn-danger"
+                                                                style="display: inline-block;"
+                                                                data-dismiss="modal">No, Close
+                                                        </button>
+                                                        <button type="submit"
+                                                                class="swal2-confirm swal2-styled btn-success"
+                                                                style="display: inline-block;">Yes,
+                                                            Confirm Payment
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div>
+                                {{--GH SHOW RECEIPT MODAL--}}
+                                <div class="modal fade gh-show-receipt-not-complete-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Payment receipt
+                                                    from <b
+                                                        class="text-primary">{{$receipt->provideHelp->user->bankDetail->full_name}}</b>
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="card">
+                                                    <img
+                                                        src="{{asset('receipts-hua094JHhRsdUE28a1w4ldk1llsNdd1l1/'.$receipt->image)}}"
+                                                        width="100%" height="100%" alt="Receipt">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                        {{--GH COMFIRM PH CONFIRMATION MODAL--}}
+                        <div class="modal fade gh-confirm-ph-confirmation-not-complete-modal-{{$unconfirmed_ph->token}}" tabindex="-1"
+                             role="dialog"
+                             aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0">
+                                            Payment Confirmation
+                                        </h5>
+                                        <button type="button" class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <div
+                                                class="swal2-icon swal2-warning swal2-animate-warning-icon"
+                                                style="display: flex;"></div>
+                                            <div class="swal2-header">
+                                                <h5>
+                                                    <strong>Are you sure you want to confirm the payment
+                                                        of
+                                                        <b class="text-primary">
+                                                            &#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}
+                                                        </b> from <b class="text-primary">
+                                                            {{$unconfirmed_ph->user->bankDetail->full_name}}
+                                                        </b> to complete your transaction with
+                                                        {{$unconfirmed_ph->user->gender == 'male' ? 'him' : 'her'}}
+                                                        ?
+                                                    </strong></h5>
+                                            </div>
+                                            <div class="swal2-content"
+                                                 style="display: block;">
+                                                You won't be able
+                                                to revert this!
+                                            </div>
+                                            <div class="swal2-actions">
+                                                <button type="button"
+                                                        class="swal2-cancel swal2-styled btn-danger"
+                                                        style="display: inline-block;"
+                                                        data-dismiss="modal">No, Close
+                                                </button>
+                                                <button type="submit"
+                                                        class="swal2-confirm swal2-styled btn-success"
+                                                        style="display: inline-block;">Yes,
+                                                    Confirm Payment
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
                     @endforeach
-                    {{$gh_pending_amount_left_to_balance}}
-                    {{$gh_pending_amount}}
-                    {{$gh_pending_amount_on_processing}}
-                    {{$gh_pending_amount_paid}}
-                    gh amount left to be paid = x   amount on processing = y amount paid = z
-                    Then remaining pending ph to balance up
-                    balance = amount - getHelps
-                    kkkkkkkkkkkkk
-                    {{$gh_earliest_merge_expiration}}
-                    <b>
-                        <div id="gh-merge-countdown" class="text-danger"
-                             data-countdown="2030/08/20 19:02:59"></div>
-                    </b>
-                    <b>
-                        <div id="ph-merge-countdown" class="text-danger"
-                             data-countdown="2090/08/20 19:02:49"></div>
-                    </b>
-                    <b>
-                        <div id="activation-merge-countdown" class="text-danger"
-                             data-countdown="2028/08/20 19:02:39"></div>
-                    </b>
-
                 @else
                     {{--Pending Get Help Request--}}
                     {{--CANCEL GET HELP CONFIRMATION MODAL--}}
@@ -1976,7 +2210,117 @@
                     </div>
                 @endif
             @elseif($gh_pending->is_merged)
-                Get Help Merged
+                <div class="modal fade gh-confirm-ph-confirmation" tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mt-0">
+                                    Payment Confirmation
+                                </h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-center">
+                                    <div
+                                        class="swal2-icon swal2-warning swal2-animate-warning-icon"
+                                        style="display: flex;"></div>
+                                    <div class="swal2-header">
+                                        <h5>
+                                            <strong>Are you sure you want to confirm the payment
+                                                of
+                                                <b class="text-primary">
+                                                    &#8358;{{number_format(600000)}}
+                                                </b> by <b class="text-primary">Adewale
+                                                    Agbade</b> to complete your transaction with
+                                                him
+                                                ?
+                                            </strong></h5>
+                                    </div>
+                                    <div class="swal2-content"
+                                         style="display: block;">
+                                        You won't be able
+                                        to revert this!
+                                    </div>
+                                    <div class="swal2-actions">
+                                        <button type="button"
+                                                class="swal2-cancel swal2-styled btn-danger"
+                                                style="display: inline-block;"
+                                                data-dismiss="modal">No, Close
+                                        </button>
+                                        <button type="submit"
+                                                class="swal2-confirm swal2-styled btn-success"
+                                                style="display: inline-block;">Yes,
+                                            Confirm Payment
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+
+                <div class="modal fade gh-report-ph-confirmation" tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mt-0">
+                                    <b class="text-danger">Report</b> Payment Confirmation
+                                </h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-center">
+                                    <div
+                                        class="swal2-icon swal2-warning swal2-animate-warning-icon"
+                                        style="display: flex;"></div>
+                                    <div class="swal2-header">
+                                        <h5>
+                                            <strong>Are you sure you want to <b
+                                                    class="text-danger">report</b> the payment
+                                                receipt of
+                                                <b class="text-primary">
+                                                    &#8358;{{number_format(600000)}}
+                                                </b> by <b class="text-primary">Adewale
+                                                    Agbade</b> to <b
+                                                    class="text-primary">cancel</b> your
+                                                transaction with him
+                                                ?
+                                            </strong></h5>
+                                    </div>
+                                    <div class="swal2-content"
+                                         style="display: block;">
+                                        You won't be able
+                                        to revert this!
+                                    </div>
+                                    <div class="swal2-actions">
+                                        <button type="button"
+                                                class="swal2-cancel swal2-styled btn-danger"
+                                                style="display: inline-block;"
+                                                data-dismiss="modal">No, Close
+                                        </button>
+                                        <button type="submit"
+                                                class="swal2-confirm swal2-styled btn-success"
+                                                style="display: inline-block;">Yes,
+                                            Confirm Payment
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
             @endif
         @endif
     @endif
@@ -2084,6 +2428,9 @@
 
         /*PH activation merge DataTable*/
         $('#ph-activation-merge-datatable').DataTable();
+
+        /*GH merge DataTable*/
+        $('#gh-merge-datatable').DataTable();
 
     </script>
 @endsection

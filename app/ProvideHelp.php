@@ -50,4 +50,9 @@ class ProvideHelp extends Model
         return $this->hasOne(ReceiptUpload::class, 'provide_help_id', 'id');
     }
 
+    public function receiptUploads()
+    {
+        return $this->hasMany(ReceiptUpload::class, 'provide_help_id', 'id');
+    }
+
 }
