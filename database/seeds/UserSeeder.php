@@ -1,6 +1,7 @@
 <?php
 
 use App\GetHelp;
+use App\ProvideHelp;
 use App\ReferrerDetail;
 use App\User;
 use Illuminate\Database\Seeder;
@@ -18,7 +19,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'first_name' => 'StuNNer',
-            'last_name' => 'TheGreat',
+            'last_name' => 'Hensi',
             'phone_number' => '+2348186818135',
             'username' => 'stunner',
             'gender' => 'male',
@@ -59,6 +60,104 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        User::create([
+            'first_name' => 'Bisola',
+            'last_name' => 'Adewale',
+            'phone_number' => '+2348186816723',
+            'username' => 'bizzy',
+            'gender' => 'female',
+            'token' => Str::random(40),
+            'referred_from_id' => 2,
+            'email' => 'bizzy@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        User::create([
+            'first_name' => 'Foluke',
+            'last_name' => 'Akande',
+            'phone_number' => '+2348186818101',
+            'username' => 'folly',
+            'gender' => 'female',
+            'token' => Str::random(40),
+            'referred_from_id' => 1,
+            'email' => 'folly@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        User::create([
+            'first_name' => 'Akinolu',
+            'last_name' => 'Akanbi',
+            'phone_number' => '+2348186818824',
+            'username' => 'akin',
+            'gender' => 'male',
+            'token' => Str::random(40),
+            'referred_from_id' => 2,
+            'email' => 'akin@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        User::create([
+            'first_name' => 'Helena',
+            'last_name' => 'Martins',
+            'phone_number' => '+2348183874524',
+            'username' => 'helmatz',
+            'gender' => 'female',
+            'token' => Str::random(40),
+            'is_activated' => true,
+            'activation' => 'subsequent',
+            'referred_from_id' => 1,
+            'sub_expires_at' => now()->addDays(30),
+            'email' => 'helmatz@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        User::create([
+            'first_name' => 'Maryanne',
+            'last_name' => 'Mubarak',
+            'phone_number' => '+2348186996821',
+            'username' => 'mayree',
+            'gender' => 'female',
+            'token' => Str::random(40),
+            'is_activated' => true,
+            'activation' => 'subsequent',
+            'referred_from_id' => 2,
+            'sub_expires_at' => now()->addDays(30),
+            'email' => 'marymubs@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        User::create([
+            'first_name' => 'Justina',
+            'last_name' => 'Adekunle',
+            'phone_number' => '+2348186734824',
+            'username' => 'tina',
+            'gender' => 'female',
+            'token' => Str::random(40),
+            'is_activated' => true,
+            'activation' => 'subsequent',
+            'referred_from_id' => 4,
+            'sub_expires_at' => now()->addDays(30),
+            'email' => 'teena@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        User::create([
+            'first_name' => 'Femi',
+            'last_name' => 'Alabi',
+            'phone_number' => '+2348140918824',
+            'username' => 'alabi23',
+            'gender' => 'male',
+            'token' => Str::random(40),
+            'is_activated' => true,
+            'activation' => 'subsequent',
+            'referred_from_id' => 2,
+            'sub_expires_at' => now()->addDays(30),
+            'email' => 'alabi2019@gmail.com',
+            'password' => Hash::make('12345678'),
+        ]);
+
+
+
 
         ReferrerDetail::create([
             'user_id' => 1,
@@ -78,26 +177,130 @@ class UserSeeder extends Seeder
             'referrer_balance' => 50000,
             'token' => Str::random(40),
         ]);
+        ReferrerDetail::create([
+            'user_id' => 4,
+            'referrer_link' => 'ref='.Str::random(40),
+            'referrer_balance' => 8300,
+            'token' => Str::random(40),
+        ]);
+        ReferrerDetail::create([
+            'user_id' => 5,
+            'referrer_link' => 'ref='.Str::random(40),
+            'referrer_balance' => 2000,
+            'token' => Str::random(40),
+        ]);
+        ReferrerDetail::create([
+            'user_id' => 6,
+            'referrer_link' => 'ref='.Str::random(40),
+            'referrer_balance' => 0,
+            'token' => Str::random(40),
+        ]);
+        ReferrerDetail::create([
+            'user_id' => 7,
+            'referrer_link' => 'ref='.Str::random(40),
+            'referrer_balance' => 0,
+            'token' => Str::random(40),
+        ]);
+        ReferrerDetail::create([
+            'user_id' => 8,
+            'referrer_link' => 'ref='.Str::random(40),
+            'referrer_balance' => 2000,
+            'token' => Str::random(40),
+        ]);
+        ReferrerDetail::create([
+            'user_id' => 9,
+            'referrer_link' => 'ref='.Str::random(40),
+            'referrer_balance' => 10000,
+            'token' => Str::random(40),
+        ]);
+        ReferrerDetail::create([
+            'user_id' => 10,
+            'referrer_link' => 'ref='.Str::random(40),
+            'referrer_balance' => 40000,
+            'token' => Str::random(40),
+        ]);
+
 
         GetHelp::create([
             'user_id' => 1,
             'amount' => 600000,
+            'to_balance' => 600000,
+            'profit' => 10000,
             'status' => 'pending',
+            'sub_expires_at' => now()->addDays(90),
             'token' => Str::random(40),
         ]);
         GetHelp::create([
             'user_id' => 2,
             'amount' => 800000,
+            'to_balance' => 800000,
+            'profit' => 90000,
             'status' => 'pending',
+            'sub_expires_at' => now()->addDays(60),
             'token' => Str::random(40),
         ]);
         GetHelp::create([
-            'user_id' => 1,
-            'amount' => 500000,
+            'user_id' => 3,
+            'amount' => 20000,
+            'to_balance' => 20000,
+            'profit' => 1700,
             'status' => 'pending',
+            'sub_expires_at' => now()->addDays(30),
+            'token' => Str::random(40),
+        ]);
+        GetHelp::create([
+            'user_id' => 7,
+            'amount' => 5000,
+            'to_balance' => 5000,
+            'profit' => 200,
+            'status' => 'pending',
+            'sub_expires_at' => now()->addDays(30),
             'token' => Str::random(40),
         ]);
 
+        ProvideHelp::create([
+            'user_id' => 4,
+            'amount' => 1000,
+            'to_balance' => 1000,
+            'is_activation_fee' => true,
+            'token' => Str::random(40),
+        ]);
 
+        ProvideHelp::create([
+            'user_id' => 5,
+            'amount' => 1000,
+            'to_balance' => 1000,
+            'is_activation_fee' => true,
+            'token' => Str::random(40),
+        ]);
+
+        ProvideHelp::create([
+            'user_id' => 6,
+            'amount' => 1000,
+            'to_balance' => 1000,
+            'is_activation_fee' => true,
+            'token' => Str::random(40),
+        ]);
+
+        ProvideHelp::create([
+            'user_id' => 8,
+            'amount' => 400000,
+            'to_balance' => 400000,
+            'token' => Str::random(40),
+        ]);
+
+        ProvideHelp::create([
+            'user_id' => 9,
+            'amount' => 900000,
+            'to_balance' => 900000,
+            'token' => Str::random(40),
+        ]);
+
+        ProvideHelp::create([
+            'user_id' => 10,
+            'amount' => 300000,
+            'to_balance' => 300000,
+            'token' => Str::random(40),
+        ]);
     }
 }

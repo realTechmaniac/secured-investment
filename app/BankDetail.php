@@ -9,7 +9,7 @@ class BankDetail extends Model
 
     protected $fillable = [
         'user_id', 'full_name', 'bank_name',
-        'account_number', 'account_type', 'token',
+        'account_number', 'token',
     ];
 
 

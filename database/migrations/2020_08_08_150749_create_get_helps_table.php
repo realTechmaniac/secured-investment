@@ -17,9 +17,12 @@ class CreateGetHelpsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->integer('amount');
+            $table->integer('profit');
+            $table->integer('to_balance');
             $table->boolean('is_merged')->default(false);
             $table->enum('status', ['pending','cancelled','completed'])->default('pending');
             $table->string('token');
+            $table->timestamp('sub_expires_at');
             $table->timestamps();
 
 

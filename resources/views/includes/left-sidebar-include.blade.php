@@ -7,17 +7,15 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
-                        <i class="bx bx-home-circle"></i><span
-                            class="badge badge-pill badge-info float-right">03</span>
+                    <a href="{{route('dashboard')}}" class=" waves-effect">
+                        <i class="bx bx-home-circle"></i>
                         <span>Dashboard</span>
                     </a>
-
                 </li>
 
                 <li>
                     <a href="calendar.html" class=" waves-effect">
-                        <i class="bx bx-money"></i>
+                        <i class="bx bx-line-chart"></i>
                         <span>Transactions</span>
                     </a>
                 </li>
@@ -32,17 +30,33 @@
                 <li>
                     <a href="calendar.html" class=" waves-effect">
                         <i class="bx bx-user"></i>
-                        <span>Profile Settings</span>
+                        <span>Profile</span>
                     </a>
                 </li>
 
 
                 <li>
                     <a href="calendar.html" class=" waves-effect">
-                        <i class="bx bx-comment"></i>
+                        <i class="bx bxs-phone"></i>
                         <span>Support</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{route('show.pending.ph')}}" class=" waves-effect">
+                        <i class="bx bx-git-merge"></i>
+                        <span>Merge Pending PH</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('show.pending.gh')}}" class=" waves-effect">
+                        <i class="bx bx-git-merge"></i>
+                        <span>Merge Pending GH</span>
+                    </a>
+                </li>
+
+
 
                 <li>
                     <a class="waves-effect text-danger" onclick="event.preventDefault();

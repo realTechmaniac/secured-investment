@@ -26,7 +26,7 @@
     <link href="{{asset('asset4/assets/css/main.css')}}" rel="stylesheet" media="all">
 
     {{--Toastr--}}
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/toastr/build/toastr.min.css')}}">
 
 
 </head>
@@ -136,7 +136,7 @@
 <script src="{{asset('asset4/assets/js/global.js')}}"></script>
 
 {{--Toastr--}}
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{asset('assets/libs/toastr/build/toastr.min.js')}}"></script>
 <script type="text/javascript">
     @if(session('danger'))
     toastr.error('{{session("danger")}}');

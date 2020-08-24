@@ -9,7 +9,7 @@ class ProvideHelp extends Model
 
     protected $fillable = [
         'user_id', 'amount', 'is_merged', 'status', 'is_activation_fee',
-        'available_for_gh_at', 'expires_at', 'token',
+        'available_for_gh_at', 'expires_at', 'token', 'to_balance'
     ];
 
 
@@ -20,17 +20,24 @@ class ProvideHelp extends Model
             'merges',
             'provide_help_id',
             'get_help_id'
-        );
+        )
+            ->as('merge')
+            ->withPivot('merge_amount', 'is_confirmed', 'expires_at')
+            ->withTimestamps();
     }
 
-    public function confirmedPh()
+    public function unConfirmedGh()
     {
         return $this->belongsToMany(
             GetHelp::class,
             'merges',
             'provide_help_id',
             'get_help_id'
-        )->wherePivot('is_confirmed', true);
+        )
+            ->wherePivot('is_confirmed', false)
+            ->as('merge')
+            ->withPivot('merge_amount', 'expires_at')
+            ->withTimestamps();
     }
 
     public function user()

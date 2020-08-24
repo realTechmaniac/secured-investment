@@ -4,6 +4,7 @@
 <head>
     <title>@yield('page-title')</title>
     @include('includes.head-content-include')
+    @yield('css')
 </head>
 
 <body data-sidebar="dark">
@@ -18,8 +19,8 @@
 @include('includes.footer-include')
 
 <!-- JAVASCRIPT -->
-    @yield('js')
     @include('includes.js-include')
+    @yield('js')
 </div>
 </body>
 </html>

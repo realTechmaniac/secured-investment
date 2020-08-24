@@ -3,21 +3,21 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
+                <a href="{{route('welcome')}}" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{asset('assets/images/logo.svg')}}" alt="" height="22">
+                                    <img src="{{asset('assets/images/secured.png')}}" alt="" height="30">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
+                                    <img src="{{asset('assets/images/secured.png')}}" alt="" height="60">
                                 </span>
                 </a>
 
-                <a href="index.html" class="logo logo-light">
+                <a href="{{route('welcome')}}" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{asset('assets/images/logo-light.svg')}}" alt="" height="22">
+                                    <img src="{{asset('assets/images/secured.png')}}" alt="" height="30">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="19">
+                                    <img src="{{asset('assets/images/secured.png')}}" alt="" height="60">
                                 </span>
                 </a>
             </div>
@@ -27,13 +27,6 @@
                 <i class="fa fa-fw fa-bars"></i>
             </button>
 
-            <!-- App Search-->
-            <form class="app-search d-none d-lg-block">
-                <div class="position-relative">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="bx bx-search-alt"></span>
-                </div>
-            </form>
 
 
         </div>
@@ -41,27 +34,7 @@
         <div class="d-flex">
 
             <div class="dropdown d-inline-block d-lg-none ml-2">
-                <button type="button" class="btn header-item noti-icon waves-effect"
-                        id="page-header-search-dropdown"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="mdi mdi-magnify"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
-                     aria-labelledby="page-header-search-dropdown">
 
-                    <form class="p-3">
-                        <div class="form-group m-0">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search ..."
-                                       aria-label="Recipient's username">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
 
 
@@ -153,15 +126,12 @@
                 </div>
             </div>
 
+
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                <button type="button" class="btn header-item noti-icon waves-effect"
+                        id="page-header-user-dropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                <span class="d-none d-xl-inline-block ml-1">
-                                    <a class="dropdown-item" href="#"><i
-                                            class="bx bx-user font-size-16 align-middle mr-1"></i></a>
-                                </span>
-
+                    <i class="bx bx-user font-size-24 align-middle"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->

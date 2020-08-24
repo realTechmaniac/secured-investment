@@ -17,8 +17,9 @@ class CreateMergesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('provide_help_id');
             $table->unsignedBigInteger('get_help_id');
+            $table->integer('merge_amount')->nullable();
             $table->boolean('is_confirmed')->default(false);
-            $table->string('token');
+            $table->timestamp('expires_at');
             $table->timestamps();
 
             $table->foreign('provide_help_id')->references('id')->on('provide_helps');

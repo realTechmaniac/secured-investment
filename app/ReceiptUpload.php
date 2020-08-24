@@ -8,7 +8,7 @@ class ReceiptUpload extends Model
 {
 
     protected $fillable = [
-        'provide_help_id', 'reporter_user_id',
+        'provide_help_id', 'get_help_id',
         'image', 'reason', 'is_fake', 'token',
     ];
 
@@ -21,5 +21,15 @@ class ReceiptUpload extends Model
     public function fakeReceiptReporter()
     {
         return $this->belongsTo(User::class, 'reporter_user_id', 'id');
+    }
+
+    public function getHelp()
+    {
+        return $this->belongsTo(GetHelp::class, 'get_help_id', 'id');
+    }
+
+    public static function uploadReceiptToStorage($image)
+    {
+        return $image->store('ph-receipts');
     }
 }

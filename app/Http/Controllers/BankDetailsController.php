@@ -21,7 +21,6 @@ class BankDetailsController extends Controller
             'full_name' => ['bail', 'required', 'string', 'max:100'],
             'bank_name' => ['bail', 'required', 'string', 'max:100'],
             'account_number' => ['bail', 'required', 'digits:10'],
-            'account_type' => ['bail', 'required', 'string', 'max:30'],
         ]);
 
         BankDetail::create([
@@ -29,7 +28,6 @@ class BankDetailsController extends Controller
             'full_name' => $request->full_name,
             'bank_name' => $request->bank_name,
             'account_number' => $request->account_number,
-            'account_type' => $request->account_type,
             'token' => Str::random(40),
         ]);
 

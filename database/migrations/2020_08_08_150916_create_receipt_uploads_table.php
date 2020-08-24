@@ -16,15 +16,15 @@ class CreateReceiptUploadsTable extends Migration
         Schema::create('receipt_uploads', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('provide_help_id');
-            $table->unsignedBigInteger('reporter_user_id')->nullable();
+            $table->unsignedBigInteger('get_help_id');
             $table->string('image');
             $table->text('reason')->nullable();
             $table->boolean('is_fake')->default(false);
             $table->string('token');
             $table->timestamps();
 
-            $table->foreign('reporter_user_id')->references('id')->on('users');
             $table->foreign('provide_help_id')->references('id')->on('provide_helps');
+            $table->foreign('get_help_id')->references('id')->on('get_helps');
         });
     }
 
