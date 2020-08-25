@@ -57,4 +57,11 @@ Route::middleware(['auth'])->group(function (){
 
     /*Upload payment receipt*/
     Route::post('/upload-receipt/{ph_id}/{gh_id}', 'UserController@uploadPaymentReceipt')->name('upload.payment.receipt');
+
+    /*Flag Receipt As fake*/
+    Route::post('/flag-receipt-as-fake/{receipt_token}', 'UserController@flagReceipt')->name('flag.receipt.as.fake');
+
+    /*Payment Confirmation*/
+    Route::post('/payment-confirmation/{ph_token}', 'UserController@paymentConfirmation')->name('payment.confirmation');
+
 });

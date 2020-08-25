@@ -19,6 +19,7 @@ class CreateMergesTable extends Migration
             $table->unsignedBigInteger('get_help_id');
             $table->integer('merge_amount')->nullable();
             $table->boolean('is_confirmed')->default(false);
+            $table->boolean('is_failed')->default(false);
             $table->timestamp('expires_at');
             $table->timestamps();
 

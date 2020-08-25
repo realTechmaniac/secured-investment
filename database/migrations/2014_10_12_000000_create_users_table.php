@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->boolean('is_activated')->default(false);
             $table->boolean('is_blocked')->default(false);
+            $table->boolean('is_guider')->default(false);
             $table->string('gender');
             $table->string('token')->unique();
             $table->string('misc_token')->nullable();

@@ -264,5 +264,40 @@ class UserController extends Controller
         return redirect(route('dashboard'));
     }
 
+    public function flagReceipt($receipt_token)
+    {
+        $get_receipt = ReceiptUpload::where('token', $receipt_token)->first();
+        $ph_id = $get_receipt->provide_help_id;
+        $gh_id = $get_receipt->get_help_id;
+        $ph = ProvideHelp::where('id', $ph_id)->first();
+        $ph->getHelps()->updateExistingPivot($gh_id, [
+            'expires_at' => now()->addDays(14),
+        ]);
+        if ($get_receipt){
+            $get_receipt->update(['is_fake' => true]);
+            return redirect(route('dashboard'))->with('success', 'Receipt has been flagged as fake');
+        }
+        else{
+            return redirect(route('dashboard'))->with('danger', 'Something went wrong');
+        }
+    }
 
+    public function paymentConfirmation($ph_token)
+    {
+        $ph = ProvideHelp::where('token', $ph_token)->first();
+        if ($ph->user->role == 'ceo'){
+
+        }
+        elseif ($ph->user->role == 'manager'){
+
+        }
+        elseif ($ph->user->role == 'admin'){
+
+        }
+        elseif ($ph->user->role == 'regular'){
+
+        }
+
+
+    }
 }
