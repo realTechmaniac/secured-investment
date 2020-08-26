@@ -62,12 +62,14 @@ class UserController extends Controller
         if ($ph_activation){
             $ph_activation_amount_left_to_balance = $ph_activation->to_balance;
             $ph_activation_amount = $ph_activation->amount;
-            if($ph_activation->getHelps->count() > 0){
+            if($ph_activation->unConfirmedGh->count() > 0){
                 $get_first_unconfirmed_merge = $ph_activation->unConfirmedGh->first();
                 $ph_activation_earliest_merge_expiration = Carbon::parse($get_first_unconfirmed_merge->merge->expires_at)
                     ->format('g:i A \o\n l\, jS F Y');
+            }
+            if($ph_activation->unConfirmedGh->count() > 0){
                 foreach ($ph_activation->getHelps as $ph_gh){
-                    if (!$ph_gh->is_confirmed){
+                    if (!$ph_gh->merge->is_confirmed){
                         $ph_activation_amount_on_processing += $ph_gh->merge->merge_amount;
                     }
                     else{
@@ -86,12 +88,14 @@ class UserController extends Controller
         if ($ph_pending){
             $ph_pending_amount_left_to_balance = $ph_pending->to_balance;
             $ph_pending_amount = $ph_pending->amount;
-            if ($ph_pending->getHelps->count() > 0){
+            if ($ph_pending->unConfirmedGh->count() > 0){
                 $get_first_unconfirmed_merge = $ph_pending->unConfirmedGh->first();
                 $ph_earliest_merge_expiration = Carbon::parse($get_first_unconfirmed_merge->merge->expires_at)
                     ->format('g:i A \o\n l\, jS F Y');
+            }
+            if ($ph_pending->getHelps->count() > 0){
                 foreach ($ph_pending->getHelps as $ph_gh){
-                    if (!$ph_gh->is_confirmed){
+                    if (!$ph_gh->merge->is_confirmed){
                         $ph_pending_amount_on_processing += $ph_gh->merge->merge_amount;
                     }
                     else{
@@ -110,12 +114,14 @@ class UserController extends Controller
         if ($gh_pending){
             $gh_pending_amount_left_to_balance = $gh_pending->to_balance;
             $gh_pending_amount = $gh_pending->amount;
-            if ($gh_pending->provideHelps->count() > 0){
+            if ($gh_pending->unConfirmedPh->count() > 0){
                 $get_first_unconfirmed_merge = $gh_pending->unConfirmedPh->first();
                 $gh_earliest_merge_expiration = Carbon::parse($get_first_unconfirmed_merge->merge->expires_at)
                     ->format('g:i A \o\n l\, jS F Y');
+            }
+            if ($gh_pending->provideHelps->count() > 0){
                 foreach ($gh_pending->provideHelps as $gh_ph){
-                    if (!$gh_ph->is_confirmed){
+                    if (!$gh_ph->merge->is_confirmed){
                         $gh_pending_amount_on_processing += $gh_ph->merge->merge_amount;
                     }
                     else{
@@ -174,12 +180,24 @@ class UserController extends Controller
         ]);
         $image = $request->file('receipt');
         $receipt = ReceiptUpload::uploadReceiptToStorage($image);
-        ReceiptUpload::create([
+
+        /*FirstOrCreate should handle this but it will not display any message*/
+        $receipt_exist = ReceiptUpload::where('provide_help_id', $ph_id)
+            ->where('get_help_id', $gh_id)->first();
+        if ($receipt_exist){
+            return redirect(route('dashboard'))
+                ->with('danger', 'You have already uploaded a receipt');
+        }
+        ReceiptUpload::firstOrCreate(
+            [
+                'provide_help_id' => $ph_id,
+                'get_help_id' => $gh_id,
+            ],
+            [
             'image' => $receipt,
-            'provide_help_id' => $ph_id,
-            'get_help_id' => $gh_id,
             'token' => Str::random(39),
-        ]);
+            ]
+        );
         session()->flash('success', 'Receipt upload successfully');
         return redirect(route('dashboard'));
     }
@@ -282,22 +300,67 @@ class UserController extends Controller
         }
     }
 
-    public function paymentConfirmation($ph_token)
+    public function paymentConfirmation($ph_token, $gh_token)
     {
+        $user_id = Auth::id();
         $ph = ProvideHelp::where('token', $ph_token)->first();
-        if ($ph->user->role == 'ceo'){
+        $ph_id = $ph->id;
+        $gh = GetHelp::where('token', $gh_token)->first();
+        $gh_id = $gh->id;
 
+        /*Confirm payment on merge*/
+        $gh->provideHelps()->updateExistingPivot($ph_id, [
+            'is_confirmed' => true,
+        ]);
+
+        /*Update GH if there is no more unconfirmed PH*/
+        if ($gh->unConfirmedPh->count() == 0 && $gh->is_merged){
+            $gh->update([
+                'status' => 'completed'
+            ]);
         }
-        elseif ($ph->user->role == 'manager'){
 
+
+        /*Update PH*/
+        if ($ph->is_activation_fee){
+            if (!$ph->user->is_activated){
+                if ($ph->user->activation == 'first'){
+                    $ph->user->update([
+                        'activation' => 'subsequent'
+                    ]);
+                }
+                $ph->user->update([
+                    'is_activated' => true ,
+                    'sub_expires_at' => now()->addDays(30),
+                ]);
+                $ph->update([
+                    'status' => 'completed'
+                ]);
+            }
+            elseif ($ph->user->is_blocked){
+                $ph->user->update([
+                    'is_blocked' => false
+                ]);
+                $ph->update([
+                    'status' => 'completed'
+                ]);
+            }
+            else{
+                return redirect(route('dashboard'))->with('danger', 'Something went wrong');
+            }
         }
-        elseif ($ph->user->role == 'admin'){
-
+        else{
+            if ($ph->unConfirmedGh->count() == 0 && $ph->is_merged){
+                $ph->update([
+                    'status' => 'completed'
+                ]);
+            }
+            else{
+                return redirect(route('dashboard'))->with('danger', 'Something went wrong');
+            }
         }
-        elseif ($ph->user->role == 'regular'){
 
-        }
-
+        return redirect(route('dashboard'))->with('success', 'User\'s payment has been confirmed');
 
     }
 }

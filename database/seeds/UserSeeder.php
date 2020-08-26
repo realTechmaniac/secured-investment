@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        /*User 1*/
         User::create([
             'first_name' => 'StuNNer',
             'last_name' => 'Hensi',
@@ -31,6 +32,8 @@ class UserSeeder extends Seeder
             'email' => 'stunner@gmail.com',
             'password' => Hash::make('12345678'),
         ]);
+
+        /*User 2*/
         User::create([
             'first_name' => 'Adewale',
             'last_name' => 'Akinlolu',
@@ -45,6 +48,8 @@ class UserSeeder extends Seeder
             'email' => 'adeboy@gmail.com',
             'password' => Hash::make('12345678'),
         ]);
+
+        /*User 3*/
         User::create([
             'first_name' => 'Ajay',
             'last_name' => 'Maximum',
@@ -60,6 +65,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        /*User 4*/
         User::create([
             'first_name' => 'Bisola',
             'last_name' => 'Adewale',
@@ -72,6 +78,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        /*User 5*/
         User::create([
             'first_name' => 'Foluke',
             'last_name' => 'Akande',
@@ -84,6 +91,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        /*User 6*/
         User::create([
             'first_name' => 'Akinolu',
             'last_name' => 'Akanbi',
@@ -96,6 +104,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        /*User 7*/
         User::create([
             'first_name' => 'Helena',
             'last_name' => 'Martins',
@@ -111,12 +120,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        /*User 8*/
         User::create([
             'first_name' => 'Maryanne',
             'last_name' => 'Mubarak',
             'phone_number' => '+2348186996821',
             'username' => 'mayree',
             'gender' => 'female',
+            'role' => 'admin',
             'token' => Str::random(40),
             'is_activated' => true,
             'activation' => 'subsequent',
@@ -126,6 +137,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        /*User 9*/
         User::create([
             'first_name' => 'Justina',
             'last_name' => 'Adekunle',
@@ -141,6 +153,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        /*User 10*/
         User::create([
             'first_name' => 'Femi',
             'last_name' => 'Alabi',
@@ -286,6 +299,7 @@ class UserSeeder extends Seeder
             'user_id' => 8,
             'amount' => 400000,
             'to_balance' => 400000,
+            'available_for_gh_at' => now()->addDays(3),
             'token' => Str::random(40),
         ]);
 
@@ -293,6 +307,7 @@ class UserSeeder extends Seeder
             'user_id' => 9,
             'amount' => 900000,
             'to_balance' => 900000,
+            'available_for_gh_at' => now()->addDays(5),
             'token' => Str::random(40),
         ]);
 
@@ -300,6 +315,7 @@ class UserSeeder extends Seeder
             'user_id' => 10,
             'amount' => 300000,
             'to_balance' => 300000,
+            'available_for_gh_at' => now()->addDays(5),
             'token' => Str::random(40),
         ]);
     }

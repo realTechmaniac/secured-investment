@@ -9,7 +9,7 @@ class ProvideHelp extends Model
 
     protected $fillable = [
         'user_id', 'amount', 'is_merged', 'status', 'is_activation_fee',
-        'available_for_gh_at', 'expires_at', 'token', 'to_balance'
+        'available_for_gh_at', 'expires_at', 'token', 'to_balance', 'is_withdrawn',
     ];
 
 

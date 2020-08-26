@@ -31,7 +31,7 @@
                             {{--Activate Your Account--}}
                             @include('includes.dashboard-includes.activate-your-account')
                         @endif
-                    @elseif(auth()->user()->activation == 'subsequent')
+                    @elseif((auth()->user()->activation == 'subsequent') && (now() > auth()->user()->sub_expires_at))
                         @if($ph_activation)
                             @if(!$ph_activation->is_merged)
                                 @if($ph_activation->getHelps->count() > 0)
@@ -77,7 +77,7 @@
                                 @include('includes.dashboard-includes.gh-pending')
                             @endif
                         @elseif($gh_pending->is_merged)
-                            Get Help Merged
+                            @include('includes.dashboard-includes.gh-merged')
                         @endif
                     @endif
                 @endif
@@ -846,7 +846,7 @@
                                                         style="display: inline-block;"
                                                         data-dismiss="modal">No, Close
                                                 </button>
-                                                <form action="{{route('payment.confirmation', $unconfirmed_ph->token)}}" method="POST">
+                                                <form action="{{route('payment.confirmation', [$unconfirmed_ph->token, $gh_pending->token])}}" method="POST">
                                                     @csrf
                                                     <button type="submit"
                                                             class="swal2-confirm swal2-styled btn-success"
@@ -922,7 +922,164 @@
                     </div>
                 @endif
             @elseif($gh_pending->is_merged)
-
+                {{--GH merged--}}
+                {{--GH MERGED TABLE MODALS--}}
+                @foreach($gh_pending->unConfirmedPh as $unconfirmed_ph)
+                    @if($unconfirmed_ph->receiptUploads->count() > 0)
+                        @foreach($unconfirmed_ph->receiptUploads as $receipt)
+                            {{--GH REPORT RECEIPT MODAL--}}
+                            <div class="modal fade gh-report-receipt-merged-modal-{{$receipt->token}}" tabindex="-1"
+                                 role="dialog"
+                                 aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title mt-0">
+                                                <b class="text-danger">Report</b> Payment Confirmation
+                                            </h5>
+                                            <button type="button" class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="text-center">
+                                                <div
+                                                    class="swal2-icon swal2-warning swal2-animate-warning-icon"
+                                                    style="display: flex;"></div>
+                                                <div class="swal2-header">
+                                                    <h5>
+                                                        <strong>Are you sure you want to <b
+                                                                class="text-danger">report</b> the payment
+                                                            receipt of
+                                                            <b class="text-primary">
+                                                                &#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}
+                                                            </b> from <b class="text-primary">
+                                                                {{$receipt->provideHelp->user->bankDetail->full_name}}
+                                                            </b> to <b
+                                                                class="text-danger">flag</b> your
+                                                            transaction with {{$receipt->provideHelp->user->gender == 'male' ? 'him' : 'her'}}
+                                                            ?
+                                                        </strong></h5>
+                                                </div>
+                                                <div class="swal2-content"
+                                                     style="display: block;">
+                                                    You won't be able
+                                                    to revert this!
+                                                </div>
+                                                <div class="swal2-actions">
+                                                    <button type="button"
+                                                            class="swal2-cancel swal2-styled btn-danger"
+                                                            style="display: inline-block;"
+                                                            data-dismiss="modal">No, Close
+                                                    </button>
+                                                    <form action="{{route('flag.receipt.as.fake', $receipt->token)}}" method="POST">
+                                                        @csrf
+                                                        <button type="submit"
+                                                                class="swal2-confirm swal2-styled btn-success"
+                                                                style="display: inline-block;">Yes,
+                                                            Report Receipt
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div>
+                            {{--GH SHOW RECEIPT MODAL--}}
+                            <div class="modal fade gh-show-receipt-merged-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Payment receipt
+                                                from <b
+                                                    class="text-primary">{{$receipt->provideHelp->user->bankDetail->full_name}}</b>
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card">
+                                                <img
+                                                    src="{{asset('receipts-hua094JHhRsdUE28a1w4ldk1llsNdd1l1/'.$receipt->image)}}"
+                                                    width="100%" height="100%" alt="Receipt">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                    {{--GH COMFIRM PH CONFIRMATION MODAL--}}
+                    <div class="modal fade gh-confirm-ph-confirmation-merged-modal-{{$unconfirmed_ph->token}}" tabindex="-1"
+                         role="dialog"
+                         aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title mt-0">
+                                        Payment Confirmation
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="text-center">
+                                        <div
+                                            class="swal2-icon swal2-warning swal2-animate-warning-icon"
+                                            style="display: flex;"></div>
+                                        <div class="swal2-header">
+                                            <h5>
+                                                <strong>Are you sure you want to confirm the payment
+                                                    of
+                                                    <b class="text-primary">
+                                                        &#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}
+                                                    </b> from <b class="text-primary">
+                                                        {{$unconfirmed_ph->user->bankDetail->full_name}}
+                                                    </b> to complete your transaction with
+                                                    {{$unconfirmed_ph->user->gender == 'male' ? 'him' : 'her'}}
+                                                    ?
+                                                </strong></h5>
+                                        </div>
+                                        <div class="swal2-content"
+                                             style="display: block;">
+                                            You won't be able
+                                            to revert this!
+                                        </div>
+                                        <div class="swal2-actions">
+                                            <button type="button"
+                                                    class="swal2-cancel swal2-styled btn-danger"
+                                                    style="display: inline-block;"
+                                                    data-dismiss="modal">No, Close
+                                            </button>
+                                            <form action="{{route('payment.confirmation', [$unconfirmed_ph->token, $gh_pending->token])}}" method="POST">
+                                                @csrf
+                                                <button type="submit"
+                                                        class="swal2-confirm swal2-styled btn-success"
+                                                        style="display: inline-block;">Yes,
+                                                    Confirm Payment
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div>
+                @endforeach
             @endif
         @endif
     @endif
@@ -1047,10 +1204,22 @@
         });
 
         /*PH activation merge DataTable*/
-        $('#ph-activation-merge-datatable').DataTable();
+        $('#ph-activation-merge-datatable').DataTable(
+            {
+                "language": {
+                    "emptyTable": "Merging in progress..."
+                }
+            }
+        );
 
         /*GH merge DataTable*/
-        $('#gh-merge-datatable').DataTable();
+        $('#gh-merge-datatable').DataTable(
+            {
+                "language": {
+                    "emptyTable": "Merging in progress..."
+                }
+            }
+        );
 
     </script>
 @endsection

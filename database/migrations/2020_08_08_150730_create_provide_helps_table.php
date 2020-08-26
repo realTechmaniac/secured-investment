@@ -20,6 +20,7 @@ class CreateProvideHelpsTable extends Migration
             $table->integer('to_balance');
             $table->boolean('is_merged')->default(false);
             $table->boolean('is_activation_fee')->default(false);
+            $table->boolean('is_withdrawn')->default(false);
             $table->enum('status', ['pending','cancelled','completed'])->default('pending');
             $table->timestamp('available_for_gh_at')->nullable();
             $table->timestamp('expires_at')->nullable();
