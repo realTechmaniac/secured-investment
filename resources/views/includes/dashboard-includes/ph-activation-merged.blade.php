@@ -29,8 +29,8 @@
                                     <td>
                                         <b>
                                             @if($unconfirmed_gh->receiptUploads->count() > 0)
-                                                @if(in_array($unconfirmed_gh->merge->provide_help_id, array_column($unconfirmed_gh->receiptUploads->toArray(), 'provide_help_id')))
-                                                    @if(!$unconfirmed_gh->receiptUploads->toArray()[array_search($unconfirmed_gh->merge->provide_help_id, array_column($unconfirmed_gh->receiptUploads->toArray(), 'provide_help_id'))]['is_fake'])
+                                                @if(\App\GetHelp::receiptExist($unconfirmed_gh, 'provide_help_id'))
+                                                    @if(!\App\GetHelp::getKeyValue($unconfirmed_gh,'provide_help_id', 'is_fake'))
                                                         <span class="text-primary">Paid</span>
                                                     @else
                                                         <span class="text-primary">Paid</span>/<span
@@ -39,13 +39,13 @@
                                                 @else
                                                     <div id="activation-merge-countdown"
                                                          class="text-danger"
-                                                         data-countdown="{{\Carbon\Carbon::parse($unconfirmed_gh->merge->expires_at)->format('Y/m/d H:i:s')}}">
+                                                         data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}">
                                                     </div>
                                                 @endif
                                             @else
                                                 <div id="activation-merge-countdown"
                                                      class="text-danger"
-                                                     data-countdown="{{\Carbon\Carbon::parse($unconfirmed_gh->merge->expires_at)->format('Y/m/d H:i:s')}}">
+                                                     data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}">
                                                 </div>
                                             @endif
                                         </b>
@@ -58,11 +58,11 @@
                                     <td>{{$unconfirmed_gh->user->phone_number}}</td>
                                     <td>
                                         @if($unconfirmed_gh->receiptUploads->count() > 0)
-                                            @if(in_array($unconfirmed_gh->merge->provide_help_id, array_column($unconfirmed_gh->receiptUploads->toArray(), 'provide_help_id')))
+                                            @if(\App\GetHelp::receiptExist($unconfirmed_gh, 'provide_help_id'))
                                                 <button type="button"
                                                         class="btn btn-primary btn-sm waves-effect waves-light"
                                                         data-toggle="modal"
-                                                        data-target=".ph-activation-merged-modal-{{$unconfirmed_gh->receiptUploads->toArray()[array_search($unconfirmed_gh->merge->provide_help_id, array_column($unconfirmed_gh->receiptUploads->toArray(), 'provide_help_id'))]['token']}}">
+                                                        data-target=".ph-activation-merged-modal-{{\App\GetHelp::getKeyValue($unconfirmed_gh,'provide_help_id', 'token')}}">
                                                     View Receipt
                                                 </button>
                                             @else

@@ -14,8 +14,8 @@
                     <div class="row">
                         <div class="col-7">
                             <div class="text-primary p-3">
-                                <h5 class="text-primary">Welcome Back !</h5>
-                                <p>Ayomide Adebayo</p>
+                                <h5 class="text-primary">Welcome Back, </h5>
+                                <h5>{{auth()->user()->username}}</h5>
                             </div>
                         </div>
                     </div>
@@ -27,11 +27,11 @@
                                 <div class="col">
                                     <div class="my-4 text-center">
                                         <!-- Small modal -->
-                                        <button type="button"
-                                                style="padding-top: 20px; padding-bottom: 20px;"
+                                        <a type="button" href="{{route('goto.provide.help')}}"
+                                                style="padding-top: 20px; padding-bottom: 20px; color: white;"
                                                 class="btn btn-primary btn-block waves-effect waves-light font-weight-bold btn-block">
                                             Provide Help
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -41,15 +41,18 @@
                                 <div class="col">
                                     <div class="my-4 text-center">
                                         <!-- Small modal -->
-                                        <button type="button"
-                                                style="padding-top: 20px; padding-bottom: 20px;"
+                                        <a type="button" href="{{route('goto.get.help')}}"
+                                                style="padding-top: 20px; padding-bottom: 20px;  color: white;"
                                                 class="btn btn-success btn-block waves-effect waves-light font-weight-bold btn-block">
                                             Get Help
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-sm-12"><b class="text-primary">INVEST ONLY WITH YOUR SPARE MONEY</b></div>
                     </div>
                 </div>
             </div>
@@ -77,7 +80,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted font-weight-medium">Total Referred Users</p>
-                                    <h4 class="mb-0">13</h4>
+                                    <h4 class="mb-0">0</h4>
                                 </div>
 
                                 <div

@@ -355,9 +355,9 @@ class UserController extends Controller
                     'status' => 'completed'
                 ]);
             }
-            else{
+            /*else{
                 return redirect(route('dashboard'))->with('danger', 'Something went wrong');
-            }
+            }*/
         }
 
         return redirect(route('dashboard'))->with('success', 'User\'s payment has been confirmed');

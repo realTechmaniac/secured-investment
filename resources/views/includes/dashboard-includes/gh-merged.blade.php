@@ -27,20 +27,23 @@
                                     <td>
                                         <b>
                                             @if($unconfirmed_ph->receiptUploads->count() > 0)
-                                                @foreach($unconfirmed_ph->receiptUploads as $receipt)
-                                                    @if($receipt->provide_help_id == $unconfirmed_ph->merge->provide_help_id)
-                                                        <div class="text-primary">Paid</div>
+                                                @if(\App\ProvideHelp::ghReceiptExist($unconfirmed_ph, 'get_help_id'))
+                                                    @if(!\App\ProvideHelp::ghGetKeyValue($unconfirmed_ph,'get_help_id', 'is_fake'))
+                                                        <span class="text-primary">Paid</span>
                                                     @else
-                                                        <div id="gh-merge-countdown-{{$unconfirmed_ph->token}}"
-                                                             class="text-danger"
-                                                             data-countdown="{{\Carbon\Carbon::parse($unconfirmed_ph->merge->expires_at)->format('Y/m/d H:i:s')}}">
-                                                        </div>
+                                                        <span class="text-primary">Paid</span>/<span
+                                                            class="text-danger">Fake Receipt</span>
                                                     @endif
-                                                @endforeach
+                                                @else
+                                                    <div id="gh-merge-countdown"
+                                                         class="text-danger"
+                                                         data-countdown="{{\App\ProvideHelp::mergeExpiresAt($unconfirmed_ph)}}">
+                                                    </div>
+                                                @endif
                                             @else
-                                                <div id="gh-merge-countdown-{{$unconfirmed_ph->token}}"
+                                                <div id="gh-merge-countdown"
                                                      class="text-danger"
-                                                     data-countdown="{{\Carbon\Carbon::parse($unconfirmed_ph->merge->expires_at)->format('Y/m/d H:i:s')}}">
+                                                     data-countdown="{{\App\ProvideHelp::mergeExpiresAt($unconfirmed_ph)}}">
                                                 </div>
                                             @endif
                                         </b>
@@ -50,29 +53,27 @@
                                     <td>{{$unconfirmed_ph->user->phone_number}}</td>
                                     <td>
                                         @if($unconfirmed_ph->receiptUploads->count() > 0)
-                                            @foreach($unconfirmed_ph->receiptUploads as $receipt)
-                                                @if($receipt->provide_help_id == $unconfirmed_ph->merge->provide_help_id)
+                                            @if(\App\ProvideHelp::ghReceiptExist($unconfirmed_ph, 'get_help_id'))
+                                                <button type="button"
+                                                        class="btn btn-primary btn-sm waves-effect waves-light"
+                                                        data-toggle="modal"
+                                                        data-target=".gh-show-receipt-merged-modal-{{\App\ProvideHelp::ghGetKeyValue($unconfirmed_ph,'get_help_id', 'token')}}">
+                                                    View Receipt
+                                                </button>
+                                                @if(!\App\ProvideHelp::ghGetKeyValue($unconfirmed_ph,'get_help_id', 'is_fake'))
                                                     <button type="button"
-                                                            class="btn btn-primary btn-sm waves-effect waves-light"
+                                                            class="btn btn-danger btn-sm waves-effect waves-light"
                                                             data-toggle="modal"
-                                                            data-target=".gh-show-receipt-merged-modal-{{$receipt->token}}">
-                                                        Show Receipt
-                                                    </button>
-                                                    @if(!$receipt->is_fake)
-                                                        <button type="button"
-                                                                class="btn btn-danger btn-sm waves-effect waves-light"
-                                                                data-toggle="modal"
-                                                                data-target=".gh-report-receipt-merged-modal-{{$receipt->token}}">
-                                                            Report Receipt
-                                                        </button>
-                                                    @endif
-                                                @else
-                                                    <button type="button"
-                                                            class="btn btn-danger btn-sm waves-effect waves-light" disabled>
-                                                        No Receipt Yet
+                                                            data-target=".gh-report-receipt-merged-modal-{{\App\ProvideHelp::ghGetKeyValue($unconfirmed_ph,'get_help_id', 'token')}}">
+                                                        Report Receipt
                                                     </button>
                                                 @endif
-                                            @endforeach
+                                            @else
+                                                <button type="button"
+                                                        class="btn btn-danger btn-sm waves-effect waves-light" disabled>
+                                                    No Receipt Yet
+                                                </button>
+                                            @endif
                                         @else
                                             <button type="button"
                                                     class="btn btn-danger btn-sm waves-effect waves-light" disabled>
@@ -82,27 +83,25 @@
                                     </td>
                                     <td>
                                         @if($unconfirmed_ph->receiptUploads->count() > 0)
-                                            @foreach($unconfirmed_ph->receiptUploads as $receipt)
-                                                @if($receipt->provide_help_id == $unconfirmed_ph->merge->provide_help_id)
-                                                    @if(!$receipt->is_fake)
-                                                        <button type="button"
-                                                                class="btn btn-primary btn-sm waves-effect waves-light"
-                                                                data-toggle="modal"
-                                                                data-target=".gh-confirm-ph-confirmation-merged-modal-{{$unconfirmed_ph->token}}">
-                                                            Confirm
-                                                        </button>
-                                                    @else
-                                                        <b class="text-danger">Flagged as Fake</b>
-                                                    @endif
-                                                @else
+                                            @if(\App\ProvideHelp::ghReceiptExist($unconfirmed_ph, 'get_help_id'))
+                                                @if(!\App\ProvideHelp::ghGetKeyValue($unconfirmed_ph,'get_help_id', 'is_fake'))
                                                     <button type="button"
                                                             class="btn btn-primary btn-sm waves-effect waves-light"
                                                             data-toggle="modal"
                                                             data-target=".gh-confirm-ph-confirmation-merged-modal-{{$unconfirmed_ph->token}}">
                                                         Confirm
                                                     </button>
+                                                @else
+                                                    <b class="text-danger">Flagged as Fake</b>
                                                 @endif
-                                            @endforeach
+                                            @else
+                                                <button type="button"
+                                                        class="btn btn-primary btn-sm waves-effect waves-light"
+                                                        data-toggle="modal"
+                                                        data-target=".gh-confirm-ph-confirmation-merged-modal-{{$unconfirmed_ph->token}}">
+                                                    Confirm
+                                                </button>
+                                            @endif
                                         @else
                                             <button type="button"
                                                     class="btn btn-primary btn-sm waves-effect waves-light"

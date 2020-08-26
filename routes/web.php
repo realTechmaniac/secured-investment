@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //Index page route handler
 //Route::get('/test','PagesController@index');
 
-Route::get('/test','PagesController@ghMerged');
+Route::get('/test','PagesController@phEnterAmount');
 
 
 
@@ -44,9 +44,6 @@ Route::middleware(['auth'])->group(function (){
     Route::delete('/cancel-provide-help/{token}', 'UserController@cancelProvideHelp')->name('cancel.provide.help');
     Route::delete('/cancel-get-help/{token}', 'UserController@cancelGetHelp')->name('cancel.get.help');
 
-    /*Provide Help*/
-   // Route::get('/ph', 'ProvideHelpController@userDashboard')->name('dashboard');
-
 
     /*Merge*/
     Route::get('/merge-pending-ph/{gh_token?}', 'Admin\MergeController@showPendingPh')->name('show.pending.ph');
@@ -64,4 +61,11 @@ Route::middleware(['auth'])->group(function (){
     /*Payment Confirmation*/
     Route::post('/payment-confirmation/{ph_token}/{gh_token}', 'UserController@paymentConfirmation')->name('payment.confirmation');
 
+
+    /*Provide Help*/
+    Route::get('/provide-help', 'ProvideHelpController@gotoProvideHelp')->name('goto.provide.help');
+    Route::post('/provide-help', 'ProvideHelpController@saveProvideHelp')->name('save.provide.help');
+
+    /*Get Help*/
+    Route::get('/get-help', 'GetHelpController@gotoGetHelp')->name('goto.get.help');
 });

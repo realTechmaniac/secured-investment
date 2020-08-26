@@ -29,20 +29,23 @@
                                     <td>
                                         <b>
                                             @if($unconfirmed_gh->receiptUploads->count() > 0)
-                                                @foreach($unconfirmed_gh->receiptUploads as $receipt)
-                                                    @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
-                                                        <div class="text-primary">Paid</div>
+                                                @if(\App\GetHelp::receiptExist($unconfirmed_gh, 'provide_help_id'))
+                                                    @if(!\App\GetHelp::getKeyValue($unconfirmed_gh,'provide_help_id', 'is_fake'))
+                                                        <span class="text-primary">Paid</span>
                                                     @else
-                                                        <div id="reactivation-merge-countdown"
-                                                             class="text-danger"
-                                                             data-countdown="{{\Carbon\Carbon::parse($unconfirmed_gh->merge->expires_at)->format('Y/m/d H:i:s')}}">
-                                                        </div>
+                                                        <span class="text-primary">Paid</span>/<span
+                                                            class="text-danger">Fake Receipt</span>
                                                     @endif
-                                                @endforeach
+                                                @else
+                                                    <div id="reactivation-merge-countdown"
+                                                         class="text-danger"
+                                                         data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}">
+                                                    </div>
+                                                @endif
                                             @else
                                                 <div id="reactivation-merge-countdown"
                                                      class="text-danger"
-                                                     data-countdown="{{\Carbon\Carbon::parse($unconfirmed_gh->merge->expires_at)->format('Y/m/d H:i:s')}}">
+                                                     data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}">
                                                 </div>
                                             @endif
                                         </b>
@@ -55,37 +58,35 @@
                                     <td>{{$unconfirmed_gh->user->phone_number}}</td>
                                     <td>
                                         @if($unconfirmed_gh->receiptUploads->count() > 0)
-                                            @foreach($unconfirmed_gh->receiptUploads as $receipt)
-                                                @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
-                                                    <button type="button"
-                                                            class="btn btn-primary btn-sm waves-effect waves-light"
-                                                            data-toggle="modal"
-                                                            data-target=".ph-reactivation-not-complete-modal-{{$receipt->token}}">
-                                                        View Receipt
-                                                    </button>
-                                                @else
-                                                    <form
-                                                        action="{{route('upload.payment.receipt', [$unconfirmed_gh->merge->provide_help_id, $unconfirmed_gh->merge->get_help_id])}}"
-                                                        method="POST"
-                                                        enctype='multipart/form-data'>
-                                                        @csrf
-                                                        <div
-                                                            class="btn btn-outline-primary waves-effect btn-sm waves-light">
+                                            @if(\App\GetHelp::receiptExist($unconfirmed_gh, 'provide_help_id'))
+                                                <button type="button"
+                                                        class="btn btn-primary btn-sm waves-effect waves-light"
+                                                        data-toggle="modal"
+                                                        data-target=".ph-reactivation-not-complete-modal-{{\App\GetHelp::getKeyValue($unconfirmed_gh,'provide_help_id', 'token')}}">
+                                                    View Receipt
+                                                </button>
+                                            @else
+                                                <form
+                                                    action="{{route('upload.payment.receipt', [$unconfirmed_gh->merge->provide_help_id, $unconfirmed_gh->merge->get_help_id])}}"
+                                                    method="POST"
+                                                    enctype='multipart/form-data'>
+                                                    @csrf
+                                                    <div
+                                                        class="btn btn-outline-primary waves-effect btn-sm waves-light">
                                                                                                 <span
                                                                                                     id="select-receipt-text-{{$unconfirmed_gh->token}}">Select Receipt</span>
-                                                            <i class="fas fa-receipt"></i>
-                                                            <input class="fileInput"
-                                                                   id="file-input-{{$unconfirmed_gh->token}}"
-                                                                   type="file"
-                                                                   name="receipt"/>
-                                                        </div>
-                                                        <button type="submit"
-                                                                class="btn btn-secondary btn-sm waves-effect waves-light">
-                                                            Upload
-                                                        </button>
-                                                    </form>
-                                                @endif
-                                            @endforeach
+                                                        <i class="fas fa-receipt"></i>
+                                                        <input class="fileInput"
+                                                               id="file-input-{{$unconfirmed_gh->token}}"
+                                                               type="file"
+                                                               name="receipt"/>
+                                                    </div>
+                                                    <button type="submit"
+                                                            class="btn btn-secondary btn-sm waves-effect waves-light">
+                                                        Upload
+                                                    </button>
+                                                </form>
+                                            @endif
                                         @else
                                             <form
                                                 action="{{route('upload.payment.receipt', [$unconfirmed_gh->merge->provide_help_id, $unconfirmed_gh->merge->get_help_id])}}"

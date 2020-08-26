@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Http\Controllers\AppMainTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class GetHelp extends Model
 {
+    use AppMainTrait;
 
     protected $fillable = [
         'user_id', 'amount', 'is_merged', 'status', 'token', 'to_balance', 'profit', 'sub_expires_at'
