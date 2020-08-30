@@ -179,6 +179,11 @@ class PagesController extends Controller
 
         return view('test.dashboard.news-summary');
     }
+
+    public function showUserSupport(){
+
+        return view('test.dashboard.user-support');
+    }
 }
 
 
