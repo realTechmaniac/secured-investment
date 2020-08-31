@@ -37,13 +37,13 @@
                                                             class="text-danger">Fake Receipt</span>
                                                     @endif
                                                 @else
-                                                    <div id="activation-merge-countdown"
+                                                    <div id="sanctioned-merge-countdown"
                                                          class="text-danger"
                                                          data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}">
                                                     </div>
                                                 @endif
                                             @else
-                                                <div id="activation-merge-countdown"
+                                                <div id="sanctioned-merge-countdown"
                                                      class="text-danger"
                                                      data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}">
                                                 </div>
@@ -62,7 +62,7 @@
                                                 <button type="button"
                                                         class="btn btn-primary btn-sm waves-effect waves-light"
                                                         data-toggle="modal"
-                                                        data-target=".ph-activation-merged-modal-{{\App\GetHelp::getKeyValue($unconfirmed_gh,'provide_help_id', 'token')}}">
+                                                        data-target=".ph-sanctioned-not-complete-modal-{{\App\GetHelp::getKeyValue($unconfirmed_gh,'provide_help_id', 'token')}}">
                                                     View Receipt
                                                 </button>
                                             @else
@@ -73,8 +73,8 @@
                                                     @csrf
                                                     <div
                                                         class="btn btn-outline-primary waves-effect btn-sm waves-light">
-                                                                                            <span
-                                                                                                id="select-receipt-text-{{$unconfirmed_gh->token}}">Select Receipt</span>
+                                                                                                <span
+                                                                                                    id="select-receipt-text-{{$unconfirmed_gh->token}}">Select Receipt</span>
                                                         <i class="fas fa-receipt"></i>
                                                         <input class="fileInput"
                                                                id="file-input-{{$unconfirmed_gh->token}}"
@@ -95,12 +95,13 @@
                                                 @csrf
                                                 <div
                                                     class="btn btn-outline-primary waves-effect btn-sm waves-light">
-                                                                                    <span
-                                                                                        id="select-receipt-text-{{$unconfirmed_gh->token}}">Select Receipt</span>
+                                                                                        <span
+                                                                                            id="select-receipt-text-{{$unconfirmed_gh->token}}">Select Receipt</span>
                                                     <i class="fas fa-receipt"></i>
                                                     <input class="fileInput"
                                                            id="file-input-{{$unconfirmed_gh->token}}"
-                                                           type="file" name="receipt"/>
+                                                           type="file"
+                                                           name="receipt"/>
                                                 </div>
                                                 <button type="submit"
                                                         class="btn btn-secondary btn-sm waves-effect waves-light">

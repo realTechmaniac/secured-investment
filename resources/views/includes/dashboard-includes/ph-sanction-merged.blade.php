@@ -37,15 +37,15 @@
                                                             class="text-danger">Fake Receipt</span>
                                                     @endif
                                                 @else
-                                                    <div id="activation-merge-countdown"
+                                                    <div id="sanctioned-merge-countdown"
                                                          class="text-danger"
                                                          data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}">
                                                     </div>
                                                 @endif
                                             @else
-                                                <div id="activation-merge-countdown"
+                                                <div id="sanctioned-merge-countdown"
                                                      class="text-danger"
-                                                     data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}">
+                                                     data-countdown="{{\App\GetHelp::mergeExpiresAt($unconfirmed_gh)}}}">
                                                 </div>
                                             @endif
                                         </b>
@@ -62,7 +62,7 @@
                                                 <button type="button"
                                                         class="btn btn-primary btn-sm waves-effect waves-light"
                                                         data-toggle="modal"
-                                                        data-target=".ph-activation-merged-modal-{{\App\GetHelp::getKeyValue($unconfirmed_gh,'provide_help_id', 'token')}}">
+                                                        data-target=".ph-sanctioned-merged-modal-{{\App\GetHelp::getKeyValue($unconfirmed_gh,'provide_help_id', 'token')}}">
                                                     View Receipt
                                                 </button>
                                             @else

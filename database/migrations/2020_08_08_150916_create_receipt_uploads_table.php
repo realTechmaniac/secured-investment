@@ -18,9 +18,12 @@ class CreateReceiptUploadsTable extends Migration
             $table->unsignedBigInteger('provide_help_id');
             $table->unsignedBigInteger('get_help_id');
             $table->string('image');
-            $table->text('reason')->nullable();
+            $table->integer('merge_amount');
             $table->boolean('is_fake')->default(false);
+            $table->boolean('is_confirmed')->default(false);
+            $table->boolean('action_taken')->default(false);
             $table->string('token');
+            $table->timestamp('expires_at');
             $table->timestamps();
 
             $table->foreign('provide_help_id')->references('id')->on('provide_helps');

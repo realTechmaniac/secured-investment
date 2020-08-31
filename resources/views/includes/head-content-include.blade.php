@@ -3,7 +3,7 @@
 <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
 <meta content="Themesbrand" name="author"/>
 <!-- App favicon -->
-<link rel="shortcut icon" href="assets/images/favicon.ico">
+<link rel="shortcut icon" href="{{asset('assets/images/securedlogo.png')}}">
 
 <!-- Sweet Alert-->
 <link href="{{asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />

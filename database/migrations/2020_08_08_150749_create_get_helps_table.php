@@ -16,9 +16,11 @@ class CreateGetHelpsTable extends Migration
         Schema::create('get_helps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('provide_help_id')->nullable();
             $table->integer('amount');
             $table->integer('profit');
             $table->integer('to_balance');
+            $table->integer('added_referral_bonus')->default(0);
             $table->boolean('is_merged')->default(false);
             $table->enum('status', ['pending','cancelled','completed'])->default('pending');
             $table->string('token');
@@ -27,6 +29,7 @@ class CreateGetHelpsTable extends Migration
 
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('provide_help_id')->references('id')->on('provide_helps');
         });
     }
 

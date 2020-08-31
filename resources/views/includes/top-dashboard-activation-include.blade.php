@@ -15,12 +15,7 @@
                         <div class="col-7">
                             <div class="text-primary p-3">
                                 <h5 class="text-primary">Welcome Back, </h5>
-                                <h5>
-                                    {{auth()->user()->username}}
-                                    @if(auth()->user()->is_guider)
-                                        <b class="text-primary">(Guider)</b>
-                                    @endif
-                                </h5>
+                                <h5>{{auth()->user()->username}}</h5>
                             </div>
                         </div>
                     </div>
@@ -32,9 +27,9 @@
                                 <div class="col">
                                     <div class="my-4 text-center">
                                         <!-- Small modal -->
-                                        <a type="button" href="{{route('goto.provide.help')}}"
-                                           style="padding-top: 20px; padding-bottom: 20px; color: white;"
-                                           class="btn btn-primary btn-block waves-effect waves-light font-weight-bold btn-block">
+                                        <a type="button"
+                                                style="padding-top: 20px; padding-bottom: 20px; color: white;"
+                                                class="btn btn-primary btn-block waves-effect waves-light font-weight-bold btn-block" disabled>
                                             Provide Help
                                         </a>
                                     </div>
@@ -46,9 +41,9 @@
                                 <div class="col">
                                     <div class="my-4 text-center">
                                         <!-- Small modal -->
-                                        <a type="button" href="{{route('goto.get.help')}}"
-                                           style="padding-top: 20px; padding-bottom: 20px;  color: white;"
-                                           class="btn btn-success btn-block waves-effect waves-light font-weight-bold btn-block">
+                                        <a type="button"
+                                                style="padding-top: 20px; padding-bottom: 20px;  color: white;"
+                                                class="btn btn-success btn-block waves-effect waves-light font-weight-bold btn-block" disabled>
                                             Get Help
                                         </a>
                                     </div>
@@ -56,8 +51,9 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
                     <div class="row text-center">
-                        <div class="col-sm-12"><b class="text-primary">INVEST ONLY WITH YOUR SPARE MONEY</b></div>
+                        <div class="col-sm-12"><b class="text-danger">PH & GH CURRENTLY UNAVAILABLE BECAUSE YOU HAVE A PENDING TRANSACTION</b></div>
                     </div>
                 </div>
             </div>
@@ -66,39 +62,19 @@
             {{--Subcription Notice--}}
             <div class="card">
                 <div class="alert alert-success mb-0 font-weight-bold alert-dismissible" role="alert">
-                    Your Subscription
-                    @if($sub_expires_at)
-                        @if($sub_expires_at >= now())
-                            expires {{auth()->user()->sub_expires_at->format('g:ia \o\n l\, jS F Y')}}
-                            <div>
-                                <b class="text-danger">
-                                    Countdown to subscription expiration:
-                                    <span id="user-sub-expiration-countdown"
-                                          class="text-danger"
-                                          data-countdown="{{auth()->user()->sub_expires_at->format('Y/m/d H:i:s')}}">
-                                    </span>
-                                </b>
-                            </div>
-                        @else
-                            <b class="text-danger">
-                                expired {{auth()->user()->sub_expires_at->format('g:ia \o\n l\, jS F Y')}}
-                            </b>
-                        @endif
-                    @else
-                        expires N/A
-                    @endif
+                    INVEST ONLY WITH YOUR SPARE MONEY
+                    <hr>
+                    Your Subscription expires N/A {{--{{auth()->user()->sub_expires_at->format('g:ia \o\n l\, jS F Y')}}--}}
                 </div>
             </div>
             {{--Guilder Notice--}}
-            @if(!auth()->user()->is_guider)
-                <div class="card">
-                    <div class="alert alert-info mb-0 font-weight-bold alert-dismissible" role="alert">
-                        You will automatically become a guilder when you refer 25 active users and make a
-                        total
-                        PH of &#8358;{{number_format(50000)}}
-                    </div>
+            <div class="card">
+                <div class="alert alert-info mb-0 font-weight-bold alert-dismissible" role="alert">
+                    You will automatically become a guilder when you refer 25 active users and make a
+                    total
+                    PH of &#8358;{{number_format(50000)}}
                 </div>
-            @endif
+            </div>
             {{--Referral Info--}}
             <div class="row">
                 <div class="col-md-6">
@@ -107,7 +83,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted font-weight-medium">Total Referred Users</p>
-                                    <h4 class="mb-0">{{auth()->user()->referrerDetail->referralHistories->count()}}</h4>
+                                    <h4 class="mb-0">0</h4>
                                 </div>
 
                                 <div
@@ -126,8 +102,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted font-weight-medium">Total Referral Balance</p>
-                                    <h4 class="mb-0">
-                                        &#8358;{{number_format(auth()->user()->referrerDetail->referrer_balance)}}</h4>
+                                    <h4 class="mb-0">&#8358;{{number_format(0)}}</h4>
                                 </div>
 
                                 <div

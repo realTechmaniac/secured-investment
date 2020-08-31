@@ -10,8 +10,8 @@ class ProvideHelp extends Model
     use AppMainTrait;
 
     protected $fillable = [
-        'user_id', 'amount', 'is_merged', 'status', 'is_activation_fee',
-        'available_for_gh_at', 'expires_at', 'token', 'to_balance', 'is_withdrawn',
+        'user_id', 'amount', 'is_merged', 'status', 'is_activation_fee', 'is_first', 'has_expired_merge',
+        'available_for_gh_at', 'token', 'to_balance', 'is_withdrawn',
     ];
 
 

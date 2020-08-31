@@ -40,6 +40,9 @@
 <!-- App js -->
 <script src="{{asset('assets/js/app.js')}}"></script>
 
+<!-- Countdown js-->
+<script src="{{asset('assets/libs/jquery-countdown/jquery.countdown.min.js')}}"></script>
+
 {{--Toastr--}}
 <script src="{{asset('assets/libs/toastr/build/toastr.min.js')}}"></script>
 <script type="text/javascript">

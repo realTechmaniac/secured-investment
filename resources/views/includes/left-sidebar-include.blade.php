@@ -14,7 +14,7 @@
                 </li>
 
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
+                    <a href="{{route('transactions')}}" class=" waves-effect">
                         <i class="bx bx-line-chart"></i>
                         <span>Transactions</span>
                     </a>
@@ -56,7 +56,16 @@
                     </a>
                 </li>
 
-
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-wrench"></i>
+                        <span>Resolve Issues</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('fake.receipt.issues')}}">Fake Receipt</a></li>
+                        <li><a href="{{route('unconfirmed.user.payment')}}">Unconfirmed Payments</a></li>
+                    </ul>
+                </li>
 
                 <li>
                     <a class="waves-effect text-danger" onclick="event.preventDefault();

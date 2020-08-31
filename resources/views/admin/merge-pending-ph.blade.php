@@ -172,7 +172,8 @@
         $('#merge-pending-ph-datatable').DataTable({
             "language": {
                 "emptyTable": "No User wants to Provide Help at the moment"
-            }
+            },
+            "order": [[ 1, "desc" ]]
         })
     </script>
 @endsection

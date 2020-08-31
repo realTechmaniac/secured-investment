@@ -35,10 +35,6 @@ class BankDetail extends Model
     {
         return (int)$value;
     }
-    public function getAccountTypeAttribute($value)
-    {
-        return ucfirst($value);
-    }
 
 
     /**
@@ -57,9 +53,5 @@ class BankDetail extends Model
     public function setAccountNumberAttribute($value)
     {
         $this->attributes['account_number'] = (int)$value;
-    }
-    public function setAccountTypeAttribute($value)
-    {
-        $this->attributes['account_type'] = strtolower($value);
     }
 }

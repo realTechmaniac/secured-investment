@@ -10,7 +10,8 @@ class GetHelp extends Model
     use AppMainTrait;
 
     protected $fillable = [
-        'user_id', 'amount', 'is_merged', 'status', 'token', 'to_balance', 'profit', 'sub_expires_at'
+        'user_id', 'amount', 'is_merged', 'status', 'token', 'provide_help_id',
+        'to_balance', 'profit', 'sub_expires_at', 'added_referral_bonus'
     ];
 
 

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //Index page route handler
 //Route::get('/test','PagesController@index');
 
-Route::get('/test','PagesController@phEnterAmount');
+Route::get('/test','PagesController@ghWithdrawal');
 
 
 
@@ -36,7 +36,7 @@ Route::post('/store-bank-details', 'BankDetailsController@storeBankDetails')->na
 
 Route::middleware(['auth'])->group(function (){
     /*Dashboard*/
-    Route::get('/dashboard', 'UserController@userDashboard')->name('dashboard');
+    Route::get('/dashboard', 'UserController@userDashboard')->name('dashboard')->middleware('bank.redirect');
     Route::post('/pay-activation-fee', 'UserController@payActivationFee')->name('pay.activation.fee');
     Route::post('/pay-reactivation-fee', 'UserController@payReactivationFee')->name('pay.reactivation.fee');
     Route::post('/pay-sanction-fine', 'UserController@paySanctionFine')->name('pay.sanction.fine');
@@ -50,6 +50,16 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/merge-pending-gh/{ph_token?}', 'Admin\MergeController@showPendingGh')->name('show.pending.gh');
     Route::post('/merge-pending-ph-with-pending-gh/{ph_token}/{gh_token}', 'Admin\MergeController@mergePendingPh')->name('merge.pending.ph');
     Route::post('/merge-pending-gh-with-pending-ph/{gh_token}/{ph_token}', 'Admin\MergeController@mergePendingGh')->name('merge.pending.gh');
+    /*Resolve Issues*/
+    Route::get('/fake-receipt-issues', 'Admin\ResolveIssuesController@fakeReceiptIssues')->name('fake.receipt.issues');
+    Route::get('/unconfirmed-user-payment', 'Admin\ResolveIssuesController@unconfirmedUserPayment')->name('unconfirmed.user.payment');
+
+    /*FAKE RECEIPT ISSUES*/
+    Route::post('/clear-fake-payment-issue/{token}', 'Admin\ResolveIssuesController@clearFakePaymentIssue')->name('clear.fake.payment.issue');
+    Route::post('/block-ph-user-fake-payment-issue/{token}', 'Admin\ResolveIssuesController@blockPhUserFakePaymentIssue')->name('block.ph.user.fake.payment.issue');
+    Route::post('/block-gh-user-fake-payment-issue/{token}', 'Admin\ResolveIssuesController@blockGhUserFakePaymentIssue')->name('block.gh.user.fake.payment.issue');
+    Route::post('/confirm-fake-payment-issue/{token}', 'Admin\ResolveIssuesController@confirmFakePaymentIssue')->name('confirm.fake.payment.issue');
+    Route::post('/unmerge-fake-payment-issue/{token}', 'Admin\ResolveIssuesController@unmergeUsersFakePaymentIssue')->name('unmerge.users.fake.payment.issue');
 
 
     /*Upload payment receipt*/
@@ -68,4 +78,9 @@ Route::middleware(['auth'])->group(function (){
 
     /*Get Help*/
     Route::get('/get-help', 'GetHelpController@gotoGetHelp')->name('goto.get.help');
+    Route::post('/get-help', 'GetHelpController@saveGetHelp')->name('save.get.help');
+    Route::post('/ceo/get-help', 'GetHelpController@saveCeoGetHelp')->name('save.ceo.get.help');
+
+
+    Route::get('/transactions', 'TransactionController@showTransactions')->name('transactions');
 });

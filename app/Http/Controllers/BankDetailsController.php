@@ -20,7 +20,7 @@ class BankDetailsController extends Controller
         $this->validate($request , [
             'full_name' => ['bail', 'required', 'string', 'max:100'],
             'bank_name' => ['bail', 'required', 'string', 'max:100'],
-            'account_number' => ['bail', 'required', 'digits:10'],
+            'account_number' => ['bail', 'required', 'digits:10', 'unique:bank_details'],
         ]);
 
         BankDetail::create([

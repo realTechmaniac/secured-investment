@@ -12,7 +12,7 @@
             <div class="card overflow-hidden">
                 <div class="bg-soft-primary">
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col-lg-12">
                             <div class="text-primary p-3">
                                 <h5 class="text-primary">Welcome Back, </h5>
                                 <h5>
@@ -32,9 +32,9 @@
                                 <div class="col">
                                     <div class="my-4 text-center">
                                         <!-- Small modal -->
-                                        <a type="button" href="{{route('goto.provide.help')}}"
-                                           style="padding-top: 20px; padding-bottom: 20px; color: white;"
-                                           class="btn btn-primary btn-block waves-effect waves-light font-weight-bold btn-block">
+                                        <a type="button"
+                                                style="padding-top: 20px; padding-bottom: 20px; color: white;"
+                                                class="btn btn-primary btn-block waves-effect waves-light font-weight-bold btn-block" disabled>
                                             Provide Help
                                         </a>
                                     </div>
@@ -46,9 +46,9 @@
                                 <div class="col">
                                     <div class="my-4 text-center">
                                         <!-- Small modal -->
-                                        <a type="button" href="{{route('goto.get.help')}}"
-                                           style="padding-top: 20px; padding-bottom: 20px;  color: white;"
-                                           class="btn btn-success btn-block waves-effect waves-light font-weight-bold btn-block">
+                                        <a type="button"
+                                                style="padding-top: 20px; padding-bottom: 20px;  color: white;"
+                                                class="btn btn-success btn-block waves-effect waves-light font-weight-bold btn-block" disabled>
                                             Get Help
                                         </a>
                                     </div>
@@ -56,8 +56,9 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
                     <div class="row text-center">
-                        <div class="col-sm-12"><b class="text-primary">INVEST ONLY WITH YOUR SPARE MONEY</b></div>
+                        <div class="col-sm-12"><b class="text-danger">PH & GH CURRENTLY UNAVAILABLE BECAUSE YOU HAVE A PENDING TRANSACTION</b></div>
                     </div>
                 </div>
             </div>
@@ -66,6 +67,8 @@
             {{--Subcription Notice--}}
             <div class="card">
                 <div class="alert alert-success mb-0 font-weight-bold alert-dismissible" role="alert">
+                    INVEST ONLY WITH YOUR SPARE MONEY
+                    <hr>
                     Your Subscription
                     @if($sub_expires_at)
                         @if($sub_expires_at >= now())
@@ -87,6 +90,7 @@
                     @else
                         expires N/A
                     @endif
+
                 </div>
             </div>
             {{--Guilder Notice--}}
@@ -126,8 +130,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted font-weight-medium">Total Referral Balance</p>
-                                    <h4 class="mb-0">
-                                        &#8358;{{number_format(auth()->user()->referrerDetail->referrer_balance)}}</h4>
+                                    <h4 class="mb-0">&#8358;{{number_format(auth()->user()->referrerDetail->referrer_balance)}}</h4>
                                 </div>
 
                                 <div

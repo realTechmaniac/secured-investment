@@ -74,4 +74,10 @@ trait AppMainTrait
         )]
         [$arrayKey];
     }
+
+    /*Fake Receipt Confirmation*/
+    public static function isMergeConfirmed(object $obj)
+    {
+        return in_array($obj->get_help_id, array_column($obj->provideHelp->unConfirmedGh->toArray(), 'id'));
+    }
 }

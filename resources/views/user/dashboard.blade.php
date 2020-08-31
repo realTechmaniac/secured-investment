@@ -7,16 +7,16 @@
         <div class="page-content">
 
             <div class="container-fluid">
-                {{--Include top dashboard--}}
-                @include('includes.top-dashboard-include')
-
-
                 {{--START::::: Provide Help and Get Help Logics--}}
-                @if(!auth()->user()->is_activated)
+                @if(!auth()->user()->is_activated  && !$ph_pending  && !$gh_pending)
                     @if(auth()->user()->activation == 'first')
                         @if($ph_activation)
                             @if(!$ph_activation->is_merged)
                                 @if($ph_activation->getHelps->count() > 0)
+                                    {{--Include top dashboard--}}
+                                    @include('includes.top-dashboard-pendings-include')
+
+
                                     {{--PH Activation NOT Merged completely Table--}}
                                     @include('includes.dashboard-includes.ph-activation-not-merged-completely')
                                 @else
@@ -24,6 +24,10 @@
                                     @include('includes.dashboard-includes.ph-pending-first-activation-fee')
                                 @endif
                             @elseif($ph_activation->is_merged)
+                                {{--Include top dashboard--}}
+                                @include('includes.top-dashboard-pendings-include')
+
+
                                 {{--PH Activation Merged Tabled--}}
                                 @include('includes.dashboard-includes.ph-activation-merged')
                             @endif
@@ -35,6 +39,10 @@
                         @if($ph_activation)
                             @if(!$ph_activation->is_merged)
                                 @if($ph_activation->getHelps->count() > 0)
+                                    {{--Include top dashboard--}}
+                                    @include('includes.top-dashboard-pendings-include')
+
+
                                     {{--PH Reactivation NOT Merged completely Table--}}
                                     @include('includes.dashboard-includes.ph-reactivation-not-merged-completely')
                                 @else
@@ -42,6 +50,10 @@
                                     @include('includes.dashboard-includes.ph-pending-reactivation')
                                 @endif
                             @elseif($ph_activation->is_merged)
+                                {{--Include top dashboard--}}
+                                @include('includes.top-dashboard-pendings-include')
+
+
                                 {{--PH Reactivation Merged Table--}}
                                 @include('includes.dashboard-includes.ph-reactivation-merged')
                             @endif
@@ -51,34 +63,85 @@
                         @endif
                     @endif
                 @else
-                    @if(auth()->user()->is_blocked)
+                    @if(auth()->user()->is_blocked && !$ph_pending  && !$gh_pending)
                         {{--Account Blocked--}}
-                        @include('includes.dashboard-includes.account-blocked')
+                        @if($ph_activation)
+                            @if(!$ph_activation->is_merged)
+                                @if($ph_activation->getHelps->count() > 0)
+                                    {{--Include top dashboard--}}
+                                    @include('includes.top-dashboard-pendings-include')
+
+
+                                    {{--PH Sanction NOT Merged completely Table--}}
+                                    @include('includes.dashboard-includes.ph-sanction-not-merged-completely')
+                                @else
+                                    {{--PH Pending Sanction --}}
+                                    @include('includes.dashboard-includes.ph-pending-sanctioned')
+                                @endif
+                            @elseif($ph_activation->is_merged)
+                                {{--Include top dashboard--}}
+                                @include('includes.top-dashboard-pendings-include')
+
+
+                                {{--PH Sanction Merged Table--}}
+                                @include('includes.dashboard-includes.ph-sanction-merged')
+                            @endif
+                        @else
+                            {{--Sanctioned Account Fine--}}
+                            @include('includes.dashboard-includes.account-blocked')
+                        @endif
                     @elseif($ph_pending)
                         @if(!$ph_pending->is_merged)
                             @if($ph_pending->getHelps->count() > 0)
+                                {{--Include top dashboard--}}
+                                @include('includes.top-dashboard-pendings-include')
+
+
                                 {{--PH NOT Merged completely Table--}}
                                 @include('includes.dashboard-includes.ph-not-merged-completely')
                             @else
+                                {{--Include top dashboard--}}
+                                @include('includes.top-dashboard-pendings-include')
+
+
                                 {{--Provide Help Pending--}}
                                 @include('includes.dashboard-includes.ph-pending')
                             @endif
                         @elseif($ph_pending->is_merged)
+                            {{--Include top dashboard--}}
+                            @include('includes.top-dashboard-pendings-include')
+
+
                             {{--PH Merged Table--}}
                             @include('includes.dashboard-includes.ph-merged')
                         @endif
                     @elseif($gh_pending)
                         @if(!$gh_pending->is_merged)
                             @if($gh_pending->provideHelps->count() > 0)
+                                {{--Include top dashboard--}}
+                                @include('includes.top-dashboard-pendings-include')
+
+
                                 {{--Get Help Not Merged Completely--}}
                                 @include('includes.dashboard-includes.gh-not-merged-completely')
                             @else
+                                {{--Include top dashboard--}}
+                                @include('includes.top-dashboard-pendings-include')
+
+
                                 {{--Pending Get Help Request--}}
                                 @include('includes.dashboard-includes.gh-pending')
                             @endif
                         @elseif($gh_pending->is_merged)
+                            {{--Include top dashboard--}}
+                            @include('includes.top-dashboard-pendings-include')
+
+
                             @include('includes.dashboard-includes.gh-merged')
                         @endif
+                    @else
+                        {{--Include top dashboard--}}
+                        @include('includes.top-dashboard-include')
                     @endif
                 @endif
                 {{--END::::: Provide Help and Get Help Logics--}}
@@ -129,7 +192,7 @@
     {{--MODALS--}}
     {{--MODALS--}}
     {{--MODALS--}}
-    @if(!auth()->user()->is_activated)
+    @if(!auth()->user()->is_activated && !$ph_pending  && !$gh_pending)
         @if(auth()->user()->activation == 'first')
             @if($ph_activation)
                 @if(!$ph_activation->is_merged)
@@ -373,7 +436,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title mt-0">Provide Help (<b>Reactivation
+                                        <h5 class="modal-title mt-0">Provide Help (<b class="text-primary">Reactivation
                                                 Fee</b>) Confirmation</h5>
                                         <button type="button" class="close"
                                                 data-dismiss="modal"
@@ -392,7 +455,7 @@
                                                         cancel
                                                         your Provide Help
                                                         Request (
-                                                        <b>Reactivation Fee:
+                                                        <b class="text-primary">Reactivation Fee:
                                                             &#8358;{{number_format($ph_activation->amount)}}</b>)?
                                                     </strong>
                                                 </h5>
@@ -408,12 +471,18 @@
                                                         style="display: inline-block;"
                                                         data-dismiss="modal">Close
                                                 </button>
-                                                <button type="button "
-                                                        class="swal2-confirm swal2-styled btn-success"
-                                                        style="display: inline-block;">
-                                                    Yes,
-                                                    Cancel Request
-                                                </button>
+                                                <form
+                                                    action="{{route('cancel.activation.fee', $ph_activation->token)}}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button "
+                                                            class="swal2-confirm swal2-styled btn-success"
+                                                            style="display: inline-block;">
+                                                        Yes,
+                                                        Cancel Request
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -512,50 +581,199 @@
             @endif
         @endif
     @else
-        @if(auth()->user()->is_blocked)
-            {{--Account Blocked--}}
-            {{--ACCOUNT SANCTIONED CONFIRMATION MODAL--}}
-            <div class="modal fade account-sanctioned-confirmation-modal" tabindex="-1" role="dialog"
-                 aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title mt-0">Sanction Fine Confirmation</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="text-center">
-                                <div class="swal2-icon swal2-warning swal2-animate-warning-icon"
-                                     style="display: flex;"></div>
-                                <div class="swal2-header">
-                                    <h5><strong>Are you sure you want to pay sanction fine of <strong
-                                                class="text-primary">&#8358;{{number_format(3000)}} </strong>
-                                            to reactivate your account ? </strong></h5>
-                                </div>
-                                <div class="swal2-content" style="display: block;">You won't be able to
-                                    revert this!
-                                </div>
-                                <div class="swal2-actions">
-                                    <button type="button"
-                                            class="swal2-cancel swal2-styled btn-danger"
-                                            style="display: inline-block;"
-                                            data-dismiss="modal">Close
-                                    </button>
-                                    <form action="{{route('pay.sanction.fine')}}" method="POST">
-                                        @csrf
-                                        <button type="submit"
-                                                class="swal2-confirm swal2-styled btn-success"
-                                                style="display: inline-block;">Yes, Proceed
+        @if(auth()->user()->is_blocked  && !$ph_pending  && !$gh_pending)
+            @if($ph_activation)
+                @if(!$ph_activation->is_merged)
+                    @if($ph_activation->getHelps->count() > 0)
+                        {{--PH Sanction Fine NOT Merged completely Table--}}
+                        <!--PH RECEIPT MODAL -->
+                        @foreach($ph_activation->unConfirmedGh as $unconfirmed_gh)
+                            @if($unconfirmed_gh->receiptUploads->count() > 0)
+                                @foreach($unconfirmed_gh->receiptUploads as $receipt)
+                                    @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
+                                        {{--PH SANCTION FINE NOT Merged completely Table--}}
+                                        <!--PH RECEIPT MODAL -->
+                                        <div class="modal fade ph-sanctioned-not-complete-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Payment receipt
+                                                            from <b
+                                                                class="text-primary">{{$receipt->provideHelp->user->username}}</b>
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="card">
+                                                            <img
+                                                                src="{{asset('receipts-hua094JHhRsdUE28a1w4ldk1llsNdd1l1/'.$receipt->image)}}"
+                                                                width="100%" height="100%" alt="Receipt">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+                    @else
+                        {{--CANCEL SANCTION FINE CONFIRMATION MODAL--}}
+                        <div class="modal fade sanctioned-activation-cancel-confirmation"
+                            tabindex="-1" role="dialog"
+                            aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0">Provide Help (<b class="text-primary">Sanction Fine</b>) Confirmation</h5>
+                                        <button type="button" class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
                                         </button>
-                                    </form>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="text-center">
+                                            <div
+                                                class="swal2-icon swal2-warning swal2-animate-warning-icon"
+                                                style="display: flex;"></div>
+                                            <div class="swal2-header">
+                                                <h5>
+                                                    <strong>Are you sure you want to
+                                                        cancel
+                                                        your Provide Help
+                                                        Request (
+                                                        <b class="text-primary">Sanction Fine:
+                                                            &#8358;{{number_format($ph_activation->amount)}}</b>)?
+                                                    </strong>
+                                                </h5>
+                                            </div>
+                                            <div class="swal2-content"
+                                                 style="display: block;">You won't be
+                                                able
+                                                to revert this!
+                                            </div>
+                                            <div class="swal2-actions">
+                                                <button type="button"
+                                                        class="swal2-cancel swal2-styled btn-danger"
+                                                        style="display: inline-block;"
+                                                        data-dismiss="modal">Close
+                                                </button>
+                                                <form
+                                                    action="{{route('cancel.activation.fee', $ph_activation->token)}}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button "
+                                                            class="swal2-confirm swal2-styled btn-success"
+                                                            style="display: inline-block;">
+                                                        Yes,
+                                                        Cancel Request
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
+                    @endif
+                @elseif($ph_activation->is_merged)
+                    {{--PH SANCTION FINE Merged Table--}}
+                    <!--PH RECEIPT MODAL -->
+                    @foreach($ph_activation->unConfirmedGh as $unconfirmed_gh)
+                        @if($unconfirmed_gh->receiptUploads->count() > 0)
+                            @foreach($unconfirmed_gh->receiptUploads as $receipt)
+                                @if($receipt->provide_help_id == $unconfirmed_gh->merge->provide_help_id)
+                                    {{--PH SANCTION FINE Merged Table--}}
+                                    <!--PH RECEIPT MODAL -->
+                                    <div class="modal fade ph-sanctioned-merged-modal-{{$receipt->token}}" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Payment receipt from
+                                                        <b class="text-primary">{{$receipt->provideHelp->user->username}}</b>
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="card">
+                                                        <img
+                                                            src="{{asset('receipts-hua094JHhRsdUE28a1w4ldk1llsNdd1l1/'.$receipt->image)}}"
+                                                            width="100%" height="100%" alt="Receipt">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+                @endif
+            @else
+                {{--Sanctioned Account Fine--}}
+                {{--ACCOUNT SANCTIONED CONFIRMATION MODAL--}}
+                <div class="modal fade account-sanctioned-confirmation-modal" tabindex="-1" role="dialog"
+                     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mt-0">Sanction Fine Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-center">
+                                    <div class="swal2-icon swal2-warning swal2-animate-warning-icon"
+                                         style="display: flex;"></div>
+                                    <div class="swal2-header">
+                                        <h5><strong>Are you sure you want to pay sanction fine of <strong
+                                                    class="text-primary">&#8358;{{number_format(3000)}} </strong>
+                                                to reactivate your account ? </strong></h5>
+                                    </div>
+                                    <div class="swal2-content" style="display: block;">You won't be able to
+                                        revert this!
+                                    </div>
+                                    <div class="swal2-actions">
+                                        <button type="button"
+                                                class="swal2-cancel swal2-styled btn-danger"
+                                                style="display: inline-block;"
+                                                data-dismiss="modal">Close
+                                        </button>
+                                        <form action="{{route('pay.sanction.fine')}}" method="POST">
+                                            @csrf
+                                            <button type="submit"
+                                                    class="swal2-confirm swal2-styled btn-success"
+                                                    style="display: inline-block;">Yes, Proceed
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                    </div>
                 </div>
-            </div>
+            @endif
         @elseif($ph_pending)
             @if(!$ph_pending->is_merged)
                 @if($ph_pending->getHelps->count() > 0)
@@ -737,7 +955,7 @@
                                                                 <b class="text-primary">
                                                                     &#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}
                                                                 </b> from <b class="text-primary">
-                                                                    {{$receipt->provideHelp->user->bankDetail->full_name}}
+                                                                    {{$receipt->provideHelp->user->username}}
                                                                 </b> to <b
                                                                     class="text-danger">flag</b> your
                                                                 transaction with {{$receipt->provideHelp->user->gender == 'male' ? 'him' : 'her'}}
@@ -777,7 +995,7 @@
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Payment receipt
                                                     from <b
-                                                        class="text-primary">{{$receipt->provideHelp->user->bankDetail->full_name}}</b>
+                                                        class="text-primary">{{$receipt->provideHelp->user->username}}</b>
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
@@ -829,7 +1047,7 @@
                                                         <b class="text-primary">
                                                             &#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}
                                                         </b> from <b class="text-primary">
-                                                            {{$unconfirmed_ph->user->bankDetail->full_name}}
+                                                            {{$unconfirmed_ph->user->username}}
                                                         </b> to complete your transaction with
                                                         {{$unconfirmed_ph->user->gender == 'male' ? 'him' : 'her'}}
                                                         ?
@@ -956,7 +1174,7 @@
                                                             <b class="text-primary">
                                                                 &#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}
                                                             </b> from <b class="text-primary">
-                                                                {{$receipt->provideHelp->user->bankDetail->full_name}}
+                                                                {{$receipt->provideHelp->user->username}}
                                                             </b> to <b
                                                                 class="text-danger">flag</b> your
                                                             transaction with {{$receipt->provideHelp->user->gender == 'male' ? 'him' : 'her'}}
@@ -996,7 +1214,7 @@
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Payment receipt
                                                 from <b
-                                                    class="text-primary">{{$receipt->provideHelp->user->bankDetail->full_name}}</b>
+                                                    class="text-primary">{{$receipt->provideHelp->user->username}}</b>
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
@@ -1048,7 +1266,7 @@
                                                     <b class="text-primary">
                                                         &#8358;{{number_format($unconfirmed_ph->merge->merge_amount)}}
                                                     </b> from <b class="text-primary">
-                                                        {{$unconfirmed_ph->user->bankDetail->full_name}}
+                                                        {{$unconfirmed_ph->user->username}}
                                                     </b> to complete your transaction with
                                                     {{$unconfirmed_ph->user->gender == 'male' ? 'him' : 'her'}}
                                                     ?
@@ -1086,8 +1304,6 @@
 @endsection
 
 @section('js')
-    <!-- Countdown js-->
-    <script src="{{asset('assets/libs/jquery-countdown/jquery.countdown.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             var ph_activation = {!! json_encode($ph_activation?$ph_activation->unConfirmedGh:null) !!};
@@ -1202,6 +1418,39 @@
                     .parent().addClass('disabled');
             });
         });
+        $('div#sanctioned-merge-countdown[data-countdown]').each(function () {
+            var $this = $(this), finalDate = $(this).data('countdown');
+            $this.countdown(finalDate).on('update.countdown', function (event) {
+                var format = '%Hh %Mm %Ss';
+                if (event.offset.totalDays > 0) {
+                    format = '%-d day%!d ' + format;
+                }
+                if (event.offset.weeks > 0) {
+                    format = '%-w week%!w ' + format;
+                }
+                $(this).html(event.strftime(format));
+            }).on('finish.countdown', function (event) {
+                $(this).html('Sanction Payment expired')
+                    .parent().addClass('disabled');
+            });
+        });
+
+        $('span#user-sub-expiration-countdown[data-countdown]').each(function () {
+            var $this = $(this), finalDate = $(this).data('countdown');
+            $this.countdown(finalDate).on('update.countdown', function (event) {
+                var format = '%Hh %Mm %Ss';
+                if (event.offset.totalDays > 0) {
+                    format = '%-d day%!d ' + format;
+                }
+                if (event.offset.weeks > 0) {
+                    format = '%-w week%!w ' + format;
+                }
+                $(this).html(event.strftime(format));
+            }).on('finish.countdown', function (event) {
+                $(this).html('Subscription Expired!')
+                    .parent().addClass('disabled');
+            });
+        });
 
         /*PH activation merge DataTable*/
         $('#ph-activation-merge-datatable').DataTable(
@@ -1218,6 +1467,16 @@
                 "language": {
                     "emptyTable": "Merging in progress..."
                 }
+            }
+        );
+
+        /*Latest Transaction merge DataTable*/
+        $('#latest-transactions').DataTable(
+            {
+                "language": {
+                    "emptyTable": "No Transaction Yet."
+                },
+                "order": [[ 1, "desc" ]]
             }
         );
 

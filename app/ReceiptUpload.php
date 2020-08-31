@@ -8,8 +8,8 @@ class ReceiptUpload extends Model
 {
 
     protected $fillable = [
-        'provide_help_id', 'get_help_id',
-        'image', 'reason', 'is_fake', 'token',
+        'provide_help_id', 'get_help_id', 'merge_amount', 'action_taken',
+        'image', 'is_fake', 'token', 'expires_at', 'is_confirmed'
     ];
 
 

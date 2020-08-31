@@ -33,27 +33,28 @@
                                             Maximum amount that can be invested is NGN <b class="text-primary">100,000</b>
                                         </li>
                                         <li>
+                                            You can only invest an amount that is <b class="text-primary">greater than or equal to your previous investment</b>
+                                        </li>
+                                        <li>
                                             <b>INVEST ONLY WITH YOUR SPARE MONEY</b>
                                         </li>
                                     </ol>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Amount</label>
-                                        <span id="amount-phh"></span>
-                                        <input type="number" class="form-control" id="ph-enter-amount"
-                                               aria-describedby="emailHelp" placeholder="Enter Amount" required>
-                                    </div>
-                                    <div class="my-4 text-center">
-                                        <!-- Small modal -->
-                                        <button type="button"
-                                                class="btn btn-primary waves-effect waves-light font-weight-bold " id="ph-button-save"
-                                                data-toggle="modal" data-target=".provide-help-enter-amount-modal" disabled>Provide Help
-                                        </button>
-                                    </div>
-                                </form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Amount</label>
+                                    <span id="amount-phh"></span>
+                                    <input type="number" class="form-control" id="ph-enter-amount"
+                                           aria-describedby="emailHelp" placeholder="Enter Amount" required>
+                                </div>
+                                <div class="my-4 text-center">
+                                    <!-- Small modal -->
+                                    <button type="button"
+                                            class="btn btn-primary waves-effect waves-light font-weight-bold " id="ph-button-save"
+                                            data-toggle="modal" data-target=".provide-help-enter-amount-modal" disabled>Provide Help
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12 pt-5 pb-5">
         <div class="card card-body pb-5">
-            <h1 class="card-title mt-0 text-center">Subscription Expired!</h1>
+            <h1 class="card-title mt-0 text-center text-danger">Subscription Expired!</h1>
             <p class="card-text text-center">Your subscription has expired. Reactivation is
                 only 5% of the profit on your total Get Help (including Referral Bonus) in
                 the past 30days.<br>

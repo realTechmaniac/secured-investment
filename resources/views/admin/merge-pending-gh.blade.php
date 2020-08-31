@@ -176,7 +176,8 @@
         $('#merge-pending-gh-datatable').DataTable({
             "language": {
                 "emptyTable": "No User wants to Get Help at the moment"
-            }
+            },
+            "order": [[ 1, "desc" ]]
         })
     </script>
 @endsection

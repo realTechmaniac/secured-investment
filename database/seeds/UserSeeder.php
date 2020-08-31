@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
             'phone_number' => '+2348186818135',
             'username' => 'stunner',
             'gender' => 'male',
+            'is_guider' => true,
             'token' => Str::random(40),
             'role' => 'ceo',
             'is_activated' => true,

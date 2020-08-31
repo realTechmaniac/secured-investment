@@ -6,6 +6,7 @@ use App\GetHelp;
 use App\Http\Controllers\Controller;
 use App\ProvideHelp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MergeController extends Controller
 {
@@ -27,6 +28,14 @@ class MergeController extends Controller
     {
         $gh = GetHelp::where('token', $gh_token)->first();
         $ph = ProvideHelp::where('token', $ph_token)->first();
+        $check = DB::table('merges')
+                ->where('get_help_id',$gh->id)
+                ->where('provide_help_id',$ph->id)
+                ->count() > 0;
+
+        if ($check){
+            return redirect(route('dashboard'))->with('danger', 'You have already merged these users');
+        }
 
         if ($gh && $ph){
             $ph_id = $ph->id;
@@ -93,6 +102,15 @@ class MergeController extends Controller
     {
         $ph = ProvideHelp::where('token', $ph_token)->first();
         $gh = GetHelp::where('token', $gh_token)->first();
+
+        $check = DB::table('merges')
+                ->where('get_help_id',$gh->id)
+                ->where('provide_help_id',$ph->id)
+                ->count() > 0;
+
+        if ($check){
+            return redirect(route('dashboard'))->with('danger', 'You have already merged these users');
+        }
 
         if ($ph && $gh){
             $gh_id = $gh->id;
