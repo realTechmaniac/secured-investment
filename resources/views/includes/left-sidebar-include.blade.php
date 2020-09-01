@@ -6,6 +6,16 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
+                <li class="">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
+                        <i class="bx bx-store"></i>
+                        <span>Admin</span>
+                    </a>
+                    <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
+                        <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="{{route('dashboard')}}" class=" waves-effect">
                         <i class="bx bx-home-circle"></i>
@@ -21,16 +31,53 @@
                 </li>
 
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
+                    <a href="{{route('show.messages')}}" class=" waves-effect">
+                        <i class="bx bx-envelope"></i>
+                        <span>Messages </span>
+                        @if($unread_messages > 0)
+                            <span class="badge badge-danger">{{$unread_messages}}</span>
+                        @endif
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('show.admin.messages')}}" class=" waves-effect">
+                        <i class="mdi mdi-facebook-messenger"></i>
+                        <span>Messages (Admin)</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('show.referrals')}}" class=" waves-effect">
                         <i class="bx bx-user-plus"></i>
                         <span>Referrals</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="calendar.html" class=" waves-effect">
+                    <a href="{{route('user.details')}}" class=" waves-effect">
                         <i class="bx bx-user"></i>
                         <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('create.news')}}" class=" waves-effect">
+                        <i class="bx bxs-file-plus"></i>
+                        <span>Create News</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('show.news')}}" class=" waves-effect">
+                        <i class="bx bx-news"></i>
+                        <span>News</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('show.users')}}" class=" waves-effect">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
                     </a>
                 </li>
 

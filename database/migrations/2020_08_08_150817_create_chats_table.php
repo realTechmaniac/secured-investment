@@ -15,8 +15,8 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('message');
+            $table->string('message_title');
+            $table->text('message_body');
             $table->unsignedBigInteger('from_id');
             $table->unsignedBigInteger('to_id');
             $table->string('token');

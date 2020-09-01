@@ -38,11 +38,7 @@
                     before merge <b class="text-danger">duration expires</b>
                     and reactivation of suspended account costs
                     <b class="text-danger">&#8358;{{number_format(3000)}}</b>.
-                    If you are to pay multiple users, they will
-                    be unmerged
-                    from you automatically if you fail to pay one of them
-                    before the merge
-                    expires. Earliest merge will expire first.
+                    Pay only to the account details that is shown on the website.
                 </div>
                 <hr>
                 <b class="text-primary">If you have paid a user and you have also uploaded your payment receipt

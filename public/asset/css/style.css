@@ -3018,8 +3018,13 @@ h6 {
   .copy_right_text p a {
     color: #3bacf0; }
 
-/* End Footer Area css
-============================================================================================ */
+
+
+/*******************************
+* Does not work properly if "in" is added after "collapse".
+* Get free snippets on bootpen.com
+*******************************/
+
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */

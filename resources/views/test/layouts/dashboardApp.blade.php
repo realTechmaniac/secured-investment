@@ -194,11 +194,11 @@
                             <div class="dropdown-menu dropdown-menu" hidden="">
                                 <!-- item-->
                                 shboard</span>
-                    </a>
-                   
-                </li>
+                            </a>
+                           
+                        </li>
 
-                <li>
+                         <li>
                     <a href="calendar.html" class=" waves-effect">
                                 <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
                                 <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
@@ -227,11 +227,29 @@
 
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
-                        <i class="bx bx-home-circle"></i><span class="badge badge-pill badge-info float-right">03</span>
-                        <span>Da
+                        <i class="bx bx-home-circle"></i><span class="badge badge-pill badge-info float-right"></span>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="bx bx-file"></i><span class="badge badge-pill badge-info float-right"></span>
                         <span>Transactions</span>
                     </a>
                 </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="bx bx-chat"></i><span class="badge badge-pill badge-info float-right"></span>
+                        <span>News</span>
+                    </a>
+                </li>
+
+
+
 
                 <li>
                     <a href="calendar.html" class=" waves-effect">

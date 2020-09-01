@@ -1,6 +1,6 @@
 @extends('layouts.userApp')
 
-@section('page-title')Secured Investment -Dashboard @endsection
+@section('page-title')Secured Investment -Get Help @endsection
 
 @section('content')
     <div class="main-content">
@@ -88,7 +88,7 @@
 
                                     <tbody>
                                     {{--SHOW AVAILABLE PH READY FOR WITHDRAWAL--}}
-                                    @if($ph_available_for_gh)
+                                    @if($ph_available_for_gh->count() > 0)
                                         @if(auth()->user()->role == 'regular')
                                             {{--REGULAR USERS NEED TO RECOMMIT--}}
                                             {{--RECOMMITMENT CANNOT BE WITHDRAWN--}}
@@ -108,7 +108,7 @@
                                                 </tr>
                                             @endif
                                             {{--LOOP THROUGH THE REST OF THE WITHDRAWABLE COLLECTION--}}
-                                            @if($ph_available)
+                                            @if($ph_available->count() > 0)
                                                 @foreach($ph_available as $row)
                                                     <tr>
                                                         <td>{{$row->created_at->format('d/m/y')}}</td>
@@ -411,7 +411,7 @@
         </div>
     </div>
 
-    @if($ph_available)
+    @if($ph_available->count() > 0)
         @foreach($ph_available as $row)
             <div>
                 <div class="modal fade get-help-withdrawal-modal-{{$row->token}}" tabindex="-1" role="dialog"
@@ -483,7 +483,7 @@
             </div>
         @endforeach
     @endif
-    @if($ph_available_for_gh)
+    @if($ph_available_for_gh->count() > 0)
         @foreach($ph_available_for_gh as $row)
             <div>
                 <div class="modal fade admin-get-help-withdrawal-modal-{{$row->token}}" tabindex="-1" role="dialog"
@@ -553,37 +553,36 @@
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
             </div>
-
-            <div class="modal fade admin-ceo-get-help-withdrawal-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title mt-0" id="mySmallModalLabel"><b class="text-primary">CEO Withdrawal</b></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{route('save.ceo.get.help')}}" method="POST">
-                                @csrf
-                                <div class="form-group row">
-                                    <div class="col-md-10">
-                                        <h5><b>Enter Amount(&#8358;)</b></h5>
-                                        <div id="amount-gh"></div>
-                                        <input id="gh-enter-amount" class="form-control" name="gh_ceo" type="number" required>
-                                    </div>
-                                </div>
-                                <button type="submit"
-                                        class="btn btn-primary waves-effect waves-light">
-                                    Send
-                                </button>
-                            </form>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div>
         @endforeach
     @endif
+    <div class="modal fade admin-ceo-get-help-withdrawal-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="mySmallModalLabel"><b class="text-primary">CEO Withdrawal</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('save.ceo.get.help')}}" method="POST">
+                        @csrf
+                        <div class="form-group row">
+                            <div class="col-md-10">
+                                <h5><b>Enter Amount(&#8358;)</b></h5>
+                                <div id="amount-gh"></div>
+                                <input id="gh-enter-amount" class="form-control" name="gh_ceo" type="number" required>
+                            </div>
+                        </div>
+                        <button type="submit"
+                                class="btn btn-primary waves-effect waves-light">
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 @endsection
 
 @section('js')

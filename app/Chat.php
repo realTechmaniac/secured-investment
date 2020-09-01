@@ -8,7 +8,7 @@ class Chat extends Model
 {
 
     protected $fillable = [
-        'title', 'message', 'from_id', 'to_id', 'token'
+        'message_title', 'message_body', 'from_id', 'to_id', 'token'
     ];
 
 

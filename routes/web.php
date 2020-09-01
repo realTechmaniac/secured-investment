@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 //Index page route handler
 //Route::get('/test','PagesController@index');
 
-Route::get('/test','PagesController@ghWithdrawal');
-
+Route::get('/test','PagesController@showNewsSummary');
 
 
 Auth::routes();
@@ -43,13 +42,28 @@ Route::middleware(['auth'])->group(function (){
     Route::delete('/cancel-activation-fee/{token}', 'UserController@cancelActivationFee')->name('cancel.activation.fee');
     Route::delete('/cancel-provide-help/{token}', 'UserController@cancelProvideHelp')->name('cancel.provide.help');
     Route::delete('/cancel-get-help/{token}', 'UserController@cancelGetHelp')->name('cancel.get.help');
+    Route::get('/user-details', 'UserController@userDetails')->name('user.details');
+    Route::post('/change-password/{user_token}', 'UserController@changePassword')->name('change.password');
 
 
     /*Merge*/
-    Route::get('/merge-pending-ph/{gh_token?}', 'Admin\MergeController@showPendingPh')->name('show.pending.ph');
-    Route::get('/merge-pending-gh/{ph_token?}', 'Admin\MergeController@showPendingGh')->name('show.pending.gh');
-    Route::post('/merge-pending-ph-with-pending-gh/{ph_token}/{gh_token}', 'Admin\MergeController@mergePendingPh')->name('merge.pending.ph');
-    Route::post('/merge-pending-gh-with-pending-ph/{gh_token}/{ph_token}', 'Admin\MergeController@mergePendingGh')->name('merge.pending.gh');
+    Route::get('/admin/all-users', 'Admin\AllUsers@showUsers')->name('show.users');
+    Route::get('/admin/generate-password-reset-link/{user_token}', 'Admin\AllUsers@generatePasswordResetLink')->name('generate.password.reset.link');
+    /*Reset Password*/
+    Route::get('/admin/password-reset/{misc_token}', 'Admin\AllUsers@passwordResetPage')->name('password.reset.page');
+    Route::post('/admin/save-password-reset/{misc_token}', 'Admin\AllUsers@savePasswordReset')->name('save.password.reset');
+    Route::get('/admin/edit-user-details/{user_token}', 'Admin\AllUsers@editUserDetails')->name('edit.user.details');
+    Route::put('/admin/save-user-details/{user_token}', 'Admin\AllUsers@saveUserDetails')->name('save.user.details');
+    Route::put('/admin/save-bank-details/{bank_token}', 'Admin\AllUsers@saveBankDetails')->name('save.bank.details');
+    Route::get('/admin/merge-pending-ph/{gh_token?}', 'Admin\MergeController@showPendingPh')->name('show.pending.ph');
+    Route::get('/admin/merge-pending-gh/{ph_token?}', 'Admin\MergeController@showPendingGh')->name('show.pending.gh');
+    Route::post('/admin/merge-pending-ph-with-pending-gh/{ph_token}/{gh_token}', 'Admin\MergeController@mergePendingPh')->name('merge.pending.ph');
+    Route::post('/admin/merge-pending-gh-with-pending-ph/{gh_token}/{ph_token}', 'Admin\MergeController@mergePendingGh')->name('merge.pending.gh');
+    Route::get('/admin/messages', 'MessagesController@showAdminMessages')->name('show.admin.messages');
+    Route::get('/admin/single-message/{chat_token}', 'MessagesController@singleAdminMessages')->name('single.admin.message');
+    Route::get('/admin/news', 'NewsController@adminShowNews')->name('admin.show.news');
+    Route::get('/admin/single-news/{news_token}', 'NewsController@adminSingleNews')->name('admin.single.news');
+    Route::get('/admin/dashboard', 'Admin\ActivitiesController@dashboard')->name('admin.dashboard');
     /*Resolve Issues*/
     Route::get('/fake-receipt-issues', 'Admin\ResolveIssuesController@fakeReceiptIssues')->name('fake.receipt.issues');
     Route::get('/unconfirmed-user-payment', 'Admin\ResolveIssuesController@unconfirmedUserPayment')->name('unconfirmed.user.payment');
@@ -83,4 +97,19 @@ Route::middleware(['auth'])->group(function (){
 
 
     Route::get('/transactions', 'TransactionController@showTransactions')->name('transactions');
+
+
+    Route::get('/referrals', 'ReferralController@showReferrals')->name('show.referrals');
+
+    Route::get('/news', 'NewsController@showNews')->name('show.news');
+    Route::get('/single-news/{news_token}', 'NewsController@singleNews')->name('single.news');
+    Route::get('/create-news', 'NewsController@createNews')->name('create.news');
+    Route::put('/update-news/{news_token}', 'NewsController@updateNews')->name('update.news');
+    Route::post('/save-news', 'NewsController@saveNews')->name('save.news');
+
+
+    Route::get('/messages', 'MessagesController@showMessages')->name('show.messages');
+    Route::get('/single-message/{token}', 'MessagesController@singleMessages')->name('single.message');
+    Route::post('/save-message', 'MessagesController@saveMessages')->name('save.message');
+
 });

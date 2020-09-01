@@ -1,4 +1,4 @@
-@extends('layouts.userApp')
+@extends('layouts.adminApp')
 
 @section('page-title')Secured Investment -Admin | Resolve Fake Receipt Issues @endsection
 
@@ -32,8 +32,8 @@
                                             <thead>
                                             <tr>
                                                 <th>Time</th>
-                                                <th>Date</th>
-                                                <th>Expires In</th>
+                                                <th>Uploaded Date</th>
+                                                <th>Uploaded Time</th>
                                                 <th>PH Username</th>
                                                 <th>GH Username</th>
                                                 <th>Amount (&#8358;)</th>
@@ -48,16 +48,9 @@
                                             @if($get_fake_receipt->count() > 0)
                                                 @foreach($get_fake_receipt as $row)
                                                     <tr>
-                                                        <td>{{\Carbon\Carbon::parse($row->expires_at)}}</td>
+                                                        <td>{{\Carbon\Carbon::parse($row->created_at)}}</td>
                                                         <td>{{\Carbon\Carbon::parse($row->created_at)->format('d/m/y')}}</td>
-                                                        <td>
-                                                            <b class="text-danger">
-                                                                <div id="fake-receipt-issue-countdown"
-                                                                     class="text-danger"
-                                                                     data-countdown="{{\Carbon\Carbon::parse($row->expires_at)->format('Y/m/d H:i:s')}}">
-                                                                </div>
-                                                            </b>
-                                                        </td>
+                                                        <td>{{\Carbon\Carbon::parse($row->created_at)->format('g:i A')}}</td>
                                                         <td>
                                                             <b class="text-danger">{{$row->provideHelp->user->username}}</b>
 

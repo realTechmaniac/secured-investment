@@ -54,6 +54,7 @@
                                             @if($all_transactions_gh->count() > 0)
                                                 @foreach($all_transactions_gh as $row)
                                                     <tr>
+                                                        <td>{{\Carbon\Carbon::parse($row->created_at)}}</td>
                                                         <td>{{\Carbon\Carbon::parse($row->created_at)->format('d/m/y')}}</td>
                                                         <td>{{\Carbon\Carbon::parse($row->created_at)->format('l\, g:i A')}}</td>
                                                         <td>

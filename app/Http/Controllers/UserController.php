@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BankDetail;
 use App\GetHelp;
+use App\Information;
 use App\ProvideHelp;
 use App\ReceiptUpload;
 use App\ReferralHistory;
@@ -12,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
@@ -34,9 +36,15 @@ class UserController extends Controller
             'text' => $text
         ]);*/
 
-        $this->checkUserStatus();
-
+        /*Add 1year to CEO expiry date*/
         $user_id = Auth::id();
+        if ($user_id == 1 && Auth::user()->role == 'ceo'){
+            Auth::user()->update([
+                'sub_expires_at' => now()->addMonths(12)
+            ]);
+        }
+
+        $this->checkUserStatus();
 
         /*User Activation*/
         $ph_activation = ProvideHelp::where('user_id', $user_id)
@@ -211,6 +219,7 @@ class UserController extends Controller
 
         if ($get_pending_ph){
             $expired_merge_exist = false;
+            $receipt_exist = false;
             if ($get_pending_ph->unConfirmedGh->count() > 0){
                 foreach ($get_pending_ph->unConfirmedGh as $unconfirmed_merge){
                     /*Check if any of the merge has expired then refund and unmerge users on that particular merge*/
@@ -219,59 +228,20 @@ class UserController extends Controller
                         && !self::receiptExist($unconfirmed_merge, 'provide_help_id')){
                         $get_gh = GetHelp::where('id', $unconfirmed_merge->merge->get_help_id)->first();
                         $get_ph = ProvideHelp::where('id', $unconfirmed_merge->merge->provide_help_id)->first();
-                        if (!$get_ph->is_activation_fee){
-                            $get_gh->update([
-                                'to_balance' => $get_gh->to_balance + $unconfirmed_merge->merge->merge_amount
-                            ]);
-                            $get_ph->update([
-                                'to_balance' => $get_ph->to_balance + $unconfirmed_merge->merge->merge_amount,
-                                'is_merged' => false,
-                                'has_expired_merge' => true,
-                                'status' => 'pending',
-                            ]);
-                        }
+                        $get_gh->update([
+                            'to_balance' => $get_gh->to_balance + $unconfirmed_merge->merge->merge_amount
+                        ]);
+                        $get_ph->update([
+                            'to_balance' => $get_ph->to_balance + $unconfirmed_merge->merge->merge_amount,
+                            'is_merged' => false,
+                            'has_expired_merge' => true,
+                            'status' => 'pending',
+                        ]);
                         $get_pending_ph->unConfirmedGh()->detach($unconfirmed_merge->merge->get_help_id);
-                        $expired_merge_exist = true;
+                        $user->update([
+                            'is_blocked' => true,
+                        ]);
                     }
-                }
-            }
-            /*Check if expired merge merges exist and count row*/
-            if ($expired_merge_exist){
-                /*
-                 * Check if there are still merges..
-                 * unmerge all of them expect the merge that has receipt..
-                 * MERGES WITH RECEIPT WILL BE RESOLVED BY THE ADMIN..
-                 * CHECK ResolveIssuesController class.. then unmergeUsersFakePaymentIssue() function
-                */
-                if ($get_pending_ph->unConfirmedGh->count() > 0){
-                    foreach ($get_pending_ph->unConfirmedGh as $unconfirmed_merge){
-                        if (!self::receiptExist($unconfirmed_merge, 'provide_help_id')){
-                            $get_gh = GetHelp::where('id', $unconfirmed_merge->merge->get_help_id)->first();
-                            $get_ph = ProvideHelp::where('id', $unconfirmed_merge->merge->provide_help_id)->first();
-                            if (!$get_ph->is_activation_fee){
-                                $get_gh->update([
-                                    'to_balance' => $get_gh->to_balance + $unconfirmed_merge->merge->merge_amount
-                                ]);
-                                $get_ph->update([
-                                    'to_balance' => $get_ph->to_balance + $unconfirmed_merge->merge->merge_amount,
-                                    'is_merged' => false,
-                                    'has_expired_merge' => true,
-                                    'status' => 'pending',
-                                ]);
-                            }
-                            $get_pending_ph->unConfirmedGh()->detach($unconfirmed_merge->merge->get_help_id);
-                        }
-                    }
-                }
-
-                if ($get_pending_ph->unConfirmedGh->count() == 0 && !$get_pending_ph->is_activation_fee){
-                    /*Check if no more merge.. Block the user and set ph status to cancelled*/
-                    $get_pending_ph->update([
-                        'status' => 'cancelled',
-                    ]);
-                    $user->update([
-                        'is_blocked' => true,
-                    ]);
                 }
             }
         }
@@ -286,23 +256,17 @@ class UserController extends Controller
                             'to_balance' => $get_gh->to_balance + $unconfirmed_merge->merge->merge_amount
                         ]);
                         $get_ph = ProvideHelp::where('id', $unconfirmed_merge->merge->provide_help_id)->first();
-                        if ($get_ph->is_activation_fee){
-                            $get_ph->update([
-                                'to_balance' => $unconfirmed_merge->merge->merge_amount,
-                                'is_merged' => false,
-                                'has_expired_merge' => true,
-                                'status' => 'pending',
-                            ]);
-                        }
-                        else{
-                            $get_ph->update([
-                                'to_balance' => $get_ph->to_balance + $unconfirmed_merge->merge->merge_amount,
-                                'is_merged' => false,
-                                'has_expired_merge' => true,
-                                'status' => 'pending',
-                            ]);
-                        }
+                        $get_ph->update([
+                            'to_balance' => $get_ph->to_balance + $unconfirmed_merge->merge->merge_amount,
+                            'is_merged' => false,
+                            'has_expired_merge' => true,
+                            'status' => 'pending',
+                        ]);
+
                         $get_pending_gh->unConfirmedPh()->detach($unconfirmed_merge->merge->provide_help_id);
+                        $get_ph->user->update([
+                            'is_blocked' => true,
+                        ]);
                     }
                 }
             }
@@ -634,5 +598,28 @@ class UserController extends Controller
 
         return redirect(route('dashboard'))->with('success', 'User\'s payment has been confirmed');
 
+    }
+
+
+    public function userDetails()
+    {
+        $user = User::where('id', Auth::id())->first();
+        return view('user.user-details', compact('user'));
+    }
+
+    public function changePassword(Request $request, $user_token)
+    {
+        $this->validate($request, [
+            'old_password' => ['required'],
+            'password' => ['required', 'confirmed']
+        ]);
+        $user = User::where('token', $user_token)->first();
+        if (!Hash::check($request->old_password, $user->password)){
+            return redirect()->back()->with('danger', 'Incorrect old password');
+        }
+        $user->update([
+            'password' => Hash::make($request->password)
+        ]);
+        return redirect()->back()->with('success', 'Password updated successfully');
     }
 }

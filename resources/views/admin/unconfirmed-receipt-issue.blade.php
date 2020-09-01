@@ -1,4 +1,4 @@
-@extends('layouts.userApp')
+@extends('layouts.adminApp')
 
 @section('page-title')Secured Investment -Admin | Resolve Unconfirmed Receipt Issues @endsection
 
@@ -22,8 +22,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Unconfirmed Transactions</h4>
-                                <p class="card-title-desc">Below are transactions that has receipt but has not been confirmed.
-                                Note that the admin has only two weeks to take actions.</p>
+                                <p class="card-title-desc">Below are transactions that has receipt but has not been confirmed.</p>
                                 <div class="table-rep-plugin">
                                     <div class="mb-0" data-pattern="priority-columns">
                                         <table id="unconfirmed-transactions"

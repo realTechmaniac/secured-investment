@@ -1,6 +1,6 @@
 @extends('layouts.userApp')
 
-@section('page-title')Secured Investment -Dashboard @endsection
+@section('page-title')Secured Investment -Provide Help @endsection
 
 @section('content')
     <div class="main-content">

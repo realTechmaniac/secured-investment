@@ -14,6 +14,17 @@ class PagesController extends Controller
     	return view('test.index');
     }
 
+    public function terms(){
+
+        return view('test.terms');
+    }
+
+
+    public function work(){
+
+        return view('test.work');
+    }
+
     public function login(){
 
     	return view('test.login');
@@ -112,6 +123,66 @@ class PagesController extends Controller
     public function accountReactivate(){
 
         return view('test.dashboard.reactivate');
+    }
+
+//This method returns each user Profile
+    
+    public function showProfile(){
+
+        return view('test.dashboard.profile');
+    }
+
+
+//Latest Transactions
+
+    public function showTransactions(){
+
+        return view('test.dashboard.transactions');
+
+    }
+
+
+//Shows news page 
+
+
+    public function showNews(){
+
+        return view('test.dashboard.news');
+    }
+
+//show admin dashboard
+
+    public function showAdmin(){
+
+        return view('test.dashboard.admin_dashboard');
+    }
+
+
+     public function showAdminSupport(){
+
+        return view('test.dashboard.admin-support');
+    }
+
+
+    public function showReferrals(){
+
+        return view('test.dashboard.referrals');
+    }
+
+
+     public function postNews(){
+
+        return view('test.dashboard.post-news');
+    }
+
+    public function showNewsSummary(){
+
+        return view('test.dashboard.news-summary');
+    }
+
+    public function showUserSupport(){
+
+        return view('test.dashboard.user-support');
     }
 }
 
