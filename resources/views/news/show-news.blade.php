@@ -21,6 +21,13 @@
                     <div class="col-xl-8 col-sm-12">
                         <div class="card">
                             <div class="card-body">
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h3 class="card-title mt-0">
+                                        <a href="{{route('show.news')}}">
+                                            News
+                                        </a>
+                                    </h3>
+                                </div>
                                 @if($news->count() > 0)
                                     @foreach($news as $row)
                                         <div class="media">

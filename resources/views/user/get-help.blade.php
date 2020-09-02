@@ -244,8 +244,8 @@
                                                     <td>{{$row->created_at->format('d/m/y')}}</td>
                                                     <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>
-                                                        {{--@if($row->available_for_gh_at > now()->addDays(4))--}}
-                                                        @if($row->available_for_gh_at > now()->addSeconds(45))
+                                                        @if($row->available_for_gh_at > now()->addDays(4))
+                                                        {{--@if($row->available_for_gh_at > now()->addSeconds(45))--}}
                                                             <b class="text-primary">Countdown starts soon...</b>
                                                         @else
                                                             <b>
@@ -277,8 +277,8 @@
                                                     <td>{{$row->created_at->format('d/m/y')}}</td>
                                                     <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>
-                                                        {{--@if($row->available_for_gh_at > now()->addDays(4))--}}
-                                                        @if($row->available_for_gh_at > now()->addSeconds(45))
+                                                        @if($row->available_for_gh_at > now()->addDays(4))
+                                                        {{--@if($row->available_for_gh_at > now()->addSeconds(45))--}}
                                                             <b class="text-primary">Countdown starts soon...</b>
                                                         @else
                                                             <b>
@@ -314,8 +314,8 @@
                                                     <td>{{$row->created_at->format('d/m/y')}}</td>
                                                     <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>
-                                                        {{--@if($row->available_for_gh_at > now()->addDays(2))--}}
-                                                        @if($row->available_for_gh_at > now()->addSeconds(35))
+                                                        @if($row->available_for_gh_at > now()->addDays(2))
+                                                        {{--@if($row->available_for_gh_at > now()->addSeconds(35))--}}
                                                             <b class="text-primary">Countdown starts soon...</b>
                                                         @else
                                                             <b>
@@ -347,8 +347,8 @@
                                                     <td>{{$row->created_at->format('d/m/y')}}</td>
                                                     <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>
-                                                        {{--@if($row->available_for_gh_at > now()->addDays(2))--}}
-                                                        @if($row->available_for_gh_at > now()->addSeconds(35))
+                                                        @if($row->available_for_gh_at > now()->addDays(2))
+                                                        {{--@if($row->available_for_gh_at > now()->addSeconds(35))--}}
                                                             <b class="text-primary">Countdown starts soon...</b>
                                                         @else
                                                             <b>

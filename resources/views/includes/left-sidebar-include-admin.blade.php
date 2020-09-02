@@ -47,30 +47,32 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{route('show.pending.ph')}}" class=" waves-effect">
-                        <i class="bx bx-git-merge"></i>
-                        <span>Merge Pending PH</span>
-                    </a>
-                </li>
+                @if(auth()->user()->role == 'ceo' || auth()->user()->role == 'manager')
+                    <li>
+                        <a href="{{route('show.pending.ph')}}" class=" waves-effect">
+                            <i class="bx bx-git-merge"></i>
+                            <span>Merge Pending PH</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="{{route('show.pending.gh')}}" class=" waves-effect">
-                        <i class="bx bx-git-merge"></i>
-                        <span>Merge Pending GH</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="{{route('show.pending.gh')}}" class=" waves-effect">
+                            <i class="bx bx-git-merge"></i>
+                            <span>Merge Pending GH</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-wrench"></i>
-                        <span>Resolve Issues</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('fake.receipt.issues')}}">Fake Receipt</a></li>
-                        <li><a href="{{route('unconfirmed.user.payment')}}">Unconfirmed Payments</a></li>
-                    </ul>
-                </li>
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="bx bx-wrench"></i>
+                            <span>Resolve Issues</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{route('fake.receipt.issues')}}">Fake Receipt</a></li>
+                            <li><a href="{{route('unconfirmed.user.payment')}}">Unconfirmed Payments</a></li>
+                        </ul>
+                    </li>
+                @endif
 
                 <li>
                     <a class="waves-effect text-danger" onclick="event.preventDefault();

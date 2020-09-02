@@ -12,7 +12,7 @@
 <div id="layout-wrapper">
 
 @include('includes.header-include')
-@include('includes.left-sidebar-include-admin')
+@include('includes.left-sidebar-include')
 
 @yield('content')
 

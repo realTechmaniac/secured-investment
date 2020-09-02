@@ -62,8 +62,10 @@
                                                         <td>{{$ph->getHelps->count()}} User(s)</td>
                                                         <td>{{number_format($ph->to_balance)}}</td>
                                                         <td>
-                                                            <i class="bx bx-user bx-sm mr-1 " data-toggle="tooltip"
-                                                               data-placement="top" title="View Profile"></i>
+                                                            <a href="{{route('edit.user.details', $ph->user->token)}}">
+                                                                <i class="bx bx-user bx-sm mr-1 " data-toggle="tooltip"
+                                                                   data-placement="top" title="View {{$ph->user->username}}'s Profile"></i>
+                                                            </a>
                                                             <!-- Button trigger modal -->
                                                             @if(!$gh)
                                                                 <a href="{{route('show.pending.gh', [$ph->token])}}"

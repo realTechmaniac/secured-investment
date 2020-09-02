@@ -4,22 +4,27 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
-
-                <li class="">
-                    <a href="javascript: void(0);" class="has-arrow waves-effect" aria-expanded="false">
-                        <i class="bx bx-store"></i>
-                        <span>Admin</span>
-                    </a>
-                    <ul class="sub-menu mm-collapse" aria-expanded="false" style="height: 0px;">
-                        <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                    </ul>
-                </li>
+                <li class="menu-title">User Menu</li>
+                @if(auth()->user()->role != 'regular')
+                    <li>
+                        <a href="{{route('admin.dashboard')}}" class=" waves-effect">
+                            <i class="bx bx-home-circle"></i>
+                            <span>Dashboard(Admin)</span>
+                        </a>
+                    </li>
+                @endif
 
                 <li>
                     <a href="{{route('dashboard')}}" class=" waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('user.details')}}" class=" waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>Profile</span>
                     </a>
                 </li>
 
@@ -30,22 +35,24 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{route('show.messages')}}" class=" waves-effect">
-                        <i class="bx bx-envelope"></i>
-                        <span>Messages </span>
-                        @if($unread_messages > 0)
-                            <span class="badge badge-danger">{{$unread_messages}}</span>
-                        @endif
-                    </a>
-                </li>
+                @if(auth()->user()->role == 'regular')
+                    <li>
+                        <a href="{{route('show.messages')}}" class=" waves-effect">
+                            <i class="bx bx-envelope"></i>
+                            <span>Messages </span>
+                            @if($unread_messages > 0)
+                                <span class="badge badge-danger">{{$unread_messages}}</span>
+                            @endif
+                        </a>
+                    </li>
+                @endif
 
-                <li>
+                {{--<li>
                     <a href="{{route('show.admin.messages')}}" class=" waves-effect">
                         <i class="mdi mdi-facebook-messenger"></i>
                         <span>Messages (Admin)</span>
                     </a>
-                </li>
+                </li>--}}
 
                 <li>
                     <a href="{{route('show.referrals')}}" class=" waves-effect">
@@ -54,18 +61,12 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{route('user.details')}}" class=" waves-effect">
-                        <i class="bx bx-user"></i>
-                        <span>Profile</span>
-                    </a>
-                </li>
-                <li>
+                {{--<li>
                     <a href="{{route('create.news')}}" class=" waves-effect">
                         <i class="bx bxs-file-plus"></i>
                         <span>Create News</span>
                     </a>
-                </li>
+                </li>--}}
 
                 <li>
                     <a href="{{route('show.news')}}" class=" waves-effect">
@@ -74,36 +75,36 @@
                     </a>
                 </li>
 
-                <li>
+                {{--<li>
                     <a href="{{route('show.users')}}" class=" waves-effect">
                         <i class="fas fa-users"></i>
                         <span>Users</span>
                     </a>
-                </li>
+                </li>--}}
 
 
-                <li>
+                {{--<li>
                     <a href="calendar.html" class=" waves-effect">
                         <i class="bx bxs-phone"></i>
                         <span>Support</span>
                     </a>
-                </li>
+                </li>--}}
 
-                <li>
+                {{--<li>
                     <a href="{{route('show.pending.ph')}}" class=" waves-effect">
                         <i class="bx bx-git-merge"></i>
                         <span>Merge Pending PH</span>
                     </a>
-                </li>
+                </li>--}}
 
-                <li>
+                {{--<li>
                     <a href="{{route('show.pending.gh')}}" class=" waves-effect">
                         <i class="bx bx-git-merge"></i>
                         <span>Merge Pending GH</span>
                     </a>
-                </li>
+                </li>--}}
 
-                <li>
+                {{--<li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-wrench"></i>
                         <span>Resolve Issues</span>
@@ -112,7 +113,7 @@
                         <li><a href="{{route('fake.receipt.issues')}}">Fake Receipt</a></li>
                         <li><a href="{{route('unconfirmed.user.payment')}}">Unconfirmed Payments</a></li>
                     </ul>
-                </li>
+                </li>--}}
 
                 <li>
                     <a class="waves-effect text-danger" onclick="event.preventDefault();

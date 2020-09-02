@@ -349,6 +349,13 @@ class UserController extends Controller
             'token' => Str::random(39),
             ]
         );
+        /*$text = "Congratulations <b>".Auth::user()->username."</b>, payment of &#8358;".$get_merge_amount." is uploaded.";
+
+        Telegram::sendMessage([
+            'chat_id' => -1001308789917,
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);*/
         session()->flash('success', 'Receipt uploaded successfully');
         return redirect(route('dashboard'));
     }
@@ -448,6 +455,9 @@ class UserController extends Controller
     public function cancelGetHelp($token)
     {
         $get_gh = GetHelp::where('token', $token)->first();
+        if (!$get_gh){
+            return redirect(route('dashboard'))->with('danger', 'Request already cancelled');
+        }
         if ($get_gh->provideHelps->count() > 0){
             return redirect(route('dashboard'))->with('danger', 'Request cannot be deleted because it has already been merged');
         }
@@ -500,6 +510,14 @@ class UserController extends Controller
         $ph_id = $ph->id;
         $gh = GetHelp::where('token', $gh_token)->first();
         $gh_id = $gh->id;
+        $check_if_already_confirmed = DB::table('merges')
+            ->where('provide_help_id', $ph_id)
+            ->where('get_help_id',$gh_id )
+            ->where('is_confirmed', true)
+            ->first();
+        if ($check_if_already_confirmed){
+            return redirect()->back()->with('danger', 'Already confirmed');
+        }
 
         /*Confirm payment on merge table*/
         $gh->provideHelps()->updateExistingPivot($ph_id, [
@@ -596,6 +614,13 @@ class UserController extends Controller
             }
         }
 
+        /*$text = "Congratulations <b>".$ph->user->username."</b>, your payment has been confirmed.";
+
+        Telegram::sendMessage([
+            'chat_id' => -1001308789917,
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);*/
         return redirect(route('dashboard'))->with('success', 'User\'s payment has been confirmed');
 
     }

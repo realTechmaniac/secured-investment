@@ -7,6 +7,7 @@ use App\ReferrerDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class BankDetailsController extends Controller
 {
@@ -38,6 +39,13 @@ class BankDetailsController extends Controller
             'token' => Str::random(40),
         ]);
 
+        /*$text = "Dear <b>".Auth::user()->username."</b> , Your registration on Secured investment was successful. Make Guider Activation Payment and start earning with us.";
+
+        Telegram::sendMessage([
+            'chat_id' => -1001308789917,
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);*/
         session()->flash('success', 'Registration successful');
 
         return redirect(route('dashboard'));

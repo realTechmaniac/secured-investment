@@ -7,7 +7,9 @@ use App\ProvideHelp;
 use App\ReferralHistory;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class ProvideHelpController extends Controller
 {
@@ -56,8 +58,8 @@ class ProvideHelpController extends Controller
                     'amount' => $ph_amount,
                     'to_balance' => $ph_amount,
                     'is_first' => true,
-                    /*'available_for_gh_at' => now()->addHours(24),*/
-                    'available_for_gh_at' => now()->addSeconds(30),
+                    'available_for_gh_at' => now()->addHours(24),
+                    /*'available_for_gh_at' => now()->addSeconds(30),*/
                     'token' => Str::random(40),
                 ]);
                 $user->update([
@@ -69,8 +71,8 @@ class ProvideHelpController extends Controller
                     'user_id' => $user->id,
                     'amount' => $ph_amount,
                     'to_balance' => $ph_amount,
-                    /*'available_for_gh_at' => now()->addDays(5),*/
-                    'available_for_gh_at' => now()->addSeconds(60),
+                    'available_for_gh_at' => now()->addDays(5),
+                   /* 'available_for_gh_at' => now()->addSeconds(60),*/
                     'token' => Str::random(40),
                 ]);
             }
@@ -86,8 +88,8 @@ class ProvideHelpController extends Controller
                     'amount' => $ph_amount,
                     'to_balance' => $ph_amount,
                     'is_first' => true,
-                    /*'available_for_gh_at' => now()->addHours(24),*/
-                    'available_for_gh_at' => now()->addSeconds(30),
+                    'available_for_gh_at' => now()->addHours(24),
+                    /*'available_for_gh_at' => now()->addSeconds(30),*/
                     'token' => Str::random(40),
                 ]);
                 $user->update([
@@ -99,8 +101,8 @@ class ProvideHelpController extends Controller
                     'user_id' => $user->id,
                     'amount' => $ph_amount,
                     'to_balance' => $ph_amount,
-                    /*'available_for_gh_at' => now()->addDays(3),*/
-                    'available_for_gh_at' => now()->addSeconds(45),
+                    'available_for_gh_at' => now()->addDays(3),
+                    /*'available_for_gh_at' => now()->addSeconds(45),*/
                     'token' => Str::random(40),
                 ]);
             }
@@ -108,6 +110,14 @@ class ProvideHelpController extends Controller
                 return redirect(route('dashboard'))->with('danger', 'Request not processed. Something went wrong');
             }
         }
+
+        /*$text = "Hello <b>".Auth::user()->username."</b>, your request to donate ".$ph_amount." is successful, Kindly wait to be merged.";
+
+        Telegram::sendMessage([
+            'chat_id' => -1001308789917,
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);*/
 
         return redirect(route('dashboard'))->with('success', 'Request sent successfully');
     }

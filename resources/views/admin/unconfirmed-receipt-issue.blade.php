@@ -31,6 +31,8 @@
                                             <thead>
                                             <tr>
                                                 <th>Time</th>
+                                                <th>Uploaded Date</th>
+                                                <th>Uploaded Time</th>
                                                 <th>PH Username</th>
                                                 <th>GH Username</th>
                                                 <th>Amount (&#8358;)</th>
@@ -44,6 +46,8 @@
                                                 @foreach($get_all_unconfirmed_receipts as $row)
                                                     <tr>
                                                         <td>{{\Carbon\Carbon::parse($row->expires_at)}}</td>
+                                                        <td>{{\Carbon\Carbon::parse($row->created_at)->format('d/m/y')}}</td>
+                                                        <td>{{\Carbon\Carbon::parse($row->created_at)->format('g:i A')}}</td>
                                                         <td>
                                                             <b class="text-danger">{{$row->provideHelp->user->username}}</b>
 

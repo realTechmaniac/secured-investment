@@ -15,86 +15,34 @@ class BankSeeder extends Seeder
     {
         BankDetail::create([
             'user_id' => 1,
-            'full_name' => 'StuNNer Hensi',
-            'bank_name' => 'Skye Bank',
-            'account_number' => '1234679798',
+            'full_name' => 'ARISE OPEOLUWA DAVID ',
+            'bank_name' => 'GTB',
+            'account_number' => '0037492196',
             'token' => Str::random(40),
         ]);
 
         BankDetail::create([
             'user_id' => 2,
-            'full_name' => 'Adewale Akinlolu',
-            'bank_name' => 'Diamond Bank',
-            'account_number' => '1091679798',
+            'full_name' => 'JOLAOSHO RACHAEL DAMILOLA',
+            'account_number' => '0695250344',
+            'bank_name' => 'ACCESS BANK',
             'token' => Str::random(40),
         ]);
 
         BankDetail::create([
             'user_id' => 3,
-            'full_name' => 'Ajay Maximum',
-            'bank_name' => 'Orange Bank',
-            'account_number' => '0973679798',
+            'full_name' => 'EPEBINU ABIMBOLA TEMITOPE',
+            'account_number' => '0199220392',
+            'bank_name' => 'GTB',
             'token' => Str::random(40),
         ]);
 
         BankDetail::create([
             'user_id' => 4,
-            'full_name' => 'Bisola Adewale',
-            'bank_name' => 'Stanbic IBTC Bank',
-            'account_number' => '1234601298',
+            'full_name' => 'ARISE OPEOLUWA DAVID',
+            'account_number' => '0037492196',
+            'bank_name' => 'GTB',
             'token' => Str::random(40),
         ]);
-
-        BankDetail::create([
-            'user_id' => 5,
-            'full_name' => 'Foluke Akande',
-            'bank_name' => 'Golden Bank',
-            'account_number' => '1236539798',
-            'token' => Str::random(40),
-        ]);
-
-        BankDetail::create([
-            'user_id' => 6,
-            'full_name' => 'Akinolu Akanbi',
-            'bank_name' => 'First Bank',
-            'account_number' => '9744679798',
-            'token' => Str::random(40),
-        ]);
-
-        BankDetail::create([
-            'user_id' => 7,
-            'full_name' => 'Helena Martins',
-            'bank_name' => 'Keystone Bank',
-            'account_number' => '0987369798',
-            'token' => Str::random(40),
-        ]);
-
-        BankDetail::create([
-            'user_id' => 8,
-            'full_name' => 'Maryanne Mubarak',
-            'bank_name' => 'Access Bank',
-            'account_number' => '9744609837',
-            'token' => Str::random(40),
-        ]);
-
-        BankDetail::create([
-            'user_id' => 9,
-            'full_name' => 'Justina Adekunle',
-            'bank_name' => 'Skye Bank',
-            'account_number' => '9742736598',
-            'token' => Str::random(40),
-        ]);
-
-        BankDetail::create([
-            'user_id' => 10,
-            'full_name' => 'Femi Alabi',
-            'bank_name' => 'Oceanic Bank',
-            'account_number' => '9950679625',
-            'token' => Str::random(40),
-        ]);
-
-
-
-
     }
 }

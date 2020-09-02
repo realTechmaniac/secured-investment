@@ -21,6 +21,13 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h3 class="card-title mt-0">
+                                        <a href="{{route('show.news')}}">
+                                            News
+                                        </a>
+                                    </h3>
+                                </div>
                                 @if($single_news)
                                     <h4 class="text-primary">{{$single_news->title}}</h4>
                                     <h4 class="card-title mt-0"><b class="text-secondary">Post By</b> &nbsp;

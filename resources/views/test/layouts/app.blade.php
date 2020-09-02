@@ -17,10 +17,10 @@
         <!-- main css -->
         <link rel="stylesheet" href="{{asset('asset/css/style.css')}}">
         <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
-        
+
     </head>
     <body>
-        
+
         <!--================Header Menu Area =================-->
         <header class="header_area">
             <div class="main_menu">
@@ -36,17 +36,17 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="ml-auto" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav justify-content-center">
-								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
 								<li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
-                                <li class="nav-item"><a class="nav-link" href="about-us.html">Contact</a></li> 
-								
-						</div> 
+                                <li class="nav-item"><a class="nav-link" href="about-us.html">Contact</a></li>
+
+						</div>
 					</div>
             	</nav>
             </div>
         </header>
         <!--================Header Menu Area =================-->
-        
+
         <!--================Home Banner Area =================-->
         <section class="home_banner_area">
             <div class="banner_inner">
@@ -62,7 +62,7 @@
 						</div>
 						<div class="col-lg-7">
 							<div class="home_left_img">
-								<img class="img-fluid" src="{{asset('asset/img/banner/home-left-1.png')}}" alt="">
+								<img class="img-fluid" src="{{asset('assets/secured_inv.png')}}" alt="">
 							</div>
 						</div>
 					</div>
@@ -74,14 +74,14 @@
 
 
             @yield('content');
-        
-     
+
+
         <!--================ END CONTENT AREA=================-->
-        
-        
 
 
-        
+
+
+
         <!--================Footer Area =================-->
         <footer class="footer_area p_120">
         	<div class="container">
@@ -107,8 +107,8 @@
                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
                                 	<div class="input-group d-flex flex-row">
                                         <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>		
-                                    </div>				
+                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>
+                                    </div>
                                     <div class="mt-10 info"></div>
                                 </form>
                             </div>
@@ -131,7 +131,7 @@
         	</div>
         </footer>
         <!--================End Footer Area =================-->
-        
+
         <script type="text/javascript">
             function toggleIcon(e) {
                 $(e.target)
@@ -142,9 +142,9 @@
             $('.panel-group').on('hidden.bs.collapse', toggleIcon);
             $('.panel-group').on('shown.bs.collapse', toggleIcon);
         </script>
-        
-        
-        
+
+
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="{{asset('asset/js/jquery-3.2.1.min.js')}}"></script>

@@ -6,7 +6,9 @@ use App\GetHelp;
 use App\Http\Controllers\Controller;
 use App\ProvideHelp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class MergeController extends Controller
 {
@@ -34,7 +36,7 @@ class MergeController extends Controller
                 ->count() > 0;
 
         if ($check){
-            return redirect(route('dashboard'))->with('danger', 'You have already merged these users');
+            return redirect(route('show.pending.gh'))->with('danger', 'You have already merged these users');
         }
 
         if ($gh && $ph){
@@ -55,6 +57,14 @@ class MergeController extends Controller
                     'is_confirmed' => false,
                     'expires_at' => now()->addHours(12),
                 ]);
+
+                /*$text = "Dear <b>".$ph->user->username."</b>, you have been merged to make a payment of &#8358;".$ph_to_balance.". Login to view details";
+
+                Telegram::sendMessage([
+                    'chat_id' => -1001308789917,
+                    'parse_mode' => 'HTML',
+                    'text' => $text
+                ]);*/
             }
             elseif ($gh_to_balance < $ph_to_balance){
                 $gh->update([
@@ -69,6 +79,14 @@ class MergeController extends Controller
                     'is_confirmed' => false,
                     'expires_at' => now()->addHours(12),
                 ]);
+
+                /*$text = "Dear <b>".$ph->user->username."</b>, you have been merged to make a payment of &#8358;".$gh_to_balance.". Login to view details";
+
+                Telegram::sendMessage([
+                    'chat_id' => -1001308789917,
+                    'parse_mode' => 'HTML',
+                    'text' => $text
+                ]);*/
             }
             elseif ($gh_to_balance == $ph_to_balance){
                 $gh->update([
@@ -84,10 +102,18 @@ class MergeController extends Controller
                     'is_confirmed' => false,
                     'expires_at' => now()->addHours(12),
                 ]);
+
+                /*$text = "Dear <b>".$ph->user->username."</b>, you have been merged to make a payment of &#8358;".$gh_to_balance.". Login to view details";
+
+                Telegram::sendMessage([
+                    'chat_id' => -1001308789917,
+                    'parse_mode' => 'HTML',
+                    'text' => $text
+                ]);*/
             }
             else{
                 session()->flash('danger', 'Data not available or accurate');
-                return redirect(route('dashboard'));
+                return redirect(route('show.pending.gh'));
             }
             session()->flash('success', 'Merge successful');
         }
@@ -95,7 +121,7 @@ class MergeController extends Controller
             session()->flash('danger', 'Something went wrong');
         }
 
-        return redirect(route('dashboard'));
+        return redirect(route('show.pending.gh'));
     }
 
     public function mergePendingGh($gh_token, $ph_token)
@@ -109,7 +135,7 @@ class MergeController extends Controller
                 ->count() > 0;
 
         if ($check){
-            return redirect(route('dashboard'))->with('danger', 'You have already merged these users');
+            return redirect(route('show.pending.ph'))->with('danger', 'You have already merged these users');
         }
 
         if ($ph && $gh){
@@ -130,6 +156,14 @@ class MergeController extends Controller
                     'is_confirmed' => false,
                     'expires_at' => now()->addHours(12),
                 ]);
+
+                /*$text = "Dear <b>".$ph->user->username."</b>, you have been merged to make a payment of &#8358;".$gh_to_balance.". Login to view details";
+
+                Telegram::sendMessage([
+                    'chat_id' => -1001308789917,
+                    'parse_mode' => 'HTML',
+                    'text' => $text
+                ]);*/
             }
             elseif ($ph_to_balance < $gh_to_balance){
                 $ph->update([
@@ -144,6 +178,14 @@ class MergeController extends Controller
                     'is_confirmed' => false,
                     'expires_at' => now()->addHours(12),
                 ]);
+
+                /*$text = "Dear <b>".$ph->user->username."</b>, you have been merged to make a payment of &#8358;".$ph_to_balance.". Login to view details";
+
+                Telegram::sendMessage([
+                    'chat_id' => -1001308789917,
+                    'parse_mode' => 'HTML',
+                    'text' => $text
+                ]);*/
             }
             elseif ($ph_to_balance == $gh_to_balance){
                 $ph->update([
@@ -159,18 +201,26 @@ class MergeController extends Controller
                     'is_confirmed' => false,
                     'expires_at' => now()->addHours(12),
                 ]);
+
+                /*$text = "Dear <b>".$ph->user->username."</b>, you have been merged to make a payment of &#8358;".$ph_to_balance.". Login to view details";
+
+                Telegram::sendMessage([
+                    'chat_id' => -1001308789917,
+                    'parse_mode' => 'HTML',
+                    'text' => $text
+                ]);*/
             }
             else{
                 session()->flash('danger', 'Data not available or accurate');
-                return redirect(route('dashboard'));
+                return redirect(route('show.pending.ph'));
             }
-
+            session()->flash('success', 'Merge successful');
         }
         else{
             session()->flash('danger', 'Something went wrong');
         }
 
-        return redirect(route('dashboard'));
+        return redirect(route('show.pending.ph'));
     }
 
 

@@ -92,7 +92,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="phone_number">Phone Number</label>
-                                            <input type="text" class="form-control" placeholder="format +234XXXXXXXXXX" name="phone_number" id="phone_number" required value="{{ old('phone_number') }}">
+                                            <input type="number" class="form-control" placeholder="Phone Number" name="phone_number" id="phone_number" required value="{{ old('phone_number') }}">
                                         </div>
                                     </div>
                                 </div>

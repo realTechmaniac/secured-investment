@@ -116,12 +116,6 @@ class User extends Authenticatable
         return strtolower($value);
     }
 
-    public function getPhoneAttribute($value)
-    {
-        $phone = substr($value, 4);  //remove "+234"
-        return "0".$phone;
-    }
-
     /**
      * Mutators
      *

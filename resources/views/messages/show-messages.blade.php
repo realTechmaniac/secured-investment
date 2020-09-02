@@ -60,7 +60,7 @@
                             @else
                                 <div class="card shadow shadow-lg">
                                     <div class="card-body">
-                                        <h5 class="card-title mt-0 text-primary">
+                                        <h5 class="card-title mt-0 text-primary d-flex justify-content-center">
                                             No Message yet.
                                         </h5>
                                     </div>

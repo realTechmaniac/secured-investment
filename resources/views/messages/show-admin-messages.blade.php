@@ -79,7 +79,7 @@
                             @else
                                 <div class="card shadow shadow-lg">
                                     <div class="card-body">
-                                        <h5 class="card-title mt-0 text-primary">
+                                        <h5 class="card-title mt-0 text-primary d-flex justify-content-center">
                                             No Message yet.
                                         </h5>
                                     </div>
@@ -120,7 +120,7 @@
                                     <label for="username">Send to (Username)</label>
                                     <input type="text" class="form-control" name="username" id="username"
                                            value="{{$row->sentFrom->username}}"
-                                           placeholder="Enter Recipient's Username" maxlength="100" required disabled>
+                                           placeholder="Enter Recipient's Username" maxlength="100" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="message_title">Message Title</label>
