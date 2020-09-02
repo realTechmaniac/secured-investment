@@ -40,8 +40,8 @@ class BankSeeder extends Seeder
         BankDetail::create([
             'user_id' => 4,
             'full_name' => 'ARISE OPEOLUWA DAVID',
-            'account_number' => '0037492196',
-            'bank_name' => 'GTB',
+            'account_number' => '2083814794',
+            'bank_name' => 'UBA',
             'token' => Str::random(40),
         ]);
     }

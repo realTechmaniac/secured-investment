@@ -349,13 +349,13 @@ class UserController extends Controller
             'token' => Str::random(39),
             ]
         );
-        /*$text = "Congratulations <b>".Auth::user()->username."</b>, payment of &#8358;".$get_merge_amount." is uploaded.";
+        $text = "Congratulations <b>".Auth::user()->username."</b>, payment of &#8358;".$get_merge_amount." is uploaded.";
 
         Telegram::sendMessage([
             'chat_id' => -1001308789917,
             'parse_mode' => 'HTML',
             'text' => $text
-        ]);*/
+        ]);
         session()->flash('success', 'Receipt uploaded successfully');
         return redirect(route('dashboard'));
     }
@@ -614,13 +614,13 @@ class UserController extends Controller
             }
         }
 
-        /*$text = "Congratulations <b>".$ph->user->username."</b>, your payment has been confirmed.";
+        $text = "Congratulations <b>".$ph->user->username."</b>, your payment has been confirmed.";
 
         Telegram::sendMessage([
             'chat_id' => -1001308789917,
             'parse_mode' => 'HTML',
             'text' => $text
-        ]);*/
+        ]);
         return redirect(route('dashboard'))->with('success', 'User\'s payment has been confirmed');
 
     }

@@ -58,4 +58,9 @@ class HomeController extends Controller
         }
         return view('home', compact('ref'));
     }
+
+    public function terms()
+    {
+        return view('terms');
+    }
 }

@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 //Index page route handler
 //Route::get('/test','PagesController@index');
 
-Route::get('/test','PagesController@terms');
+Route::get('/test','PagesController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/terms-and-conditions', 'HomeController@terms')->name('terms');
 
 Auth::routes();
 /*Override register form route... For Referral purpose*/
