@@ -23,7 +23,7 @@
                             <div class="card-body">
 
                                 @if($user->misc_token)
-                                    <div class="alert alert-info"><a href="#">https://www.securedinvestment.com/reset-password/{{$user->misc_token}}</a></div>
+                                    <div class="alert alert-info"><a href="#">https://securedinvestmentway.com/password-reset/{{$user->misc_token}}</a></div>
                                 @endif
 
                                 <h4 class="card-title">User Details</h4>

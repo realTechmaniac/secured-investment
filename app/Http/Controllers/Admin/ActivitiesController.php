@@ -16,19 +16,22 @@ class ActivitiesController extends Controller
         $total_user = User::all();
         $total_completed_ph = ProvideHelp::where('status', 'completed')->get();
         $total_completed_gh = GetHelp::where('status', 'completed')->get();
-        $total_completed_ph_amount = 0;
+        $total_pending_ph = ProvideHelp::where('status', 'pending')->get();
+        $total_pending_gh = GetHelp::where('status', 'pending')->get();
+        $total_pending_ph_to_balance = 0;
         $currently_active_transactions = DB::table('merges')->get();
-        foreach ($total_completed_ph as $item){
-            $total_completed_ph_amount += $item->amount;
+        foreach ($total_pending_ph as $item){
+            $total_pending_ph_to_balance += $item->to_balance;
         }
-        $total_completed_gh_amount = 0;
-        foreach ($total_completed_gh as $item){
-            $total_completed_gh_amount += $item->amount;
+        $total_pending_gh_to_balance = 0;
+        foreach ($total_pending_gh as $item){
+            $total_pending_gh_to_balance += $item->to_balance;
         }
 
         return view('admin.dashboard', compact(
-            'total_user', 'total_completed_ph', 'total_completed_gh',
-            'total_completed_ph_amount', 'total_completed_gh_amount', 'currently_active_transactions'
+            'total_user', 'total_pending_ph', 'total_pending_gh',
+            'total_completed_gh', 'total_completed_ph',
+            'total_pending_ph_to_balance', 'total_pending_gh_to_balance', 'currently_active_transactions'
         ));
     }
 }

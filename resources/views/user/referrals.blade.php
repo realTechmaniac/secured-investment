@@ -1,6 +1,6 @@
 @extends('layouts.userApp')
 
-@section('page-title')Secured Investment -Admin | Referrals @endsection
+@section('page-title')Secured Investment - Referrals @endsection
 
 @section('content')
     <div class="main-content">
@@ -23,7 +23,10 @@
                             <div class="card-body">
                                 <h4 class="card-title">Your Referrals</h4>
                                 <p class="card-title-desc">Below are users that registered via your referral link.</p>
-                                <p><b>Your Referral link is: </b> <a href="#">https://securedinvestment.com/register/{{auth()->user()->referrerDetail->referrer_link}}</a></p>
+                                <p><b>Your Referral link is: </b> <a href="#">https://securedinvestmentway.com/register/{{auth()->user()->referrerDetail->referrer_link}}</a></p>
+                                @if($get_user_that_referred)
+                                    <p><b>You were referred from: </b> <b class="text-primary">{{$get_user_that_referred}}</b></p>
+                                @endif
 
                                 <div class="table-rep-plugin">
                                     <div class="mb-0" data-pattern="priority-columns">

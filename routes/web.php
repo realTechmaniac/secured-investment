@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test','PagesController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/terms-and-conditions', 'HomeController@terms')->name('terms');
 
 Auth::routes();
@@ -36,7 +36,9 @@ Route::get('/',function (){
 Route::get('/register-bank-details', 'BankDetailsController@bankDetails')->name('bank.details')->middleware('bank.rules');
 Route::post('/store-bank-details', 'BankDetailsController@storeBankDetails')->name('bank.store')->middleware('bank.rules');
 
-
+/*Reset Password .. Link to generate reset password*/
+Route::get('/password-reset/{misc_token}', 'Admin\AllUsers@passwordResetPage')->name('password.reset.page');
+Route::post('/save-password-reset/{misc_token}', 'Admin\AllUsers@savePasswordReset')->name('save.password.reset');
 
 Route::middleware(['auth'])->group(function (){
     /**
@@ -78,9 +80,7 @@ Route::middleware(['auth', 'not.admin'])->group(function (){
      */
     Route::get('/admin/all-users', 'Admin\AllUsers@showUsers')->name('show.users');
     Route::get('/admin/generate-password-reset-link/{user_token}', 'Admin\AllUsers@generatePasswordResetLink')->name('generate.password.reset.link');
-    /*Reset Password .. Link to generate reset password*/
-    Route::get('/admin/password-reset/{misc_token}', 'Admin\AllUsers@passwordResetPage')->name('password.reset.page');
-    Route::post('/admin/save-password-reset/{misc_token}', 'Admin\AllUsers@savePasswordReset')->name('save.password.reset');
+
     /*Edit User.. Only CEO Can change user role*/
     Route::get('/admin/edit-user-details/{user_token}', 'Admin\AllUsers@editUserDetails')->name('edit.user.details');
     Route::put('/admin/save-user-details/{user_token}', 'Admin\AllUsers@saveUserDetails')->name('save.user.details');

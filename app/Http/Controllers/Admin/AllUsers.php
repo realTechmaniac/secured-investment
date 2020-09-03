@@ -34,8 +34,8 @@ class AllUsers extends Controller
             'last_name' => ['required', 'string', 'max:70'],
             'phone_number' =>
                 [
-                    'required', 'string', 'max:20',
-                    Rule::unique('users')->ignore($user->id), 'regex:/^(\+234)\d{10}$/'
+                    'required', 'digits:11',
+                    Rule::unique('users')->ignore($user->id)
                 ],
             'username' =>
                 [

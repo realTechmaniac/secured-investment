@@ -45,8 +45,8 @@
                                         <div class="card-body">
                                             <div class="media">
                                                 <div class="media-body">
-                                                    <p class="text-muted font-weight-medium">Complete PH Amount</p>
-                                                    <h4 class="mb-0">&#8358;{{number_format($total_completed_ph_amount)}}</h4>
+                                                    <p class="text-muted font-weight-medium">Pending PH Amount</p>
+                                                    <h4 class="mb-0">&#8358;{{number_format($total_pending_ph_to_balance)}}</h4>
                                                 </div>
 
                                                 <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">
@@ -63,8 +63,8 @@
                                         <div class="card-body">
                                             <div class="media">
                                                 <div class="media-body">
-                                                    <p class="text-muted font-weight-medium">Completed GH Amount</p>
-                                                    <h4 class="mb-0">&#8358;{{number_format($total_completed_gh_amount)}}</h4>
+                                                    <p class="text-muted font-weight-medium">Pending GH Amount</p>
+                                                    <h4 class="mb-0">&#8358;{{number_format($total_pending_gh_to_balance)}}</h4>
                                                 </div>
 
                                                 <div class="avatar-sm rounded-circle bg-primary align-self-center mini-stat-icon">

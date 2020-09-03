@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="{{asset('asset/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
 
+    {{--Toastr--}}
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/toastr/build/toastr.min.css')}}">
+
 </head>
 <body>
 
@@ -175,6 +178,20 @@
 <script src="{{asset('asset/vendors/counter-up/jquery.waypoints.min.js')}}"></script>
 <script src="{{asset('asset/vendors/counter-up/jquery.counterup.min.js')}}"></script>
 <script src="{{asset('asset/js/mail-script.js')}}"></script>
+<script src="{{asset('assets/libs/toastr/build/toastr.min.js')}}"></script>
+<script type="text/javascript">
+    @if(session('danger'))
+    toastr.error('{{session("danger")}}');
+    @endif
+    @if(count($errors)>0)
+    @foreach($errors->all() as $error)
+    toastr.error('{{$error}}');
+    @endforeach
+    @endif
+    @if(session('success'))
+    toastr.success('{{session("success")}}');
+    @endif
+</script>
 <!--gmaps Js-->
 <script src="https://maps.googleapis.com/maps/apijs?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="js/gmaps.min.js')}}"></script>
