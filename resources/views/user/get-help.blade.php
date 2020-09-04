@@ -75,9 +75,9 @@
                                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                     <tr>
+                                        <th>Available In</th>
                                         <th>Date</th>
                                         <th>Time</th>
-                                        <th>Available In</th>
                                         <th>PH Amount(&#8358;)</th>
                                         <th>GH Amount(&#8358;)</th>
                                         <th>Status</th>
@@ -94,9 +94,9 @@
                                             {{--RECOMMITMENT CANNOT BE WITHDRAWN--}}
                                             @if($ph_recommit)
                                                 <tr>
+                                                    <td><b class="text-primary">N/A</b></td>
                                                     <td>{{$ph_recommit->created_at->format('d/m/y')}}</td>
                                                     <td>{{$ph_recommit->created_at->format('g:i A')}}</td>
-                                                    <td><b class="text-primary">N/A</b></td>
                                                     <td>{{number_format($ph_recommit->amount)}}</td>
                                                     <td>{{number_format(($ph_recommit->amount)+($ph_recommit->amount * 0.5))}}</td>
                                                     <td>
@@ -111,9 +111,9 @@
                                             @if($ph_available->count() > 0)
                                                 @foreach($ph_available as $row)
                                                     <tr>
+                                                        <td><b class="text-primary">N/A</b></td>
                                                         <td>{{$row->created_at->format('d/m/y')}}</td>
                                                         <td>{{$row->created_at->format('g:i A')}}</td>
-                                                        <td><b class="text-primary">N/A</b></td>
                                                         <td>{{number_format($row->amount)}}</td>
                                                         <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
                                                         <td>
@@ -134,9 +134,9 @@
                                             {{--ADMIN DOES NOT NEED TO RECOMMIT.. SO LOOP THROUGH ALL THE COLLECTIONS WITHOUT FILTERING--}}
                                             @foreach($ph_available_for_gh as $row)
                                                 <tr>
+                                                    <td><b class="text-primary">N/A</b></td>
                                                     <td>{{$row->created_at->format('d/m/y')}}</td>
                                                     <td>{{$row->created_at->format('g:i A')}}</td>
-                                                    <td><b class="text-primary">N/A</b></td>
                                                     <td>{{number_format($row->amount)}}</td>
                                                     <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
                                                     <td>
@@ -159,8 +159,6 @@
                                     {{--COUNTDOWN RUNNING AND PH IS COMPLETED--}}
                                     @if($ph_pending_first_investment)
                                         <tr>
-                                            <td>{{$ph_pending_first_investment->created_at->format('d/m/y')}}</td>
-                                            <td>{{$ph_pending_first_investment->created_at->format('g:i A')}}</td>
                                             <td>
                                                 <b>
                                                     <div id="ph-pending-investment"
@@ -169,6 +167,8 @@
                                                     </div>
                                                 </b>
                                             </td>
+                                            <td>{{$ph_pending_first_investment->created_at->format('d/m/y')}}</td>
+                                            <td>{{$ph_pending_first_investment->created_at->format('g:i A')}}</td>
                                             <td>{{number_format($ph_pending_first_investment->amount)}}</td>
                                             <td>{{number_format(($ph_pending_first_investment->amount)+($ph_pending_first_investment->amount * 0.5))}}</td>
                                             <td>
@@ -187,8 +187,6 @@
                                     {{--COUNTDOWN RUNNING AND PH IS PENDING--}}
                                     @if($ph_pending_first_investment_pending)
                                         <tr>
-                                            <td>{{$ph_pending_first_investment_pending->created_at->format('d/m/y')}}</td>
-                                            <td>{{$ph_pending_first_investment_pending->created_at->format('g:i A')}}</td>
                                             <td>
                                                 <b>
                                                     <div id="ph-pending-investment"
@@ -197,6 +195,8 @@
                                                     </div>
                                                 </b>
                                             </td>
+                                            <td>{{$ph_pending_first_investment_pending->created_at->format('d/m/y')}}</td>
+                                            <td>{{$ph_pending_first_investment_pending->created_at->format('g:i A')}}</td>
                                             <td>{{number_format($ph_pending_first_investment_pending->amount)}}</td>
                                             <td>{{number_format(($ph_pending_first_investment_pending->amount)+($ph_pending_first_investment_pending->amount * 0.5))}}</td>
                                             <td>
@@ -215,11 +215,11 @@
                                     {{--COUNTDOWN IS COMPLETED BUT THE PH IS STILL PENDING--}}
                                     @if($ph_pending_first_investment_completed)
                                         <tr>
-                                            <td>{{$ph_pending_first_investment_completed->created_at->format('d/m/y')}}</td>
-                                            <td>{{$ph_pending_first_investment_completed->created_at->format('g:i A')}}</td>
                                             <td>
                                                 <b class="text-primary">Processed!</b>
                                             </td>
+                                            <td>{{$ph_pending_first_investment_completed->created_at->format('d/m/y')}}</td>
+                                            <td>{{$ph_pending_first_investment_completed->created_at->format('g:i A')}}</td>
                                             <td>{{number_format($ph_pending_first_investment_completed->amount)}}</td>
                                             <td>{{number_format(($ph_pending_first_investment_completed->amount)+($ph_pending_first_investment_completed->amount * 0.5))}}</td>
                                             <td>
@@ -241,11 +241,9 @@
                                         @if($ph_pending)
                                             @foreach($ph_pending as $row)
                                                 <tr>
-                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>
                                                         @if($row->available_for_gh_at > now()->addDays(4))
-                                                        {{--@if($row->available_for_gh_at > now()->addSeconds(45))--}}
+                                                            {{--@if($row->available_for_gh_at > now()->addSeconds(45))--}}
                                                             <b class="text-primary">Countdown starts soon...</b>
                                                         @else
                                                             <b>
@@ -256,6 +254,8 @@
                                                             </b>
                                                         @endif
                                                     </td>
+                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
+                                                    <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>{{number_format($row->amount)}}</td>
                                                     <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
                                                     <td>
@@ -274,11 +274,9 @@
                                         @if($ph_pending_status_not_completed)
                                             @foreach($ph_pending_status_not_completed as $row)
                                                 <tr>
-                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>
                                                         @if($row->available_for_gh_at > now()->addDays(4))
-                                                        {{--@if($row->available_for_gh_at > now()->addSeconds(45))--}}
+                                                            {{--@if($row->available_for_gh_at > now()->addSeconds(45))--}}
                                                             <b class="text-primary">Countdown starts soon...</b>
                                                         @else
                                                             <b>
@@ -289,6 +287,8 @@
                                                             </b>
                                                         @endif
                                                     </td>
+                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
+                                                    <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>{{number_format($row->amount)}}</td>
                                                     <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
                                                     <td>
@@ -311,11 +311,9 @@
                                         @if($ph_pending)
                                             @foreach($ph_pending as $row)
                                                 <tr>
-                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>
                                                         @if($row->available_for_gh_at > now()->addDays(2))
-                                                        {{--@if($row->available_for_gh_at > now()->addSeconds(35))--}}
+                                                            {{--@if($row->available_for_gh_at > now()->addSeconds(35))--}}
                                                             <b class="text-primary">Countdown starts soon...</b>
                                                         @else
                                                             <b>
@@ -326,6 +324,8 @@
                                                             </b>
                                                         @endif
                                                     </td>
+                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
+                                                    <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>{{number_format($row->amount)}}</td>
                                                     <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
                                                     <td>
@@ -344,11 +344,9 @@
                                         @if($ph_pending_status_not_completed)
                                             @foreach($ph_pending_status_not_completed as $row)
                                                 <tr>
-                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>
                                                         @if($row->available_for_gh_at > now()->addDays(2))
-                                                        {{--@if($row->available_for_gh_at > now()->addSeconds(35))--}}
+                                                            {{--@if($row->available_for_gh_at > now()->addSeconds(35))--}}
                                                             <b class="text-primary">Countdown starts soon...</b>
                                                         @else
                                                             <b>
@@ -359,6 +357,8 @@
                                                             </b>
                                                         @endif
                                                     </td>
+                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
+                                                    <td>{{$row->created_at->format('g:i A')}}</td>
                                                     <td>{{number_format($row->amount)}}</td>
                                                     <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
                                                     <td>
@@ -379,11 +379,11 @@
                                     @if($ph_pending_completed)
                                         @foreach($ph_pending_completed as $row)
                                             <tr>
-                                                <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                <td>{{$row->created_at->format('g:i A')}}</td>
                                                 <td>
                                                     <b class="text-primary">Processed!</b>
                                                 </td>
+                                                <td>{{$row->created_at->format('d/m/y')}}</td>
+                                                <td>{{$row->created_at->format('g:i A')}}</td>
                                                 <td>{{number_format($row->amount)}}</td>
                                                 <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
                                                 <td>
@@ -609,7 +609,7 @@
             "language": {
                 "emptyTable": "No Investment found"
             },
-            "order": [[ 1, "desc" ]]
+            "order": [[ 2, "desc" ]]
         })
     </script>
 
