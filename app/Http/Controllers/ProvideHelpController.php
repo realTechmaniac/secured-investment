@@ -111,14 +111,6 @@ class ProvideHelpController extends Controller
             }
         }
 
-        $text = "Hello <b>".Auth::user()->username."</b>, your request to donate ".$ph_amount." is successful, Kindly wait to be merged.";
-
-        Telegram::sendMessage([
-            'chat_id' => -1001308789917,
-            'parse_mode' => 'HTML',
-            'text' => $text
-        ]);
-
         return redirect(route('dashboard'))->with('success', 'Request sent successfully');
     }
 }
