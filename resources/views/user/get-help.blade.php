@@ -92,24 +92,8 @@
                                         @if(auth()->user()->role == 'regular')
                                             {{--REGULAR USERS NEED TO RECOMMIT--}}
                                             {{--RECOMMITMENT CANNOT BE WITHDRAWN--}}
-                                            @if($ph_recommit)
-                                                <tr>
-                                                    <td><b class="text-primary">N/A</b></td>
-                                                    <td>{{$ph_recommit->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$ph_recommit->created_at->format('g:i A')}}</td>
-                                                    <td>{{number_format($ph_recommit->amount)}}</td>
-                                                    <td>{{number_format(($ph_recommit->amount)+($ph_recommit->amount * 0.5))}}</td>
-                                                    <td>
-                                                        <span class="badge badge-success">Available</span>
-                                                    </td>
-                                                    <td>
-                                                        <b class="text-primary">Recommit</b>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                            {{--LOOP THROUGH THE REST OF THE WITHDRAWABLE COLLECTION--}}
-                                            @if($ph_available->count() > 0)
-                                                @foreach($ph_available as $row)
+                                            @if($ph_pending_first_investment || $ph_pending->count() > 0)
+                                                @foreach($ph_available_for_gh as $row)
                                                     <tr>
                                                         <td><b class="text-primary">N/A</b></td>
                                                         <td>{{$row->created_at->format('d/m/y')}}</td>
@@ -123,12 +107,51 @@
                                                             <button type="button"
                                                                     class="btn btn-primary waves-effect waves-light"
                                                                     data-toggle="modal"
-                                                                    data-target=".get-help-withdrawal-modal-{{$row->token}}">
+                                                                    data-target=".admin-get-help-withdrawal-modal-{{$row->token}}">
                                                                 Withdraw
                                                             </button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
+                                            @else
+                                                @if($ph_recommit)
+                                                    <tr>
+                                                        <td><b class="text-primary">N/A</b></td>
+                                                        <td>{{$ph_recommit->created_at->format('d/m/y')}}</td>
+                                                        <td>{{$ph_recommit->created_at->format('g:i A')}}</td>
+                                                        <td>{{number_format($ph_recommit->amount)}}</td>
+                                                        <td>{{number_format(($ph_recommit->amount)+($ph_recommit->amount * 0.5))}}</td>
+                                                        <td>
+                                                            <span class="badge badge-success">Available</span>
+                                                        </td>
+                                                        <td>
+                                                            <b class="text-primary">Recommit</b>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                {{--LOOP THROUGH THE REST OF THE WITHDRAWABLE COLLECTION--}}
+                                                @if($ph_available->count() > 0)
+                                                    @foreach($ph_available as $row)
+                                                        <tr>
+                                                            <td><b class="text-primary">N/A</b></td>
+                                                            <td>{{$row->created_at->format('d/m/y')}}</td>
+                                                            <td>{{$row->created_at->format('g:i A')}}</td>
+                                                            <td>{{number_format($row->amount)}}</td>
+                                                            <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
+                                                            <td>
+                                                                <span class="badge badge-success">Available</span>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button"
+                                                                        class="btn btn-primary waves-effect waves-light"
+                                                                        data-toggle="modal"
+                                                                        data-target=".get-help-withdrawal-modal-{{$row->token}}">
+                                                                    Withdraw
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
                                             @endif
                                         @else
                                             {{--ADMIN DOES NOT NEED TO RECOMMIT.. SO LOOP THROUGH ALL THE COLLECTIONS WITHOUT FILTERING--}}
@@ -156,7 +179,7 @@
                                     @endif
 
                                     {{--SHOW COUNTDOWN TO USERS IMMEDIATELY FOR FIRST INVESTMENT--}}
-                                    {{--COUNTDOWN RUNNING AND PH IS COMPLETED--}}
+                                    {{--USER WILL SEE THIS ::: COUNTDOWN RUNNING AND PH IS COMPLETED--}}
                                     @if($ph_pending_first_investment)
                                         <tr>
                                             <td>
@@ -184,7 +207,7 @@
                                     @endif
 
                                     {{--SHOW COUNTDOWN TO USERS IMMEDIATELY FOR FIRST INVESTMENT--}}
-                                    {{--COUNTDOWN RUNNING AND PH IS PENDING--}}
+                                    {{--USER WILL NEVER SEE THIS BUT STILL HANDLED ::: COUNTDOWN RUNNING AND PH IS PENDING--}}
                                     @if($ph_pending_first_investment_pending)
                                         <tr>
                                             <td>
@@ -212,7 +235,7 @@
                                     @endif
 
                                     {{--SHOW COUNTDOWN TO USERS IMMEDIATELY FOR FIRST INVESTMENT--}}
-                                    {{--COUNTDOWN IS COMPLETED BUT THE PH IS STILL PENDING--}}
+                                    {{--USER WILL NEVER SEE THIS BUT STILL HANDLED ::: COUNTDOWN IS COMPLETED BUT THE PH IS STILL PENDING--}}
                                     @if($ph_pending_first_investment_completed)
                                         <tr>
                                             <td>
@@ -235,148 +258,71 @@
                                         </tr>
                                     @endif
 
-                                    {{--ADMIN AND REGULAR USER ARE IN DIFFERENT LOOPS BECAUSE THEIR PH TIME DIFFER--}}
-                                    @if(auth()->user()->role == 'regular')
-                                        {{--START COUNTDOWN DOWN FOR SUBSEQUENT PH IF ANY--}}
-                                        @if($ph_pending)
-                                            @foreach($ph_pending as $row)
-                                                <tr>
-                                                    <td>
-                                                        @if($row->available_for_gh_at > now()->addDays(4))
-                                                            {{--@if($row->available_for_gh_at > now()->addSeconds(45))--}}
-                                                            <b class="text-primary">Countdown starts soon...</b>
-                                                        @else
-                                                            <b>
-                                                                <div id="ph-pending-investment"
-                                                                     class="text-danger"
-                                                                     data-countdown="{{\Carbon\Carbon::parse($row->available_for_gh_at)->format('Y/m/d H:i:s')}}">
-                                                                </div>
-                                                            </b>
-                                                        @endif
-                                                    </td>
-                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$row->created_at->format('g:i A')}}</td>
-                                                    <td>{{number_format($row->amount)}}</td>
-                                                    <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
-                                                    <td>
-                                                        <span class="badge badge-primary">Processing</span>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                                class="btn btn-primary waves-effect waves-light"
-                                                                disabled>
-                                                            Not Withdrawable
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                        @if($ph_pending_status_not_completed)
-                                            @foreach($ph_pending_status_not_completed as $row)
-                                                <tr>
-                                                    <td>
-                                                        @if($row->available_for_gh_at > now()->addDays(4))
-                                                            {{--@if($row->available_for_gh_at > now()->addSeconds(45))--}}
-                                                            <b class="text-primary">Countdown starts soon...</b>
-                                                        @else
-                                                            <b>
-                                                                <div id="ph-pending-investment"
-                                                                     class="text-danger"
-                                                                     data-countdown="{{\Carbon\Carbon::parse($row->available_for_gh_at)->format('Y/m/d H:i:s')}}">
-                                                                </div>
-                                                            </b>
-                                                        @endif
-                                                    </td>
-                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$row->created_at->format('g:i A')}}</td>
-                                                    <td>{{number_format($row->amount)}}</td>
-                                                    <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
-                                                    <td>
-                                                        <span class="badge badge-primary">Processing</span>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                                class="btn btn-primary waves-effect waves-light"
-                                                                disabled>
-                                                            Not Withdrawable
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                    @else
-                                        {{--DO NOT SHOW COUNTDOWN TO ADMIN UNTIL AFTER 24HOURS--}}
-                                        {{--ADMIN AND REGULAR USER ARE IN DIFFERENT LOOPS BECAUSE THEIR PH TIME DIFFER--}}
-                                        {{--START COUNTDOWN DOWN FOR SUBSEQUENT PH IF ANY--}}
-                                        @if($ph_pending)
-                                            @foreach($ph_pending as $row)
-                                                <tr>
-                                                    <td>
-                                                        @if($row->available_for_gh_at > now()->addDays(2))
-                                                            {{--@if($row->available_for_gh_at > now()->addSeconds(35))--}}
-                                                            <b class="text-primary">Countdown starts soon...</b>
-                                                        @else
-                                                            <b>
-                                                                <div id="ph-pending-investment"
-                                                                     class="text-danger"
-                                                                     data-countdown="{{\Carbon\Carbon::parse($row->available_for_gh_at)->format('Y/m/d H:i:s')}}">
-                                                                </div>
-                                                            </b>
-                                                        @endif
-                                                    </td>
-                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$row->created_at->format('g:i A')}}</td>
-                                                    <td>{{number_format($row->amount)}}</td>
-                                                    <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
-                                                    <td>
-                                                        <span class="badge badge-primary">Processing</span>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                                class="btn btn-primary waves-effect waves-light"
-                                                                disabled>
-                                                            Not Withdrawable
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                        @if($ph_pending_status_not_completed)
-                                            @foreach($ph_pending_status_not_completed as $row)
-                                                <tr>
-                                                    <td>
-                                                        @if($row->available_for_gh_at > now()->addDays(2))
-                                                            {{--@if($row->available_for_gh_at > now()->addSeconds(35))--}}
-                                                            <b class="text-primary">Countdown starts soon...</b>
-                                                        @else
-                                                            <b>
-                                                                <div id="ph-pending-investment"
-                                                                     class="text-danger"
-                                                                     data-countdown="{{\Carbon\Carbon::parse($row->available_for_gh_at)->format('Y/m/d H:i:s')}}">
-                                                                </div>
-                                                            </b>
-                                                        @endif
-                                                    </td>
-                                                    <td>{{$row->created_at->format('d/m/y')}}</td>
-                                                    <td>{{$row->created_at->format('g:i A')}}</td>
-                                                    <td>{{number_format($row->amount)}}</td>
-                                                    <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
-                                                    <td>
-                                                        <span class="badge badge-primary">Processing</span>
-                                                    </td>
-                                                    <td>
-                                                        <button type="button"
-                                                                class="btn btn-primary waves-effect waves-light"
-                                                                disabled>
-                                                            Not Withdrawable
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
-                                    @endif
 
-                                    @if($ph_pending_completed)
+                                    {{--***FOR OLD VERSION ::: ADMIN AND REGULAR USER ARE IN DIFFERENT LOOPS BECAUSE THEIR PH TIME DIFFER***--}}
+                                    {{--***FOR OLD VERSION ::: THIS MEANS THE COUNTDOWN WILL SHOW IN DIFFERENT TIME***--}}
+                                    {{--THIS WHOLE BLOCK WAS MODIFIED.......USED TO BE :: COUNTDOWN STARTS AFTER 24HRS--}}
+
+                                    {{--USER WILL SEE THIS ::: PH HAS BEEN COMPLETED AND NOW IS LESSER THAN PH_AVAILABLE_TIME--}}
+                                    @if($ph_pending->count() > 0)
+                                        @foreach($ph_pending as $row)
+                                            <tr>
+                                                <td>
+                                                    <b>
+                                                        <div id="ph-pending-investment"
+                                                             class="text-danger"
+                                                             data-countdown="{{\Carbon\Carbon::parse($row->available_for_gh_at)->format('Y/m/d H:i:s')}}">
+                                                        </div>
+                                                    </b>
+                                                </td>
+                                                <td>{{$row->created_at->format('d/m/y')}}</td>
+                                                <td>{{$row->created_at->format('g:i A')}}</td>
+                                                <td>{{number_format($row->amount)}}</td>
+                                                <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
+                                                <td>
+                                                    <span class="badge badge-primary">Processing</span>
+                                                </td>
+                                                <td>
+                                                    <button type="button"
+                                                            class="btn btn-primary waves-effect waves-light"
+                                                            disabled>
+                                                        Not Withdrawable
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    {{--USER WILL NEVER SEE THIS.. BUT STILL HANDLED ::: PH IS PENDING AND NOW IS LESSER THAN PH_AVAILABLE_TIME--}}
+                                    @if($ph_pending_status_not_completed->count() > 0)
+                                        @foreach($ph_pending_status_not_completed as $row)
+                                            <tr>
+                                                <td>
+                                                    <b>
+                                                        <div id="ph-pending-investment"
+                                                             class="text-danger"
+                                                             data-countdown="{{\Carbon\Carbon::parse($row->available_for_gh_at)->format('Y/m/d H:i:s')}}">
+                                                        </div>
+                                                    </b>
+                                                </td>
+                                                <td>{{$row->created_at->format('d/m/y')}}</td>
+                                                <td>{{$row->created_at->format('g:i A')}}</td>
+                                                <td>{{number_format($row->amount)}}</td>
+                                                <td>{{number_format(($row->amount)+($row->amount * 0.5))}}</td>
+                                                <td>
+                                                    <span class="badge badge-primary">Processing</span>
+                                                </td>
+                                                <td>
+                                                    <button type="button"
+                                                            class="btn btn-primary waves-effect waves-light"
+                                                            disabled>
+                                                        Not Withdrawable
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                    {{--USER WILL NEVER SEE THIS.. BUT STILL HANDLED ::: PH IS PENDING AND NOW IS GREATER THAN PH_AVAILABLE_TIME--}}
+                                    @if($ph_pending_completed->count() > 0)
                                         @foreach($ph_pending_completed as $row)
                                             <tr>
                                                 <td>

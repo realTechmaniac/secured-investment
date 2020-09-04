@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\BankDetail;
 use App\Http\Controllers\Controller;
+use App\ProvideHelp;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,10 +63,28 @@ class AllUsers extends Controller
 
         if ($request->role && Auth::user()->role == 'ceo') {
             if ($request->role == 'regular') {
+                $total_referrals = $user->referrerDetail->referralHistories->count();
+                $total_ph  = 0;
+                $get_ph_amounts = ProvideHelp::where('user_id', $user->id)
+                    ->where('status', 'completed')->where('is_activation_fee', false)->get();
+                if ($get_ph_amounts->count() > 0){
+                    foreach ($get_ph_amounts as $row){
+                        $total_ph += $row->amount;
+                    }
+                }
+                if ($total_referrals < 25 || $total_ph < 50000){
+                    if ($user->is_guider){
+                        $user->update([
+                            'is_guider' => false
+                        ]);
+                    }
+                }
+
                 $user->update([
                     'role' => $request->role,
                 ]);
-            } else {
+            }
+            else {
                 $user->update([
                     'role' => $request->role,
                     'is_guider' => true,

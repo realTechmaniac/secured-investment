@@ -71,7 +71,7 @@ class ProvideHelpController extends Controller
                     'user_id' => $user->id,
                     'amount' => $ph_amount,
                     'to_balance' => $ph_amount,
-                    'available_for_gh_at' => now()->addDays(5),
+                    'available_for_gh_at' => now()->addDays(4),
                    /* 'available_for_gh_at' => now()->addSeconds(60),*/
                     'token' => Str::random(40),
                 ]);
@@ -101,7 +101,7 @@ class ProvideHelpController extends Controller
                     'user_id' => $user->id,
                     'amount' => $ph_amount,
                     'to_balance' => $ph_amount,
-                    'available_for_gh_at' => now()->addDays(3),
+                    'available_for_gh_at' => now()->addDays(2),
                     /*'available_for_gh_at' => now()->addSeconds(45),*/
                     'token' => Str::random(40),
                 ]);
@@ -110,6 +110,14 @@ class ProvideHelpController extends Controller
                 return redirect(route('dashboard'))->with('danger', 'Request not processed. Something went wrong');
             }
         }
+
+        /*$text = "Hello <b>".Auth::user()->username."</b>, your request to donate ".$ph_amount." is successful, Kindly wait to be merged.";
+
+        Telegram::sendMessage([
+            'chat_id' => -1001308789917,
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);*/
 
         return redirect(route('dashboard'))->with('success', 'Request sent successfully');
     }
