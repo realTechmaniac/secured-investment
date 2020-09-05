@@ -23,7 +23,7 @@ class CreateReceiptUploadsTable extends Migration
             $table->boolean('is_confirmed')->default(false);
             $table->boolean('action_taken')->default(false);
             $table->string('token');
-            $table->timestamp('expires_at');
+            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
 
             $table->foreign('provide_help_id')->references('id')->on('provide_helps');

@@ -20,7 +20,7 @@ class CreateMergesTable extends Migration
             $table->integer('merge_amount')->nullable();
             $table->boolean('is_confirmed')->default(false);
             $table->boolean('is_failed')->default(false);
-            $table->timestamp('expires_at');
+            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
 
             $table->foreign('provide_help_id')->references('id')->on('provide_helps');

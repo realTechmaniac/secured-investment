@@ -52,10 +52,22 @@ class UserController extends Controller
 
         /*User Reactivation Fee*/
         $sub_expires_at = Auth::user()->sub_expires_at;
+
+        /*SAVE SUB_EXPIRES_AT TO ALL USER'S GHs*/
+        $gg = GetHelp::where('user_id', Auth::id())->get();
+        if ($gg->count() > 0){
+            foreach ($gg as $g){
+                $g->update([
+                    'sub_expires_at' => Carbon::parse($sub_expires_at)->toDateTimeString()
+                ]);
+            }
+        }
+
         $user_gh_for_the_month = GetHelp::where('user_id', $user_id)
             ->where('status', 'completed')
-            ->where('sub_expires_at', $sub_expires_at)
+            ->where('sub_expires_at', Carbon::parse($sub_expires_at)->toDateTimeString())
             ->get();
+        //dd(Carbon::parse($sub_expires_at)->toDateTimeString());
         $user_profit_for_the_month = 0;
         if ($user_gh_for_the_month->count() > 0){
             foreach ($user_gh_for_the_month as $row){
@@ -348,6 +360,14 @@ class UserController extends Controller
             ]
         );
 
+        /*$text = "Congratulations <b>".Auth::user()->username."</b>, payment of &#8358;".$get_merge_amount." is uploaded.";
+
+        Telegram::sendMessage([
+            'chat_id' => -1001308789917,
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);*/
+
         session()->flash('success', 'Receipt uploaded successfully');
         return redirect(route('dashboard'));
     }
@@ -605,6 +625,14 @@ class UserController extends Controller
                 }
             }
         }
+
+        /*$text = "Congratulations <b>".$ph->user->username."</b>, your payment has been confirmed.";
+
+        Telegram::sendMessage([
+            'chat_id' => -1001308789917,
+            'parse_mode' => 'HTML',
+            'text' => $text
+        ]);*/
 
         return redirect(route('dashboard'))->with('success', 'User\'s payment has been confirmed');
 

@@ -85,12 +85,16 @@ class AllUsers extends Controller
                 ]);
             }
             else {
+                if (!$user->sub_expires_at){
+                    $user->update([
+                        'sub_expires_at' => now()->addDays(30),
+                    ]);
+                }
                 $user->update([
                     'role' => $request->role,
                     'is_guider' => true,
                     'is_activated' => true,
                     'activation' => 'subsequent',
-                    'sub_expires_at' => now()->addDays(30),
                 ]);
             }
         }

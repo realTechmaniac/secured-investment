@@ -24,7 +24,7 @@ class CreateGetHelpsTable extends Migration
             $table->boolean('is_merged')->default(false);
             $table->enum('status', ['pending','cancelled','completed'])->default('pending');
             $table->string('token');
-            $table->timestamp('sub_expires_at');
+            $table->timestamp('sub_expires_at')->nullable();
             $table->timestamps();
 
 

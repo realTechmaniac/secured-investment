@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\GetHelp;
 use App\ProvideHelp;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -93,6 +94,7 @@ class GetHelpController extends Controller
             'referrer_balance' => $user->referrerDetail->referrer_balance - $referral_amount
         ]);
         ProvideHelp::where('id', $ph_id)->update(['is_withdrawn' => true]);
+        $exp = Carbon::parse($user->sub_expires_at)->toDateTimeString();
         GetHelp::firstOrCreate(
             [
                 'user_id' => $user->id,
@@ -104,7 +106,7 @@ class GetHelpController extends Controller
                 'provide_help_id' => $ph_id,
                 'added_referral_bonus' => $referral_amount,
                 'profit' => $profit,
-                'sub_expires_at' => $user->sub_expires_at,
+                'sub_expires_at' => $exp,
                 'token' => Str::random(40),
             ]
         );
@@ -124,6 +126,7 @@ class GetHelpController extends Controller
         if ($withdrawal < 5000 || $withdrawal > 100000){
             return redirect()->back()->with('danger', 'Amount can not be lesser than NGN 5,000 or greater than NGN 100,000');
         }
+        $exp = Carbon::parse($user->sub_expires_at)->toDateTimeString();
         GetHelp::firstOrCreate(
             [
                 'user_id' => $user->id,
@@ -133,7 +136,7 @@ class GetHelpController extends Controller
                 'amount' => $withdrawal,
                 'to_balance' => $withdrawal,
                 'profit' => 0,
-                'sub_expires_at' => $user->sub_expires_at,
+                'sub_expires_at' => $exp,
                 'token' => Str::random(40),
             ]
         );
