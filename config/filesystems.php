@@ -42,6 +42,11 @@ return [
     */
 
     'disks' => [
+        'receipts-hua094JHhRsdUE28a1w4ldk1llsNdd1l1' => [
+            'driver' => 'local',
+            'root' => public_path().'/receipts-hua094JHhRsdUE28a1w4ldk1llsNdd1l1',
+            'visibility' => 'public',
+        ],
 
         'local' => [
             'driver' => 'local',

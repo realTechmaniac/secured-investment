@@ -2,6 +2,12 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Bank\BankDetails;
+use App\Http\Middleware\Bank\BankRedirect;
+use App\Http\Middleware\HasPending;
+use App\Http\Middleware\IsAdminOnly;
+use App\Http\Middleware\NotActivated;
+use App\Http\Middleware\NotAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +69,11 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'bank.rules' => BankDetails::class,
+        'bank.redirect' => BankRedirect::class,
+        'not.admin' => NotAdmin::class,
+        'not.activated' => NotActivated::class,
+        'has.pending' => HasPending::class,
+        'is.admin.only' => IsAdminOnly::class,
     ];
 }
