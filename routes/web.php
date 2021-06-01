@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+//To prevent insecure links -->
+
+if (App::environment('production')) {
+
+    URL::forceScheme('https');
+    
+}
+
 //Index page route handler
 //Route::get('/test','PagesController@index');
 
